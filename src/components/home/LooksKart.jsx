@@ -1,12 +1,13 @@
 // components/LooksKart.jsx
-import Image from 'next/image'
-import Link from 'next/link'
-import { getCollections } from '@/lib/getCollections'
-import { FaArrowRight } from 'react-icons/fa'
-import Button from '../ui/Button';
+import Image from "next/image";
+import Link from "next/link";
+import { getCollections } from "@/lib/getCollections";
+import { FaArrowRight } from "react-icons/fa";
+import Button from "../ui/Button";
+import FadeUp from "../animation/FadeUp";
 
 export default async function LooksKart() {
-  const collections = await getCollections()
+  const collections = await getCollections();
 
   return (
     <section
@@ -15,7 +16,6 @@ export default async function LooksKart() {
       bg-cover bg-center bg-no-repeat"
     >
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-10 gap-10 items-center">
-
         {/* LEFT (30%) */}
         <div className="md:col-span-3">
           <Image
@@ -25,19 +25,28 @@ export default async function LooksKart() {
             height={100}
           />
 
-          <p className="mt-4 text-base sm:text-lg md:text-xl font-bold text-black max-w-60">
-            Shop authentic products from your most loved salon chain, LOOKS salon
-          </p>
+          <FadeUp delay={0.1}>
+            <p className="mt-4 text-base sm:text-lg md:text-xl font-bold text-black max-w-60">
+              Shop authentic products from your most loved salon chain, LOOKS
+              salon
+            </p>
+          </FadeUp>
 
           {/* Buttons */}
-              <div className="flex items-center gap-5 mt-6">
-                <Button href="https://lookskart.com/" label="SHOP NOW" target="_blank" variant='dark'/>
-              </div>
+          <FadeUp delay={0.2}>
+            <div className="flex items-center gap-5 mt-6">
+              <Button
+                href="https://lookskart.com/"
+                label="SHOP NOW"
+                target="_blank"
+                variant="dark"
+              />
+            </div>
+          </FadeUp>
         </div>
 
         {/* RIGHT (70%) */}
         <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-4">
-
           {collections.map((item) => (
             <Link
               key={item.handle}
@@ -61,9 +70,7 @@ export default async function LooksKart() {
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-3 flex justify-between items-center text-white z-10">
-                <h3 className="text-sm font-semibold">
-                  {item.title}
-                </h3>
+                <h3 className="text-sm font-semibold">{item.title}</h3>
 
                 {/* Arrow */}
                 <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-full group-hover:bg-yellow-500 transition">
@@ -72,36 +79,11 @@ export default async function LooksKart() {
               </div>
             </Link>
           ))}
-
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // components/LooksKart.jsx
 // import Image from 'next/image'
@@ -114,7 +96,7 @@ export default async function LooksKart() {
 //   return (
 //     <section
 //       className="relative py-20 bg-gray-100 overflow-hidden
-//       bg-[url('/img/home/looks-kart-bg.png')] 
+//       bg-[url('/img/home/looks-kart-bg.png')]
 //       bg-cover bg-center bg-no-repeat"
 //     >
 //       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-10 gap-10 items-center">
@@ -135,7 +117,7 @@ export default async function LooksKart() {
 //           {/* Buttons */}
 //                         <div className="flex items-center gap-5 mt-6">
 //                           <Button href="/" label="Shop now" variant='dark'/>
-                          
+
 //                         </div>
 //         </div>
 

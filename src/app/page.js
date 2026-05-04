@@ -9,23 +9,20 @@ import BookAppointment from "@/components/layout/BookAppointment";
 import PartnerBrands from "@/components/layout/PartnerBrands";
 import LooksKart from "@/components/home/LooksKart";
 
-
 export default function Home() {
   return (
-    <> 
-    <HeroSlider />
-    <Counter/>
-    <OurSalons/>
-    <HairColour/>
-    <BridalService/>
-    <PrepaidCards/>
-    <LooksKart/>
-    <Enroll/>
-    {/* <BookAppointment/>
-    <PartnerBrands/> */}
-    
+    <>
+      <HeroSlider />
+      <Counter />
+      <OurSalons />
+      <HairColour />
+      <BridalService />
+      <PrepaidCards />
+      <LooksKart />
+      <Enroll />
 
-    
+      {/* <BookAppointment/>
+    <PartnerBrands/> */}
     </>
   );
 }

@@ -10,8 +10,7 @@ export const metadata = {
     template: "%s",
   },
 
-  description:
-    "Lookssalon",
+  description: "Lookssalon",
 
   alternates: {
     canonical: "/",
@@ -20,10 +19,8 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "http://localhost:3000/",
-    title:
-      "Lookssalon",
-    description:
-      "Lookssalon",
+    title: "Lookssalon",
+    description: "Lookssalon",
     siteName: "Lookssalon",
     images: [
       {
@@ -39,23 +36,24 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@immunebytes",
-    title:
-      "Lookssalon",
-    description:
-      "Lookssalon",
+    title: "Lookssalon",
+    description: "Lookssalon",
     images: ["http://localhost:3000/img/logo.svg"],
   },
   // ✅ GSC Verification (BEST METHOD)
   // verification: {
-  //   google: "YOUR_GSC_VERIFICATION_CODE", 
+  //   google: "YOUR_GSC_VERIFICATION_CODE",
   // },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" >
+    <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/rlj0rkt.css"></link>
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/rlj0rkt.css"
+        ></link>
         {/* Preconnect */}
         {/* <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
@@ -77,9 +75,9 @@ export default function RootLayout({ children }) {
         </noscript> */}
       </head>
       <body className="font-primary">
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
