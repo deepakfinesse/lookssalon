@@ -8,7 +8,7 @@ export function useAnimation(options = {}) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        observer.disconnect(); // run once
+        observer.disconnect(); // run once  
       }
     }, options);
 
