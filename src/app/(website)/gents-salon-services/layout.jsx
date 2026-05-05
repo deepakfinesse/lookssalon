@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Looks Salon ",
+  title: "Looks Salon",
   description:"Looks Salon",
   
   alternates: {
@@ -9,7 +9,7 @@ export const metadata = {
 //   openGraph: {
 //     title: "Looks",
 //     description:"Looks",
-//     url: "https://www.immunebytes.com/about",
+//     url: "https://www.immunebytes.com/gents-salon-services",
 //     images: [
 //       {
 //         url: "https://www.immunebytes.com/img/logo.svg",
@@ -20,8 +20,8 @@ export const metadata = {
 //   },
 
 //   twitter: {
-//     title: "About ImmuneBytes | Blockchain Security Audit Firm",
-//     description:"Learn about ImmuneBytes, a leading smart contract audit firm for blockchain security, Web3 security, and penetration testing services for DeFi and NFT projects.",
+//     title: "Looks Salon",
+//     description:"Looks Salon",
 //   },
 };
 
