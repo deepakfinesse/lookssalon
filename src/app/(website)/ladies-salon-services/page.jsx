@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import FadeUp from "@/components/animation/FadeUp";
 
 const services = [
   {
@@ -74,11 +75,11 @@ export default function ladiesServices() {
             <Image src="/img/services/ladies-two.webp" alt="" width={400} height={300} className="w-full h-auto" />
 
              {/* CTA BOX */}
-                <div className="border-12 border-primary ml-12 -mr-12 px-10 py-10 text-left mt-6 bg-white">
-                    <h4 className="text-6xl font-semibold leading-snug">
-                        Book Now & give yourself a head turning LOOK
-                    </h4>
-                </div>
+              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-10 lg:py-10 text-left mt-6 bg-white">
+                <h4 className="text-3xl lg:text-6xl font-semibold leading-snug">
+                  Book Now & give yourself a head turning LOOK
+                </h4>
+              </div>
           </div>
 
           {/* Right Content */}
@@ -92,15 +93,15 @@ export default function ladiesServices() {
               <Image src="/img/services/ladies-three.webp" alt="" width={400} height={200} className="w-full mb-4" />
 
               <ul className="text-center text-[42px] font-extrabold my-15 space-y-1">
-                <li>CUT & STYLE</li>
-                <li>HAIR STYLING</li>
-                <li>HAIR COLOUR</li>
-                <li>HAIR TEXTURE SERVICES</li>
-                <li>HAIR & SCALP TREATMENTS</li>
-                <li>BODY REJUVENATION</li>
-                <li>FACIALS & CLEAN UPS</li>
-                <li>HANDS & FEET</li>
-                <li>NAIL ART SERVICES</li>
+                <li><FadeUp delay={0.1}>CUT & STYLE</FadeUp></li>
+                <li><FadeUp delay={0.1}>HAIR STYLING</FadeUp></li>
+                <li><FadeUp delay={0.1}>HAIR COLOUR</FadeUp></li>
+                <li><FadeUp delay={0.1}>HAIR TEXTURE SERVICES</FadeUp></li>
+                <li><FadeUp delay={0.1}>HAIR & SCALP TREATMENTS</FadeUp></li>
+                <li><FadeUp delay={0.1}>BODY REJUVENATION</FadeUp></li>
+                <li><FadeUp delay={0.1}>FACIALS & CLEAN UPS</FadeUp></li>
+                <li><FadeUp delay={0.1}>HANDS & FEET</FadeUp></li>
+                <li><FadeUp delay={0.1}>NAIL ART SERVICES</FadeUp></li>
               </ul>
               <Image src="/img/services/ladies-four.webp" alt="" width={400} height={200} className="w-full mt-4" />
             </div>
@@ -111,10 +112,14 @@ export default function ladiesServices() {
         </div>
 
         <div className="grid mt-14">
-            <h2 className="text-3xl font-bold  mb-4">LOOKS Salon – Luxurious Grooming & Beauty Services for Women  A</h2>
+          <FadeUp delay={0.1}>
+            <h2 className="text-3xl font-bold  mb-4">LOOKS Salon – Luxurious Grooming & Beauty Services for Women </h2>
+            </FadeUp>
+            <FadeUp delay={0.2}>
             <p className="text-lg text-black font-medium">
                 At LOOKS Salon, we believe that beauty is personal, and every woman deserves to feel confident, empowered, and radiant. Our premium range of ladies’ services is thoughtfully crafted to meet every beauty and grooming need under one roof—from cutting-edge hair styling and skin treatments to indulgent spa experiences and on-trend nail art. With expert stylists, modern techniques, and top-of-the-line products, we deliver an experience that’s as luxurious as it is transformative.
             </p>
+            </FadeUp>
         </div>
 
        
@@ -138,17 +143,27 @@ export default function ladiesServices() {
             <div className='flex flex-col md:flex-row gap-6 items-start'>
             {/* Icon Placeholder */}
             <div className="flex items-center justify-center text-primary">
-              <Image src={item.icon} alt="Icon" width={140} height={150} />
+              <FadeUp delay={0.1}>
+              <Image src={item.icon} alt="Icon" width={100} height={0} />
+              </FadeUp>
             </div>
 
             {/* Content */}
             <div>
-              <h3 className="text-3xl text-primary font-semibold tracking-wide mb-4">
+              <FadeUp delay={0.1}>
+              <h3
+                className={`text-3xl font-semibold tracking-wide mb-4 ${
+                  index % 2 === 0 ? "text-primary" : "text-black"
+                }`}
+              >
                 {item.title}
               </h3>
-              <p className="text-lg font-medium leading-relaxed">
+              </FadeUp>
+              <FadeUp delay={0.2}>
+              <p className={`text-lg font-medium leading-relaxed ${index % 2 === 0 ? "font-normal" : "font-medium"}`}>
                 {item.desc}
               </p>
+              </FadeUp>
             </div>
           </div>
           </div>
@@ -163,17 +178,17 @@ export default function ladiesServices() {
 {/* BOTTOM IMAGE */}
     <section className="bg-black">
        <div className="max-w-7xl mx-auto py-14 px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-50">
+              <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-50">
                 {/* Content */}
                 <div className="flex flex-col items-left ">
                   <h2 className="text-3xl text-primary font-semibold tracking-wide mb-4">
                     NAIL ART SERVICES
                   </h2>
-                  <p className="mt-4 text-base sm:text-lg font-medium text-white leading-relaxed max-w-lg">
+                  <p className="mt-4 text-base sm:text-lg font-normal text-white leading-relaxed max-w-lg">
                     Your hands say a lot about you—make sure they’re always polished to perfection. 
                     At LOOKS, we offer a comprehensive range of nail art services that combine creativity with care. Whether you’re in the mood for bold colours or elegant designs, our offerings include:
                   </p>
-                  <ul className="list-disc list-inside mt-4 text-base sm:text-lg font-medium text-white leading-relaxed max-w-lg">  
+                  <ul className="list-disc list-inside mt-4 text-base sm:text-lg font-normal text-white leading-relaxed max-w-lg">  
                     
                    <li>Power Polish</li>
                     <li>Power Polish with Art</li>
@@ -184,7 +199,7 @@ export default function ladiesServices() {
                     <li>Power Polish Removal</li>
                     <li>Permanent Extension Removal</li>
                     </ul>
-                    <p className="mt-4 text-base sm:text-lg font-medium text-white leading-relaxed max-w-lg">
+                    <p className="mt-4 text-base sm:text-lg font-normal text-white leading-relaxed max-w-lg">
                     We use high-quality, long-lasting products to ensure your nails stay stunning between visits.
                   </p>
                 </div>

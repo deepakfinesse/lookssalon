@@ -10,16 +10,15 @@ const Nav = ({ isActive, toggleMenu }) => {
 
   const menuItems = [
     { href: '/', label: 'About Us' },
-    { href: '/', label: 'Services' },
-    // { 
-    //   href: '#', 
-    //   label: 'Services', 
-    //   subItems: [
-    //     { href: '/services/service1', label: 'Ladies' },
-    //     { href: '/services/service2', label: 'Gents' },
-    //     { href: '/services/service3', label: 'Pre Paid Cards' },
-    //   ]
-    // },
+    // { href: '/', label: 'Services' },
+    { 
+      href: '#', 
+      label: 'Services', 
+      subItems: [
+        { href: '/gents-salon-services', label: 'Gents' },
+        { href: '/ladies-salon-services', label: 'Ladies' },
+      ]
+    },
     { href: '/', label: 'Testimonials' },
     { href: '/', label: 'Blogs' },
     { href: '/', label: 'Franchise' },
@@ -29,10 +28,10 @@ const Nav = ({ isActive, toggleMenu }) => {
   ];
 
   return (
-    <div className={`fixed inset-0 z-50 bg-black/90 flex flex-col items-center gap-6 p-4 transition-transform duration-700 ${isActive ? 'translate-x-0' : '-translate-x-full'} bg-[url('/img/home/nav-bg.png')] bg-cover bg-center bg-no-repeat`}>
+    <div className={`fixed inset-0 z-50 bg-black/90 flex flex-col items-center gap-6 p-4 transition-transform duration-700 ${isActive ? 'translate-x-0' : '-translate-x-full'} bg-[url('/img/home/nav-bg.webp')] bg-cover bg-center bg-no-repeat`}>
       
       {/* Logo */}
-      <div className='mb-2 lg:mb-2 xl:mb-10 pb-4 border-b-1 border-white'>
+      <div className='mb-2 lg:mb-2 xl:mb-4 pb-4 border-b-1 border-white'>
         <Link href="/" onClick={toggleMenu}>
           <Image src="img/logo-white.svg" width={180} height={90} alt="logo" />
         </Link>
@@ -57,7 +56,7 @@ const Nav = ({ isActive, toggleMenu }) => {
             >
               {item.label}
               {item.subItems &&
-                (showSubServices ? <FaAngleUp /> : <FaAngleDown />)}
+                (showSubServices ? <FaAngleUp className='text-primary' /> : <FaAngleDown className='text-primary'/>)}
             </Link>
 
             {/* Sub Menu */}
@@ -68,7 +67,7 @@ const Nav = ({ isActive, toggleMenu }) => {
                     <Link
                       href={subItem.href}
                       onClick={toggleMenu}
-                      className="text-xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-light bg-gradient-to-b from-primary to-white bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105"
+                      className="text-xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-5xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-110  uppercase gap-2"
                     >
                       {subItem.label}
                     </Link>

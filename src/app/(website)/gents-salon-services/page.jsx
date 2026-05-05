@@ -60,8 +60,8 @@ export default function ladiesServices() {
               />
 
               {/* CTA BOX */}
-              <div className="border-12 border-primary ml-12 -mr-12 px-10 py-10 text-left mt-6 bg-white">
-                <h4 className="text-6xl font-semibold leading-snug">
+              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-10 lg:py-10 text-left mt-6 bg-white">
+                <h4 className="text-3xl lg:text-6xl font-semibold leading-snug">
                   Book Now & give yourself a head turning LOOK
                 </h4>
               </div>
@@ -70,7 +70,7 @@ export default function ladiesServices() {
             {/* Right Content */}
             <div className="flex flex-col justify-between">
               <div>
-                <h3 className="text-center text-6xl text-[#585858] font-extrabold tracking-widest mt-4 mb-6">
+                <h3 className="text-center text-6xl text-[#585858] font-extrabold tracking-widest md:mt-0 mb-6">
                   SERVICES
                 </h3>
 
@@ -115,12 +115,12 @@ export default function ladiesServices() {
 
           <div className="grid mt-14">
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl font-bold  mb-8">
+              <h2 className="text-3xl font-bold  mb-4">
                 LOOKS Salon – Premium Men’s Grooming Services
               </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-lg text-black">
+              <p className="text-lg text-black font-medium">
                 At LOOKS Salon, we believe grooming is not just a routine—it’s a
                 statement. Our exclusive range of men’s services is designed to
                 deliver precision, style, and relaxation, all under one roof.
@@ -150,24 +150,23 @@ export default function ladiesServices() {
                   {/* Icon Placeholder */}
                   <div className="flex items-center justify-center text-primary">
                     <FadeUp delay={0.1}>
-                      <Image
-                        src={item.icon}
-                        alt="Icon"
-                        width={140}
-                        height={150}
-                      />
+                      <Image src={item.icon} alt="Icon" width={70} height={0} />
                     </FadeUp>
                   </div>
 
                   {/* Content */}
                   <div>
                     <FadeUp delay={0.1}>
-                      <h3 className="text-3xl text-primary font-semibold tracking-wide mb-4">
+                      <h3
+                        className={`text-3xl font-semibold tracking-wide mb-4 ${
+                          index % 2 === 0 ? "text-primary" : "text-black"
+                        }`}
+                      >
                         {item.title}
                       </h3>
                     </FadeUp>
                     <FadeUp delay={0.2}>
-                      <p className="text-lg font-medium leading-relaxed">
+                      <p className={`text-lg font-medium leading-relaxed ${index % 2 === 0 ? "font-normal" : "font-medium"}`}>
                         {item.desc}
                       </p>
                     </FadeUp>
