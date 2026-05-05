@@ -15,33 +15,32 @@ export default function Home() {
     <>
       <HeroSlider />
       <section
-      
-      className="
+        className="
         relative 
         bg-[url('/img/home/counter-bg.webp')] 
         bg-cover bg-center bg-no-repeat
         py-16 md:py-24 lg:py-14 xl:pt-20 xl:pb-28
       "
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Heading */}
-        <FadeUp delay={0.1}>
-          <div className="text-center mb-10 md:mb-14">
-            <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold uppercase tracking-wider text-black">
-              Looks in Numbers
-            </h1>
-          </div>
-        </FadeUp>
-        <Counter
-          stats={[
-            { value: 250, label: "Salons Pan India" },
-            { value: 36, label: "Years of Experience" },
-            { value: 7000, label: "Artists & Technicians" },
-          ]}
-        />
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Heading */}
+          <FadeUp delay={0.1}>
+            <div className="text-center mb-10 md:mb-14">
+              <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold uppercase tracking-wider text-black">
+                Looks in Numbers
+              </h1>
+            </div>
+          </FadeUp>
+          <Counter
+            stats={[
+              { value: 250, label: "Salons Pan India" },
+              { value: 36, label: "Years of Experience" },
+              { value: 7000, label: "Artists & Technicians" },
+            ]}
+          />
         </div>
-    </section>
-      
+      </section>
+
       <OurSalons />
       <HairColour />
       <BridalService />
