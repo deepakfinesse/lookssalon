@@ -5,7 +5,7 @@ import FadeUp from "../animation/FadeUp";
 
 const BookAppointment = () => {
   return (
-    <section className="w-full bg-[#DDAB2F] bg-[url('/img/home/book-appointment-bg.png')] bg-cover bg-[center_15%] bg-no-repeat py-1 md:py-12">
+    <section className="w-full bg-[#DDAB2F] bg-[url('/img/home/book-appointment-bg.png')] bg-cover bg-[center_15%] bg-no-repeat py-12 md:py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}

@@ -2,7 +2,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-
+import Button from "../ui/Button";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 const featuredPost = {
@@ -10,7 +10,7 @@ const featuredPost = {
   title: "How often should you wash and condition your hair?",
   excerpt:
     "Just like you need to refresh styling tips to keep your eyes, the same way your lifeline nail class requires the right words to come back to life.",
-  image: "/images/blog/featured.jpg",
+  image: "/img/blog/blog1.webp",
   href: "#",
 };
 
@@ -20,7 +20,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/images/blog/bridal1.jpg",
+    image: "/img/blog/blog1.webp",
     href: "#",
   },
   {
@@ -28,7 +28,7 @@ const gridPosts = [
     title: "How to take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/images/blog/bleached1.jpg",
+    image: "/img/blog/blog1.webp",
     href: "#",
   },
   {
@@ -36,7 +36,7 @@ const gridPosts = [
     title: "How To Take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/images/blog/bleached2.jpg",
+    image: "/img/blog/blog1.webp",
     href: "#",
   },
   {
@@ -44,7 +44,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/images/blog/bridal2.jpg",
+    image: "/img/blog/blog1.webp",
     href: "#",
   },
 ];
@@ -55,67 +55,64 @@ export default function BlogSection() {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <section className="bg-white min-h-screen px-4 py-6 max-w-2xl mx-auto">
+    <section className="bg-white min-h-screen px-4 py-12 max-w-6xl mx-auto">
       {/* ── Header ── */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-black tracking-tight text-black uppercase">
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-3xl md:text-4xl xl:text-5xl text-black font-bold uppercase text-center">
           Blog
         </h1>
         <div className="flex items-center gap-2">
-          <button className="text-xs font-medium border border-gray-300 text-gray-700 px-3 py-1.5 rounded-sm hover:border-primary hover:text-primary transition-colors">
+          {/* <button className="text-xs font-medium border border-gray-300 text-gray-700 px-3 py-1.5 rounded-sm hover:border-primary hover:text-primary transition-colors">
             Sign In
-          </button>
-          <button className="text-xs font-medium border border-gray-300 text-gray-700 px-3 py-1.5 rounded-sm flex items-center gap-1 hover:border-primary hover:text-primary transition-colors">
+          </button> */}
+          <button className="text-lg font-medium border border-black text-primary px-3 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors">
             Select Category
-            <FaAngleDown className="w-3 h-3" />
+            <FaAngleDown className="w-7 h-7 text-black" />
           </button>
         </div>
       </div>
 
       {/* ── Featured / Hero Post ── */}
-      <article className="mb-6">
+      <article className="mb-80 md:mb-46">
         {/* Image with overlay */}
         <div
           className="relative w-full overflow-hidden rounded-sm"
-          style={{ aspectRatio: "16/9" }}
         >
           <Image
             src={featuredPost.image}
             alt={featuredPost.title}
-            fill
-            className="object-cover"
+            width={1400}
+            height={450}
             priority
           />
-          {/* Dark gradient overlay at bottom */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
-            }}
-          />
-          {/* Category tag + Title overlaid */}
-          <div className="absolute bottom-0 left-0 p-4">
-            <span className="bg-primary text-black text-[10px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block tracking-wide">
-              {featuredPost.category}
-            </span>
-            <h2 className="text-white font-bold text-lg leading-snug max-w-xs">
-              {featuredPost.title}
-            </h2>
-          </div>
         </div>
 
         {/* Excerpt + CTA */}
-        <div className="pt-3">
-          <p className="text-gray-500 text-xs leading-relaxed mb-3">
+        <div className="pt-3 relative max-w-5xl mx-auto">
+          {/* Category tag + Title overlaid */}
+          <div className="absolute md:-top-20 left-0 p-4 bg-white">
+            <span className="border-1 border-primary text-black text-md font-semibold px-2.5 py-0.5 mb-2 inline-block">
+              {featuredPost.category}
+            </span>
+            <h1 className="text-3xl md:text-4xl xl:text-4xl text-black font-normal mb-4">
+              {featuredPost.title}
+            </h1>
+            <p className="text-md lg:text-lg text-black">
             {featuredPost.excerpt}
           </p>
-          <ReadMoreButton href={featuredPost.href} />
+          
+           <div className="mt-2">
+              <Button
+                href={featuredPost.href}
+                label="Read more"
+              />
+          </div>
+          </div>
         </div>
       </article>
 
       {/* ── 2×2 Grid ── */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-18 mb-8">
         {gridPosts.map((post, i) => (
           <GridCard key={i} post={post} />
         ))}
@@ -150,49 +147,43 @@ export default function BlogSection() {
 /* ── Grid Card ── */
 function GridCard({ post }) {
   return (
-    <article className="flex flex-col">
+    <article className=" relative flex flex-col">
       {/* Image */}
       <div
-        className="relative w-full overflow-hidden rounded-sm mb-2"
-        style={{ aspectRatio: "4/3" }}
+        className="w-full  mb-2"
       >
         <Image
           src={post.image}
           alt={post.title}
-          fill
-          className="object-cover"
+          width={800}
+          height={200}
         />
       </div>
 
       {/* Category */}
-      <span className="text-primary text-[10px] font-semibold tracking-wide uppercase mb-1">
+      <span className="inline-block w-fit border border-primary text-black text-md font-semibold px-3 py-1 mb-2">
         {post.category}
       </span>
 
       {/* Title */}
-      <h3 className="text-black font-bold text-xs leading-snug mb-1.5 line-clamp-3">
+      <h2 className="text-2xl md:text-3xl xl:text-3xl text-black font-normal mb-4">
         {post.title}
-      </h3>
+      </h2>
 
       {/* Excerpt */}
-      <p className="text-gray-500 text-[10px] leading-relaxed mb-2.5 line-clamp-3 flex-1">
+      <p className="text-md lg:text-lg text-black">
         {post.excerpt}
       </p>
 
       {/* CTA */}
-      <ReadMoreButton href={post.href} />
+      
+      <div className="mt-2">
+          <Button
+            href={post.href}
+            label="Read more"
+          />
+      </div>
     </article>
   );
 }
 
-/* ── Read More Button ── */
-function ReadMoreButton({ href }) {
-  return (
-    <a
-      href={href}
-      className="inline-block bg-primary text-black text-[10px] font-semibold px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-    >
-      Read more
-    </a>
-  );
-}
