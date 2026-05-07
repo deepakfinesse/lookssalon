@@ -20,7 +20,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/img/blog/blog1.webp",
+    image: "/img/blog/blog3.webp",
     href: "#",
   },
   {
@@ -28,7 +28,7 @@ const gridPosts = [
     title: "How to take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/img/blog/blog1.webp",
+    image: "/img/blog/blog2.webp",
     href: "#",
   },
   {
@@ -36,7 +36,7 @@ const gridPosts = [
     title: "How To Take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/img/blog/blog1.webp",
+    image: "/img/blog/blog4.webp",
     href: "#",
   },
   {
@@ -44,7 +44,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/img/blog/blog1.webp",
+    image: "/img/blog/blog5.webp",
     href: "#",
   },
 ];

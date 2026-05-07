@@ -1,62 +1,34 @@
-import { NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import { auth } from "@/lib/auth";
 
 /**
- * Why this file exists separately from lib/auth.js:
+ * NextAuth v5 middleware
  *
- * Middleware runs on the Edge runtime — it cannot use:
- *   - next/headers  (Node.js only)
- *   - cookies()     (Node.js only)
- *   - getSession()  (calls cookies() internally)
+ * Replaces the entire manual jwtVerify + cookie dance.
+ * auth() reads the NextAuth session cookie automatically.
  *
- * Instead we read cookies directly from `request.cookies`
- * and call jwtVerify from `jose` (Edge-compatible) inline.
+ * Rules:
+ *  - /dashboard/login → allow always (but redirect to /dashboard if already signed in)
+ *  - /dashboard/*     → require session, redirect to /dashboard/login if missing
  */
 
-const COOKIE_NAME = "dashboard_session";
-const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+export default auth((request) => {
+  const { nextUrl, auth: session } = request;
+  const isLoggedIn   = !!session;
+  const isDashboard  = nextUrl.pathname.startsWith("/dashboard");
+  const isLoginPage  = nextUrl.pathname === "/dashboard/login";
 
-async function verifySession(token) {
-  try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
-    return payload;
-  } catch {
-    return null;
-  }
-}
-
-export async function middleware(request) {
-  const { pathname } = request.nextUrl;
-  const token = request.cookies.get(COOKIE_NAME)?.value;
-
-  // ── Protect all /dashboard routes except /dashboard/login ────────────────
-  if (pathname.startsWith("/dashboard") && pathname !== "/dashboard/login") {
-    if (!token) {
-      return NextResponse.redirect(new URL("/dashboard/login", request.url));
-    }
-    const session = await verifySession(token);
-    if (!session) {
-      // Token present but invalid/expired — clear cookie and redirect
-      const res = NextResponse.redirect(
-        new URL("/dashboard/login", request.url)
-      );
-      res.cookies.set(COOKIE_NAME, "", { maxAge: 0, path: "/" });
-      return res;
-    }
+  // Already logged in → skip the login page
+  if (isLoggedIn && isLoginPage) {
+    return Response.redirect(new URL("/dashboard", nextUrl));
   }
 
-  // ── Redirect already-logged-in users away from login page ────────────────
-  if (pathname === "/dashboard/login" && token) {
-    const session = await verifySession(token);
-    if (session) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
-    }
+  // Not logged in → redirect to login
+  if (!isLoggedIn && isDashboard && !isLoginPage) {
+    return Response.redirect(new URL("/dashboard/login", nextUrl));
   }
-
-  return NextResponse.next();
-}
+});
 
 export const config = {
-  // Only run middleware on dashboard routes — skip static files, API, _next
+  // Only run on dashboard routes — never on static files, _next, or API routes
   matcher: ["/dashboard/:path*"],
 };
