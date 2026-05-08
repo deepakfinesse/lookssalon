@@ -17,12 +17,13 @@ const Nav = ({ isActive, toggleMenu }) => {
       subItems: [
         { href: "/gents-salon-services", label: "Gents" },
         { href: "/ladies-salon-services", label: "Ladies" },
+        { href: "/prepaid-cards", label: "Prepaid Cards" },
       ],
     },
-    { href: "/", label: "Testimonials" },
-    { href: "/", label: "Blogs" },
-    { href: "/", label: "Franchise" },
-    { href: "/", label: "Academy" },
+    { href: "/testimonial", label: "Testimonials" },
+    { href: "/blog", label: "Blog" },
+    { href: "/franchise", label: "Franchise" },
+    { href: "https://www.looksschool.com/", label: "Academy" },
     { href: "/", label: "Offers" },
     { href: "/", label: "Contact Us" },
   ];
@@ -43,7 +44,7 @@ const Nav = ({ isActive, toggleMenu }) => {
       {/* Menu */}
       <ul className="flex flex-col items-center text-center overflow-auto px-10">
         {menuItems.map((item) => (
-          <li key={item.href} className="mb-2 lg:mb-2 xl:mb-2">
+          <li key={item.label} className="mb-2 lg:mb-2 xl:mb-2">
             <Link
               href={item.href}
               onClick={

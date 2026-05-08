@@ -68,9 +68,7 @@ export default function DashboardLoginPage() {
 
         {/* Branding */}
         <div className="text-center mb-12">
-          <p className="text-[var(--primary)] text-[10px] tracking-[6px] uppercase mb-2.5">
-            Since 1995
-          </p>
+          
           <h1 className="text-white text-[28px] font-light tracking-[6px] uppercase m-0">
             LOOKS SALON
           </h1>

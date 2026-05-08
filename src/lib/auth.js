@@ -34,6 +34,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const adminUser = process.env.ADMIN_USERNAME;
           const adminHash = process.env.ADMIN_PASSWORD_HASH;
 
+          console.log("[auth] Attempting login for user:", username,password);
+
           if (!adminUser || !adminHash) {
             console.error("[auth] Missing ADMIN_USERNAME or ADMIN_PASSWORD_HASH in env");
             return null;

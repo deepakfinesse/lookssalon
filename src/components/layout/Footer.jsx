@@ -112,9 +112,9 @@ const Footer = () => {
                 Instagram
               </h3>
 
-              <div className="grid grid-cols-1 gap-2">
+              {/* <div className="grid grid-cols-1 gap-2">
                 <Instagram posts={posts} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

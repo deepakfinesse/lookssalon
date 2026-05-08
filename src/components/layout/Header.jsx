@@ -37,7 +37,7 @@ const Header = () => {
               {/* Buttons */}
               <div className="hidden md:flex items-center gap-3">
                 <Button href="/" label="Locate Salon" />
-                <Button href="/" label="Book Appointment" />
+                <Button href="/salon-book-appointment" label="Book Appointment" />
                 {/* <Button  href="/contact"  label="Locate Salon"  variant="dark" /> */}
                
                 {/* <Link

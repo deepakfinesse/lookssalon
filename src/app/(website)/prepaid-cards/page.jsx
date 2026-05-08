@@ -10,7 +10,7 @@ const page = () => {
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-grey font-bold uppercase mb-4">
             {" "}
-            prepaid cards
+            Prepaid Cards
           </h1>
           <p className="text-md lg:text-lg text-black">
             Getting a discount has never harmed anyone, so why spend those extra
