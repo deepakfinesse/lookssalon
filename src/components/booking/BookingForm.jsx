@@ -1,38 +1,25 @@
 "use client";
 
-/**
- * BookingForm — react-hook-form + Zod + inline per-field errors
- *
- * Key decisions:
- *  - mode: "onChange"       → validate each field as user types
- *  - reValidateMode: "onChange" → re-validate on every change after first submit
- *  - zodResolver(BookingSchema) → single source of truth — same schema used by API
- *  - FormField component    → reusable across all dynamic pages
- *  - No local useState for form state — RHF owns it all
- *  - bookingStatus useState only — tracks submit lifecycle (idle/loading/success)
- *
- * Install:
- *   npm install react-hook-form @hookform/resolvers
- */
-
 import { memo }                   from "react";
 import { useForm }                from "react-hook-form";
 import { zodResolver }            from "@hookform/resolvers/zod";
 import { useState }               from "react";
 import { FormField }              from "@/components/ui/FormField";
 import { BookingSchema, CITIES, SERVICES, HOURS } from "@/lib/schemas";
+import Button from "../ui/Button";
+import FadeUp from "../animation/FadeUp";
 
 // ── Shared class strings (module-scope — never recreated per render) ──────────
 
 const INPUT_CLS =
-  "w-full py-2.5 px-0 bg-transparent border-0 border-b border-[var(--primary)] " +
-  "text-white text-[13px] tracking-wide font-[var(--font-primary)] " +
+  "w-full py-1 px-0 bg-transparent border-0 border-b border-[var(--primary)] " +
+  "text-white text-base tracking-wide  " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
   "focus:border-white placeholder-transparent";
 
 const INPUT_ERR_CLS =
-  "w-full py-2.5 px-0 bg-transparent border-0 border-b border-red-400 " +
-  "text-white text-[13px] tracking-wide font-[var(--font-primary)] " +
+  "w-full py-1 px-0 bg-transparent border-0 border-b border-red-400 " +
+  "text-white text-base tracking-wide  " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
   "focus:border-red-300 placeholder-transparent";
 
@@ -53,17 +40,17 @@ const SuccessState = memo(function SuccessState({ bookingId, onReset }) {
         className="w-16 h-16 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/30
                    flex items-center justify-center mx-auto mb-6 text-2xl text-[var(--primary)]"
       >✓</div>
-      <p className="text-[var(--primary)] text-[10px] tracking-[4px] uppercase mb-3 font-[var(--font-primary)]">
+      <p className="text-[var(--primary)] text-[10px] tracking-[4px] uppercase mb-3 ">
         Booking Confirmed
       </p>
-      <h3 className="text-white text-xl font-light mb-4 font-[var(--font-primary)]">
+      <h3 className="text-white text-xl font-light mb-4 ">
         Thank You!
       </h3>
-      <p className="text-white/60 text-[13px] leading-relaxed mb-2 font-[var(--font-primary)]">
+      <p className="text-white/60 text-[13px] leading-relaxed mb-2 ">
         Your appointment request has been received.<br />
         A confirmation email is on its way to you.
       </p>
-      <p className="text-white/40 text-xs mb-8 font-[var(--font-primary)]">
+      <p className="text-white/40 text-xs mb-8 ">
         Booking ID:{" "}
         <span className="text-[var(--primary)] font-mono">#{bookingId}</span>
       </p>
@@ -72,7 +59,7 @@ const SuccessState = memo(function SuccessState({ bookingId, onReset }) {
         onClick={onReset}
         className="bg-transparent border border-[var(--primary)]/60 text-[var(--primary)]
                    px-8 py-2.5 text-[10px] tracking-[3px] uppercase cursor-pointer
-                   font-[var(--font-primary)] transition-colors duration-200
+                    transition-colors duration-200
                    hover:bg-[var(--primary)]/10"
       >
         Book Another
@@ -138,22 +125,8 @@ export default function BookingForm() {
   }
 
   return (
-    <div className="w-full font-[var(--font-primary)]">
-
-      {/* Header copy */}
-      <p className="text-white text-[13px] text-center leading-relaxed mb-2 tracking-wide">
-        Our online bookings service operates between{" "}
-        <strong className="text-[var(--primary)] font-semibold">10:00a.m.</strong>{" "}
-        and{" "}
-        <strong className="text-[var(--primary)] font-semibold">6:00p.m.</strong>
-      </p>
-      <p className="text-white/60 text-[11px] text-center leading-relaxed mb-8 tracking-wide">
-        Your data is safe with us! We will only use your details to process your salon
-        booking, and won&apos;t share them with third parties.
-      </p>
-
+    <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-
         {/* NAME */}
         <FormField id="bf-name" label="Name" error={errors.name?.message}>
           <input
@@ -258,20 +231,31 @@ export default function BookingForm() {
           aria-busy={isSubmitting}
           className="block w-full py-4 min-h-[52px]
                      bg-[var(--primary)] text-black border-0
-                     text-[11px] tracking-[5px] uppercase font-bold
-                     font-[var(--font-primary)] cursor-pointer mb-6
+                     text-lg tracking-[5px] uppercase font-bold
+                      cursor-pointer mb-6
                      transition-opacity duration-200 will-change-[opacity]
                      hover:opacity-[0.88] disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Booking…" : "Book Now"}
         </button>
 
+         {/* Buttons */}
+          {/* <FadeUp delay={0.2}>
+              <div className="text-center pb-4">
+                <Button
+                  label="Book Now"
+                  href="#"
+                  className="md:px-10 shadow-[0px_0px_24px_0px_#00000059]"
+                />
+              </div>
+          </FadeUp> */}
+
         {/* OR / phone */}
         <div className="text-center">
-          <p className="text-white text-[11px] tracking-[3px] uppercase mb-2 font-[var(--font-primary)]">
+          <p className="text-white text-base tracking-[3px] uppercase mb-2 ">
             OR
           </p>
-          <p className="text-white text-[12px] tracking-wide font-[var(--font-primary)]">
+          <p className="text-white text-lg tracking-wide ">
             CALL US @{" "}
             <a
               href="tel:180021256657"

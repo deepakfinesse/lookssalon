@@ -19,7 +19,7 @@ export function FormField({ id, label, error, isSelect = false, children }) {
       {/* Label */}
       <label
         htmlFor={id}
-        className="block text-white text-[11px] font-[var(--font-primary)] tracking-[3px] uppercase mb-1"
+        className="block text-white text-md font-medium uppercase"
       >
         {label}
       </label>
@@ -31,7 +31,7 @@ export function FormField({ id, label, error, isSelect = false, children }) {
         {isSelect && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute right-1 bottom-3 text-[var(--primary)] text-[9px]"
+            className="pointer-events-none absolute right-1 bottom-2 text-primary text-md"
           >▼</span>
         )}
       </div>
@@ -41,7 +41,7 @@ export function FormField({ id, label, error, isSelect = false, children }) {
         <p
           role="alert"
           aria-live="polite"
-          className="mt-1.5 text-red-400 text-[11px] tracking-wide leading-tight"
+          className="mt-1 text-red-400 text-[12px]"
         >
           {error}
         </p>
