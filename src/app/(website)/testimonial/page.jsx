@@ -1,10 +1,11 @@
+import FadeUp from '@/components/animation/FadeUp';
 import React from 'react'
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
 const testimonialData = [
   {
     id: 1,
-    image: "/img/testimonial/testimonial1.png",
+    image: "/img/testimonial/testimonial1.webp",
     rating: 4,
     name: "Seema Ohri",
     quote:
@@ -12,7 +13,7 @@ const testimonialData = [
   },
   {
     id: 2,
-    image: "/img/testimonial/testimonial1.png",
+    image: "/img/testimonial/testimonial2.webp",
     rating: 3,
     name: "Seema Ohri",
     quote:
@@ -20,7 +21,7 @@ const testimonialData = [
   },
   {
     id: 3,
-    image: "/img/testimonial/testimonial1.png",
+    image: "/img/testimonial/testimonial3.webp",
     rating: 5,
     name: "Seema Ohri",
     quote:
@@ -28,7 +29,7 @@ const testimonialData = [
   },
   {
     id: 4,
-    image: "/img/testimonial/testimonial1.png",
+    image: "/img/testimonial/testimonial4.webp",
     rating: 4.5,
     name: "Seema Ohri",
     quote:
@@ -63,14 +64,17 @@ const Testimonial = () => {
     <>
       <section className="">
         <div className="max-w-4xl mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-grey font-bold uppercase mb-4">
+          <FadeUp delay={0.1}>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
             Voice Of Experience
           </h1>
+          </FadeUp>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 pb-16">
           <div className="grid grid-cols-1 gap-4">
             {testimonialData.map((testimonial) => (
+              <FadeUp delay={0.2}>
               <div
                 key={testimonial.id}
                 className="grid grid-cols-12 gap-6 items-center cursor-pointer"
@@ -104,6 +108,7 @@ const Testimonial = () => {
                   </p>
                 </div>
               </div>
+              </FadeUp>
             ))}
           </div>
         </div>

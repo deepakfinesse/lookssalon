@@ -75,8 +75,8 @@ export default function ladiesServices() {
             <Image src="/img/services/ladies-two.webp" alt="" width={400} height={300} className="w-full h-auto" />
 
              {/* CTA BOX */}
-              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-10 lg:py-10 text-left mt-6 bg-white">
-                <h4 className="text-3xl lg:text-6xl font-semibold leading-snug">
+              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white">
+                <h4 className="text-3xl lg:text-6xl font-medium leading-snug">
                   Book Now & give yourself a head turning LOOK
                 </h4>
               </div>
@@ -86,13 +86,13 @@ export default function ladiesServices() {
           <div className="flex flex-col justify-between">
 
             <div>
-              <h3 className="text-center text-6xl text-[#585858] font-extrabold tracking-widest mt-4 mb-6">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
                 SERVICES
               </h3>
 
-              <Image src="/img/services/ladies-three.webp" alt="" width={400} height={200} className="w-full mb-4" />
+              <Image src="/img/services/ladies-three.webp" alt="" width={532} height={336} className="w-full mb-4" />
 
-              <ul className="text-center text-[42px] font-extrabold my-15 space-y-1">
+              <ul className="text-center text-[44px] font-extrabold my-15 space-y-2">
                 <li><FadeUp delay={0.1}>CUT & STYLE</FadeUp></li>
                 <li><FadeUp delay={0.1}>HAIR STYLING</FadeUp></li>
                 <li><FadeUp delay={0.1}>HAIR COLOUR</FadeUp></li>
@@ -103,7 +103,7 @@ export default function ladiesServices() {
                 <li><FadeUp delay={0.1}>HANDS & FEET</FadeUp></li>
                 <li><FadeUp delay={0.1}>NAIL ART SERVICES</FadeUp></li>
               </ul>
-              <Image src="/img/services/ladies-four.webp" alt="" width={400} height={200} className="w-full mt-4" />
+              <Image src="/img/services/ladies-four.webp" alt="" width={400} height={200} className="w-full mt-4 md:p-8" />
             </div>
 
             

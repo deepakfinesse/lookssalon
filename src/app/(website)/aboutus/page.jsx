@@ -3,6 +3,7 @@ import HeroVideoDialog from '@/components/about/HeroVideoDialog'
 import Counter from '@/components/home/Counter'
 import React from 'react'
 import Image from "next/image";
+import FadeUp from '@/components/animation/FadeUp';
 
 const leftAwards = [
   {
@@ -96,33 +97,36 @@ const page = () => {
     <>
         <section>
             <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-grey font-bold uppercase mb-4">
+              <FadeUp delay={0.1}>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
                     The journey
                 </h1>
-                <p className='text-md lg:text-lg text-black'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
-
-               
+                </FadeUp>
+                <FadeUp delay={0.2}>
+                  <p className='text-md lg:text-lg text-black'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India <br className='hidden lg:md:block'/> From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
+                </FadeUp>
             </div>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
                
-
+              <FadeUp delay={0.3}>
                 {/* Hero Video Dialog */}
                 <HeroVideoDialog
                 youtubeId="NccYpBobQZ0?si=rdrs5mLcL8nNcGsv"       
                 thumbnailSrc="/img/about/video-thumbnail.webp"   
                 thumbnailAlt="Product walkthrough video"
                 />
-      
+                </FadeUp>
             </div>
         </section>
         
-
         {/* Counter */}
         <section>
             <div className="max-w-5xl mx-auto px-4 py-12 md:py-12 lg:py-12 items-center  text-center">
                 <div className='grid grid-cols-1 md:grid-cols-2 align-middle gap-10'>
-                    <div className='h-full flex items-center'>
+                    <div className='h-full flex items-center text-left'>
+                      <FadeUp delay={0.1}>
                         <p  className='text-md lg:text-lg text-black'>With continuous evolution over the years in new techniques and styles keeping itself updated with the national and international market, Looks has emerged as one of the trendiest salons over 36 years. Its prime vision is “Utmost Luxury at Affordable Prices” which comes packed with customer satisfaction beyond expectations.</p>
+                      </FadeUp>
                     </div>
                 <div>
                     <Counter
@@ -137,147 +141,150 @@ const page = () => {
                 </div>
             </div>
         </section>
-
+        {/* Our Vision */}
         <section className='bg-primary'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
-                <h2 className="text-3xl md:text-4xl xl:text-5xl text-black font-bold uppercase mb-4 text-center">
+              <FadeUp delay={0.1}>
+                <h2 className="text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-4 text-center">
                     Our vision
                 </h2>
+              </FadeUp>
+              <FadeUp delay={0.2}>
                 <p className='text-md lg:text-lg text-black'>To be a leading customer centric salon chain, warmly welcoming all customers for an experience which takes them on a high in terms of quality hair, beauty & skin services in a</p>
                 <h3 className="text-2xl md:text-3xl xl:text-3xl text-black font-medium py-4">Hygenic, Relaxed & Compressed</h3>
                 <p className='text-md lg:text-lg text-black'>environment to make their day fabulous. After claiming to be India’s most loved salon chain; Looks is now looking to spread its wings internationally. With our first opening in Kualumpur, Malaysia we are testing waters to take a full flight.</p>
+              </FadeUp>
             </div>
         </section>
 
+        {/* Our Milestones */}
         <AboutTimeline/>
 
-
-      
-
+        {/* Our Proud Moments */}
         <section className='bg-black'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
-                <h2 className="text-3xl md:text-4xl xl:text-5xl text-primary font-bold uppercase mb-8 text-center">
+                <FadeUp delay={0.1}>
+                <h2 className="text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase mb-2 text-center">
                     Our Proud Moments
                 </h2>
-                
-<div className='relative bg-black overflow-hidden py-10'>
+                </FadeUp>
+                <div className='relative bg-black overflow-hidden py-10'>
+                  <div className="absolute left-0 right-0"  style={{ top: "42%", height: 1.5, background: "#b8860b", zIndex: 0 }}/>
+                  <FadeUp delay={0.2}>
+                  <div className="relative z-10 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
 
-<div
-        className="absolute left-0 right-0"
-        style={{ top: "50%", height: 1.5, background: "#b8860b", zIndex: 0 }}
-      />
+                      {/* ── LEFT PANEL ── */}
+                      <div className="flex-1 min-w-0 mt-6">
+                        {/* Year label sits ON the gold line */}
+                        <p
+                          className="text-2xl md:text-3xl font-semibold mb-6"
+                          style={{ color: "#DFAB31" }}
+                        >
+                          2014-15
+                        </p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+                        {/* Two-column award grid */}
+                        <div className="grid grid-cols-2 gap-x-10 gap-y-6">
+                          {/* Col 1 */}
+                          <div className="flex flex-col gap-6">
+                            {leftAwards[0].col1.map((award, i) => (
+                              <AwardItem key={i} {...award} />
+                            ))}
+                          </div>
+                          {/* Col 2 */}
+                          <div className="flex flex-col gap-6">
+                            {leftAwards[0].col2.map((award, i) => (
+                              <AwardItem key={i} {...award} />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
 
-        {/* ── LEFT PANEL ── */}
-        <div className="flex-1 min-w-0 mt-18">
-          {/* Year label sits ON the gold line */}
-          <p
-            className="text-2xl md:text-3xl font-bold mb-6"
-            style={{ color: "#c8a020" }}
-          >
-            2014-15
-          </p>
+                      {/* ── CENTER MEDAL ── */}
+                      <div
+                        className="flex-shrink-0 flex flex-col items-center"
+                        style={{ marginTop: 190 }}
+                      >
+                        {/* Gold outer ring → White ring → Image */}
+                        <div
+                          className="rounded-full flex items-center justify-center"
+                          style={{
+                            width: 200,
+                            height: 200,
+                            
+                            
+                          }}
+                        >
+                          
+                            {/* Inner image circle */}
+                            
+                              {/* 👇 Replace src with your actual image */}
+                              <Image
+                                src="/img/about/award-center.webp"
+                                alt="Indian Hairdressing Awards"
+                                fill
+                                className="object-contain opacity-90"
+                              />
 
-          {/* Two-column award grid */}
-          <div className="grid grid-cols-2 gap-x-10 gap-y-6">
-            {/* Col 1 */}
-            <div className="flex flex-col gap-6">
-              {leftAwards[0].col1.map((award, i) => (
-                <AwardItem key={i} {...award} />
-              ))}
-            </div>
-            {/* Col 2 */}
-            <div className="flex flex-col gap-6">
-              {leftAwards[0].col2.map((award, i) => (
-                <AwardItem key={i} {...award} />
-              ))}
-            </div>
-          </div>
-        </div>
+                              {/* Text overlay */}
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <h2
+                                  className="text-white text-center font-black leading-tight"
+                                  style={{ fontSize: "2rem", textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
+                                >
+                                  Indian<br />Hairdressing<br />Awards
+                                </h2>
+                              </div>
+                        </div>
+                      </div>
 
-        {/* ── CENTER MEDAL ── */}
-        <div
-          className="flex-shrink-0 flex flex-col items-center"
-          style={{ marginTop: 170 }}
-        >
-          {/* Gold outer ring → White ring → Image */}
-          <div
-            className="rounded-full flex items-center justify-center"
-            style={{
-              width: 200,
-              height: 200,
-              
-              
-            }}
-          >
-            
-              {/* Inner image circle */}
-              
-                {/* 👇 Replace src with your actual image */}
-                <Image
-                  src="/img/about/award-center.webp"
-                  alt="Indian Hairdressing Awards"
-                  fill
-                  className="object-contain opacity-90"
-                />
+                      {/* ── RIGHT PANEL ── */}
+                      <div className="flex-1 min-w-0 text-right mt-6">
+                        <p
+                          className="text-2xl md:text-3xl font-semibold mb-6 text-right"
+                          style={{ color: "#DFAB31" }}
+                        >
+                          2016-17
+                        </p>
 
-                {/* Text overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h2
-                    className="text-white text-center font-black leading-tight"
-                    style={{ fontSize: "1.7rem", textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
-                  >
-                    Indian<br />Hairdressing<br />Awards
-                  </h2>
+                        {/* Two-column award grid */}
+                        <div className="grid grid-cols-2 gap-x-10 gap-y-6">
+                          {/* Col 1 */}
+                          <div className="flex flex-col gap-6">
+                            {rightAwards[0].col1.map((award, i) => (
+                              <AwardItem key={i} {...award} />
+                            ))}
+                          </div>
+                          {/* Col 2 */}
+                          <div className="flex flex-col gap-6">
+                            {rightAwards[0].col2.map((award, i) => (
+                              <AwardItem key={i} {...award} />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                  </div>
+                  </FadeUp>
                 </div>
-          </div>
-        </div>
-
-        {/* ── RIGHT PANEL ── */}
-        <div className="flex-1 min-w-0 text-right mt-18">
-          <p
-            className="text-2xl md:text-3xl font-bold mb-6 text-right"
-            style={{ color: "#c8a020" }}
-          >
-            2016-17
-          </p>
-
-          {/* Two-column award grid */}
-          <div className="grid grid-cols-2 gap-x-10 gap-y-6">
-            {/* Col 1 */}
-            <div className="flex flex-col gap-6">
-              {rightAwards[0].col1.map((award, i) => (
-                <AwardItem key={i} {...award} />
-              ))}
-            </div>
-            {/* Col 2 */}
-            <div className="flex flex-col gap-6">
-              {rightAwards[0].col2.map((award, i) => (
-                <AwardItem key={i} {...award} />
-              ))}
-            </div>
-          </div>
-        </div>
-
-      </div>
-      </div>
-
 
                 {/* Row 1 — 3 items */}
-                <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 mb-14">
+                <FadeUp delay={0.2}>
+                <div className="flex flex-wrap justify-center gap-x-14 gap-y-12 mt-10 mb-14">
                 {achievements.slice(0, 3).map((item, i) => (
                     <AchievementCard key={i} item={item} />
                 ))}
                 </div>
+                </FadeUp>
 
                 {/* Row 2 — 2 items */}
+                <FadeUp delay={0.2}>
                 <div className="flex flex-wrap justify-center gap-x-10 gap-y-12">
                 {achievements.slice(3).map((item, i) => (
                     <AchievementCard key={i} item={item} />
                 ))}
                 </div>
-                
+                </FadeUp>
             </div>
         </section>
        
@@ -288,8 +295,8 @@ const page = () => {
 function AwardItem({ category, result }) {
   return (
     <div>
-      <p className="text-white text-sm font-medium leading-tight">{category}</p>
-      <p className="text-sm font-semibold mt-0.5" style={{ color: "#c8a020" }}>
+      <p className="text-white text-md font-normal leading-tight">{category}</p>
+      <p className="text-md font-normal mt-0.5" style={{ color: "#DFAB31" }}>
         {result}
       </p>
     </div>

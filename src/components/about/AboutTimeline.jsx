@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import FadeUp from "../animation/FadeUp";
 
 const milestones = [
   {
@@ -62,11 +63,13 @@ export default function AboutTimeline() {
       <div className="max-w-3xl mx-auto px-4">
 
         {/* Heading */}
-        <h2
-          className="text-3xl md:text-4xl xl:text-5xl text-black font-bold uppercase mb-16 text-center"
-        >
-          Our Milestones
-        </h2>
+        <FadeUp delay={0.2}>
+          <h2
+            className="text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-16 text-center"
+          >
+            Our Milestones
+          </h2>
+        </FadeUp>
 
         {/* Timeline */}
         <div className="relative">
@@ -107,16 +110,16 @@ export default function AboutTimeline() {
                 <div
                   className="relative z-10 flex-shrink-0 flex items-center justify-center rounded-full bg-white"
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                     border: "8px solid #DEAB30",
                   }}
                 >
                   <div
                     className="rounded-full"
                     style={{
-                      width: 18,
-                      height: 18,
+                      width: 22,
+                      height: 22,
                       background: "#DEAB30",
                     }}
                   />

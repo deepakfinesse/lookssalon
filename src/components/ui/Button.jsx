@@ -10,7 +10,7 @@ const Button = ({
 }) => {
 
   const baseClass =
-    'relative inline-block px-2 md:px-5 py-2 font-bold uppercase text-sm md:text-md overflow-hidden group transition-all duration-300'
+    'relative inline-block px-2 md:px-5 py-1.5 font-bold uppercase text-sm lg:text-md xl:text-lg overflow-hidden group transition-all duration-300'
 
   const variants = {
     primary: 'border-2 border-black bg-primary text-black',

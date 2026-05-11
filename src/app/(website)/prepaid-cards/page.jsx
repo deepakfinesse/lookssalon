@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import BookingForm from "@/components/booking/BookingForm";
+import FadeUp from "@/components/animation/FadeUp";
 
 const page = () => {
   return (
@@ -8,10 +8,13 @@ const page = () => {
       {/* <BookingForm /> */}
       <section>
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-grey font-bold uppercase mb-4">
+          <FadeUp delay={0.1}>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
             {" "}
             Prepaid Cards
           </h1>
+          </FadeUp>
+          <FadeUp delay={0.2}>
           <p className="text-md lg:text-lg text-black">
             Getting a discount has never harmed anyone, so why spend those extra
             hard earned bucks on services that can be availed at discounted
@@ -19,11 +22,13 @@ const page = () => {
             your new look with Looks Salon prepaid cards and let your look do
             all the talkings.
           </p>
+          </FadeUp>
         </div>
 
         <div className="max-w-7xl mx-auto px-4  pb-12 text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
             {/* CARD 1 */}
+            <FadeUp delay={0.3}>
             <div className="flex flex-col items-center">
               <div className="relative">
                 <Image
@@ -43,11 +48,11 @@ const page = () => {
                 /> */}
               </div>
 
-              <h2 className="text-2xl font-semibold mt-6 uppercase text-[#20ADDB]">
+              <h2 className="text-2xl lg:text-3xl font-semibold uppercase text-[#20ADDB]">
                 LOOKS BLUE
               </h2>
 
-              <div className="mt-4 w-full max-w-[260px] text-md">
+              <div className="mt-4 w-full max-w-[260px]  text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
                   <span className="font-semibold">RS. 6,000</span>
@@ -58,23 +63,24 @@ const page = () => {
                 </div>
               </div>
             </div>
-
+            </FadeUp>
+            <FadeUp delay={0.3}>
             {/* CARD 2 */}
             <div className="flex flex-col items-center">
               <div className="relative">
                 <Image
-                  src="/img/all/prepaid-gold.webp"
+                  src="/img/all/prepaid-silver.webp"
                   width={320}
                   height={200}
                   alt="Looks Silver"
                 />
               </div>
 
-              <h2 className="text-2xl font-semibold  uppercase text-[#828282]">
+              <h2 className="text-2xl lg:text-3xl font-semibold  uppercase text-[#828282]">
                 LOOKS SILVER
               </h2>
 
-              <div className="mt-4 w-full max-w-[260px] text-md">
+              <div className="mt-4 w-full max-w-[260px] text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
                   <span className="font-semibold">RS. 15,000</span>
@@ -85,21 +91,23 @@ const page = () => {
                 </div>
               </div>
             </div>
-
+            </FadeUp>
+            
+            <FadeUp delay={0.3}>
             {/* CARD 3 */}
             <div className="flex flex-col items-center">
               <div className="relative">
                 <Image
-                  src="/img/all/prepaid-silver.webp"
+                  src="/img/all/prepaid-gold.webp"
                   width={320}
                   height={200}
                   alt="Looks Gold"
                 />
               </div>
-              <h2 className="text-2xl font-semibold  uppercase text-[#CA9957]">
+              <h2 className="text-2xl lg:text-3xl font-semibold  uppercase text-[#CA9957]">
                 LOOKS GOLD
               </h2>
-              <div className="mt-4 w-full max-w-[260px] text-md">
+              <div className="mt-4 w-full max-w-[260px] text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
                   <span className="font-semibold">RS. 50,000</span>
@@ -110,12 +118,14 @@ const page = () => {
                 </div>
               </div>
             </div>
+            </FadeUp>
           </div>
         </div>
       </section>
 
       <section className="bg-black">
         <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
+          <FadeUp delay={0.1}>
           <p className="text-md lg:text-lg text-white">
             We know that you love getting a makeover often as it helps you bring
             out different personalities of yourself. So with our prepaid cards,
@@ -133,6 +143,7 @@ const page = () => {
             always be the mantra and if it means getting a long overdue
             makeover, then it's now or never.
           </p>
+          </FadeUp>
         </div>
       </section>
     </>

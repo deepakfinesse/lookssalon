@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Button from "../ui/Button";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import FadeUp from "../animation/FadeUp";
 
 const featuredPost = {
   category: "Hair Care",
@@ -20,7 +21,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/img/blog/blog3.webp",
+    image: "/img/blog/blog2.webp",
     href: "#",
   },
   {
@@ -28,7 +29,7 @@ const gridPosts = [
     title: "How to take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/img/blog/blog2.webp",
+    image: "/img/blog/blog4.webp",
     href: "#",
   },
   {
@@ -36,7 +37,7 @@ const gridPosts = [
     title: "How To Take Care Of Bleached Hair",
     excerpt:
       "You're ready to make a big change, taking your hair color wherever it lands now and making it appear lighter.",
-    image: "/img/blog/blog4.webp",
+    image: "/img/blog/blog5.webp",
     href: "#",
   },
   {
@@ -44,7 +45,7 @@ const gridPosts = [
     title: "Bridal hairstyles: How to pick the perfect one for your big day",
     excerpt:
       "Your big day is around and sorting style is one of the many elements that will create that perfect picture...",
-    image: "/img/blog/blog5.webp",
+    image: "/img/blog/blog3.webp",
     href: "#",
   },
 ];
@@ -57,26 +58,30 @@ export default function BlogSection() {
   return (
     <section className="bg-white min-h-screen px-4 py-12 max-w-6xl mx-auto">
       {/* ── Header ── */}
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-3xl md:text-4xl xl:text-5xl text-black font-bold uppercase text-center">
+      <FadeUp delay={0.1}>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase">
           Blog
         </h1>
-        <div className="flex items-center gap-2">
-          {/* <button className="text-xs font-medium border border-gray-300 text-gray-700 px-3 py-1.5 rounded-sm hover:border-primary hover:text-primary transition-colors">
-            Sign In
-          </button> */}
-          <button className="text-lg font-medium border border-black text-primary px-3 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors">
+        <div className="flex items-center gap-10">
+          <button className="text-lg font-bold border border-primary font-primary  text-grey uppercase px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors">
+            Sort By
+            <FaAngleDown className="w-5 h-5 text-grey" />
+          </button>
+          <button className="text-lg font-bold border border-primary font-primary  text-grey uppercase px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors">
             Select Category
-            <FaAngleDown className="w-7 h-7 text-black" />
+            <FaAngleDown className="w-5 h-5 text-grey" />
           </button>
         </div>
       </div>
+      </FadeUp>
 
       {/* ── Featured / Hero Post ── */}
+      <FadeUp delay={0.2}>
       <article className="mb-80 md:mb-46">
         {/* Image with overlay */}
         <div
-          className="relative w-full overflow-hidden rounded-sm"
+          className="relative w-full overflow-hidden"
         >
           <Image
             src={featuredPost.image}
@@ -91,13 +96,13 @@ export default function BlogSection() {
         <div className="pt-3 relative max-w-5xl mx-auto">
           {/* Category tag + Title overlaid */}
           <div className="absolute md:-top-20 left-0 p-4 bg-white">
-            <span className="border-1 border-primary text-black text-md font-semibold px-2.5 py-0.5 mb-2 inline-block">
+            <span className="border-1 border-primary text-grey text-lg uppercase font-bold px-5.5 py-0.5 mb-2 inline-block">
               {featuredPost.category}
             </span>
-            <h1 className="text-3xl md:text-4xl xl:text-4xl text-black font-normal mb-4">
+            <h1 className="text-3xl md:text-3xl xl:text-3xl text-black font-medium mb-1">
               {featuredPost.title}
             </h1>
-            <p className="text-md lg:text-lg text-black">
+            <p className="text-md lg:text-lg text-black mb-2">
             {featuredPost.excerpt}
           </p>
           
@@ -110,16 +115,19 @@ export default function BlogSection() {
           </div>
         </div>
       </article>
+      </FadeUp>
 
       {/* ── 2×2 Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-18 mb-8">
         {gridPosts.map((post, i) => (
+          <FadeUp key={post.image} delay={0.1 * (i + 1)}>
           <GridCard key={i} post={post} />
+          </FadeUp>
         ))}
       </div>
 
       {/* ── Pagination ── */}
-      <div className="flex items-center justify-end gap-1">
+      {/* <div className="flex items-center justify-end gap-1">
         {Array.from({ length: TOTAL_PAGES }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
@@ -139,7 +147,7 @@ export default function BlogSection() {
         >
           <FaAngleUp className="w-4 h-4" />
         </button>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -147,7 +155,7 @@ export default function BlogSection() {
 /* ── Grid Card ── */
 function GridCard({ post }) {
   return (
-    <article className=" relative flex flex-col">
+    <article className=" relative flex flex-col ">
       {/* Image */}
       <div
         className="w-full  mb-2"
@@ -161,17 +169,17 @@ function GridCard({ post }) {
       </div>
 
       {/* Category */}
-      <span className="inline-block w-fit border border-primary text-black text-md font-semibold px-3 py-1 mb-2">
+      <span className="inline-block w-fit border border-primary text-grey text-lg font-bold uppercase px-5.5 py-1 mb-2">
         {post.category}
       </span>
 
       {/* Title */}
-      <h2 className="text-2xl md:text-3xl xl:text-3xl text-black font-normal mb-4">
+      <h2 className="text-3xl md:text-3xl xl:text-3xl text-black font-medium mb-1 h-18">
         {post.title}
       </h2>
 
       {/* Excerpt */}
-      <p className="text-md lg:text-lg text-black">
+      <p className="text-md lg:text-lg text-black mb-1">
         {post.excerpt}
       </p>
 

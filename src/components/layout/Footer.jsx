@@ -22,7 +22,7 @@ const Footer = () => {
             {/* Quick Links */}
 
             <div className="lg:col-span-6">
-              <h3 className="text-[22px] text-primary uppercase font-semibold mb-6">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-6">
                 Quick Links
               </h3>
 
@@ -38,7 +38,7 @@ const Footer = () => {
                     <li key={i}>
                       <Link
                         href="#"
-                        className="relative text-white uppercase text-[16px] leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
+                        className="relative text-white uppercase text-lg font-medium leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
                       >
                         {item}
                       </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
                     <li key={i}>
                       <Link
                         href="#"
-                        className="relative text-white uppercase text-[16px] leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
+                        className="relative text-white uppercase text-lg font-medium leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
                       >
                         {item}
                       </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
 
             {/* Join Us */}
             <div className="lg:col-span-3">
-              <h3 className="text-[22px] text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
                 Join Us
               </h3>
 
@@ -94,7 +94,7 @@ const Footer = () => {
                     <Link
                       href={item.link}
                       target="blank"
-                      className="flex items-center gap-3 text-white uppercase text-[16px] hover:text-primary transition"
+                      className="flex items-center gap-3 text-white uppercase text-lg font-medium hover:text-primary transition"
                     >
                       <span className="w-[35px] h-[35px] bg-white text-black rounded-full flex items-center justify-center">
                         {item.icon}
@@ -108,7 +108,7 @@ const Footer = () => {
 
             {/* Instagram */}
             <div className="lg:col-span-3">
-              <h3 className="text-[22px] text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
                 Instagram
               </h3>
 

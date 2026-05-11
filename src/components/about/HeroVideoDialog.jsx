@@ -114,7 +114,7 @@ export default function HeroVideoDialog({
           <span className="absolute h-[clamp(56px,8vw,80px)] w-[clamp(56px,8vw,80px)] rounded-full bg-red-500/15 blur-xl transition-opacity duration-300 group-hover:opacity-150" />
 
           {/* Frosted-glass play circle */}
-          <span
+          {/* <span
             className={[
               "relative flex h-[clamp(56px,8vw,80px)] w-[clamp(56px,8vw,80px)]",
               "items-center justify-center rounded-full",
@@ -125,7 +125,7 @@ export default function HeroVideoDialog({
               "group-hover:scale-110 group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.6)]",
             ].join(" ")}
           >
-            {/* Triangle */}
+            
             <span
               className="ml-1 block"
               style={{
@@ -133,10 +133,10 @@ export default function HeroVideoDialog({
                 height: 0,
                 borderTop: "10px solid transparent",
                 borderBottom: "10px solid transparent",
-                borderLeft: "18px solid white",
+                borderLeft: "18px solid red",
               }}
             />
-          </span>
+          </span> */}
         </span>
       </button>
 
