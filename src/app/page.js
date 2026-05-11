@@ -48,8 +48,8 @@ export default function Home() {
       <LooksKart />
       <Enroll />
 
-      {/* <BookAppointment/>
-    <PartnerBrands/> */}
+      <BookAppointment/>
+    <PartnerBrands/>
     </>
   );
 }

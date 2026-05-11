@@ -1,6 +1,9 @@
 import FadeUp from '@/components/animation/FadeUp';
 import React from 'react'
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import BookAppointment from "@/components/layout/BookAppointment";
+import PartnerBrands from "@/components/layout/PartnerBrands";
+
 
 const testimonialData = [
   {
@@ -113,6 +116,8 @@ const Testimonial = () => {
           </div>
         </div>
       </section>
+      <BookAppointment/>
+        <PartnerBrands/>
     </>
   )
 }

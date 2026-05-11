@@ -4,6 +4,8 @@ import Counter from '@/components/home/Counter'
 import React from 'react'
 import Image from "next/image";
 import FadeUp from '@/components/animation/FadeUp';
+import BookAppointment from '@/components/layout/BookAppointment';
+import PartnerBrands from '@/components/layout/PartnerBrands';
 
 const leftAwards = [
   {
@@ -287,10 +289,14 @@ const page = () => {
                 </FadeUp>
             </div>
         </section>
+
+        <PartnerBrands />
        
     </>
   )
 }
+
+
 
 function AwardItem({ category, result }) {
   return (
@@ -334,5 +340,9 @@ function AchievementCard({ item }) {
     </div>
   );
 }
+
+
+
+      
 
 export default page

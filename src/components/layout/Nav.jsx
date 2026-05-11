@@ -18,6 +18,7 @@ const Nav = ({ isActive, toggleMenu }) => {
       subItems: [
         { href: "/ladies-salon-services", label: "Ladies" },
         { href: "/gents-salon-services", label: "Gents" },
+        { href: "/", label: "Bridal " },
         { href: "/prepaid-cards", label: "Prepaid Cards" },
       ],
     },
@@ -90,7 +91,7 @@ const Nav = ({ isActive, toggleMenu }) => {
                 <Link
                   href={subItem.href}
                   onClick={toggleMenu}
-                  className="text-2xl leading-[1.1] sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 uppercase"
+                  className="text-[34px] leading-[1.1] sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center uppercase gap-2"
                 >
                   {subItem.label}
                 </Link>

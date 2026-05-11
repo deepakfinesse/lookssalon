@@ -54,7 +54,7 @@ const HairColour = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Button href="/" label="hair colour services" variant="dark" />
+              <Button href="/ladies-salon-services" label="hair colour services" variant="dark" />
             </motion.div>
           </motion.div>
         </div>

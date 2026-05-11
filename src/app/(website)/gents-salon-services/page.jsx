@@ -1,6 +1,9 @@
 "use client";
 import FadeUp from "@/components/animation/FadeUp";
+import BookAppointment from "@/components/layout/BookAppointment";
+import PartnerBrands from "@/components/layout/PartnerBrands";
 import Image from "next/image";
+
 
 const services = [
   {
@@ -177,6 +180,8 @@ export default function ladiesServices() {
           ))}
         </div>
       </section>
+      <BookAppointment/>
+      <PartnerBrands/>
     </>
   );
 }

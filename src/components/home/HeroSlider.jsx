@@ -16,7 +16,7 @@ const slides = [
     href: '/',
   },
   {
-    src: '/img/home/hero.webp',
+    src: '/img/home/hero2.webp',
     alt: 'Hero Slide 2',
     href: '/',
   },

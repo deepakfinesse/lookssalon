@@ -5,16 +5,13 @@ import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { getInstagramPosts } from "@/lib/getInstagramPosts";
 import Instagram from "./Instagram";
-import BookAppointment from "./BookAppointment";
-import PartnerBrands from "./PartnerBrands";
 
 const posts = await getInstagramPosts();
 
 const Footer = () => {
   return (
     <>
-      <BookAppointment />
-      <PartnerBrands />
+      
       {/* Footer */}
       <footer className="bg-black py-10">
         <div className="max-w-7xl mx-auto px-4">

@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import FadeUp from "@/components/animation/FadeUp";
+import BookAppointment from "@/components/layout/BookAppointment";
+import PartnerBrands from "@/components/layout/PartnerBrands";
+
 
 const page = () => {
   return (
@@ -146,6 +149,8 @@ const page = () => {
           </FadeUp>
         </div>
       </section>
+      <BookAppointment/>
+        <PartnerBrands/>
     </>
   );
 };

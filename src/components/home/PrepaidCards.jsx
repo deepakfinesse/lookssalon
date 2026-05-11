@@ -42,7 +42,7 @@ const PrepaidCards = () => {
             <FadeUp delay={0.3}>
               <div className="flex items-center gap-5 mt-6">
                 <Button
-                  href="/"
+                  href="/prepaid-cards"
                   label="Buy your prepaid cards"
                   variant="dark"
                 />

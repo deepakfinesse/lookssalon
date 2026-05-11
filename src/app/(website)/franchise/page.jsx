@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import BookingForm from "@/components/booking/BookingForm";
 import FadeUp from "@/components/animation/FadeUp";
-
+import PartnerBrands from "@/components/layout/PartnerBrands";
 
 const whyLooksData = [
   {
@@ -151,6 +151,7 @@ const Franchise = () => {
                 </FadeUp>
               </div>
         </section>
+        <PartnerBrands/>
     </>
   );
 };

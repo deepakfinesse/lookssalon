@@ -1,4 +1,5 @@
 import BookingForm from '@/components/booking/BookingForm'
+import PartnerBrands from '@/components/layout/PartnerBrands'
 import React from 'react'
 const page = () => {
   return (
@@ -21,8 +22,10 @@ const page = () => {
         </div> 
         <div className="max-w-3xl mx-auto px-4 pb-12 lg:pb-12">
           <BookingForm />
+          
         </div>
       </div>
+      <PartnerBrands/>
     </>
   )
 }

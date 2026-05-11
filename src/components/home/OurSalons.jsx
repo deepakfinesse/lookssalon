@@ -1,26 +1,73 @@
 "use client";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import Button from "../ui/Button";
 import FadeUp from "../animation/FadeUp";
 
+const salonImages = [
+  { src: "/img/home/our-salon.webp", alt: "Our Salon - Interior" },
+  { src: "/img/home/our-salon2.webp", alt: "Our Salon - Styling" },
+  { src: "/img/home/our-salon3.webp", alt: "Our Salon - Products" },
+  { src: "/img/home/our-salon2.webp", alt: "Our Salon - Team" },
+];
+
 const OurSalons = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % salonImages.length);
+        setIsTransitioning(false);
+      }, 400); // fade-out duration before swapping image
+
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-16 md:py-4">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
-          {/* Image */}
+
+          {/* Image Carousel */}
           <div className="relative md:-mt-32 lg:pr-20">
             <Image
-              src="/img/home/our-salon.webp"
-              alt="Our Salon"
+              key={currentIndex}
+              src={salonImages[currentIndex].src}
+              alt={salonImages[currentIndex].alt}
               width={600}
               height={500}
               className="w-full h-auto object-contain"
+              style={{
+                transition: "opacity 0.4s ease-in-out",
+                opacity: isTransitioning ? 0 : 1,
+              }}
             />
+
+            {/* Dot Indicators */}
+            {/* <div className="flex justify-center gap-2 mt-3">
+              {salonImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-black w-5"
+                      : "bg-gray-400"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div> */}
           </div>
 
           {/* Content */}
-          <div className="flex flex-col items-center text-center ">
+          <div className="flex flex-col items-center text-center">
             <FadeUp delay={0.1}>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center uppercase text-black">
                 Our Salons
@@ -42,6 +89,7 @@ const OurSalons = () => {
               </div>
             </FadeUp>
           </div>
+
         </div>
       </div>
     </section>
@@ -49,6 +97,76 @@ const OurSalons = () => {
 };
 
 export default OurSalons;
+
+
+
+
+
+
+
+// "use client";
+// import Image from "next/image";
+// import Button from "../ui/Button";
+// import FadeUp from "../animation/FadeUp";
+
+// const OurSalons = () => {
+//   return (
+//     <section className="py-16 md:py-4">
+//       <div className="max-w-7xl mx-auto px-4">
+//         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
+//           {/* Image */}
+//           <div className="relative md:-mt-32 lg:pr-20">
+//             <Image
+//               src="/img/home/our-salon.webp"
+//               alt="Our Salon"
+//               width={600}
+//               height={500}
+//               className="w-full h-auto object-contain"
+//             />
+//           </div>
+
+//           {/* Content */}
+//           <div className="flex flex-col items-center text-center ">
+//             <FadeUp delay={0.1}>
+//               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center uppercase text-black">
+//                 Our Salons
+//               </h2>
+//             </FadeUp>
+//             <FadeUp delay={0.2}>
+//               <p className="mt-4 text-base sm:text-lg md:text-xl font-medium text-black max-w-lg">
+//                 The Exclusive Unisex Salon in your town acquainted with
+//                 world-class tools and professionals for stunning looks and
+//                 absolute luxury.
+//               </p>
+//             </FadeUp>
+
+//             {/* Buttons */}
+//             <FadeUp delay={0.3}>
+//               <div className="flex items-center gap-2 md:gap-5 mt-6">
+//                 <Button href="/" label="locate salon Near you" />
+//                 <Button href="/" label="opening soon" />
+//               </div>
+//             </FadeUp>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default OurSalons;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // "use client";
 // import Image from "next/image";
