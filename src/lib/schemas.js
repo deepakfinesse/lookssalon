@@ -88,7 +88,7 @@ export const AppointmentUpdateSchema = z
 
 export const AppointmentQuerySchema = z.object({
   page:   z.coerce.number().int().min(1).default(1),
-  limit:  z.coerce.number().int().min(1).max(50).default(15),
+  limit:  z.coerce.number().int().min(1).max(5000).default(15),
   status: z.enum(["all", ...STATUSES]).default("all"),
   search: z.string().trim().max(100).default(""),
 });
