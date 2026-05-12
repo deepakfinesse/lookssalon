@@ -3,11 +3,14 @@
 import { useState, useCallback } from "react";
 import { signIn }                from "next-auth/react";
 import { useRouter }             from "next/navigation";
+import Image                     from "next/image";
+import Button                    from "@/components/ui/Button";
 
 const INPUT_CLS =
-  "w-full py-3 px-0 bg-transparent border-0 border-b border-[#333] " +
-  "text-white text-sm outline-none transition-[border-color] duration-200 " +
-  "focus:border-[var(--primary)]";
+  "w-full py-1 px-0 bg-transparent border-0 border-b border-[var(--primary)] " +
+  "text-white text-base tracking-wide " +
+  "outline-none appearance-none transition-[border-color] duration-200 " +
+  "focus:border-white placeholder-transparent";
 
 export default function DashboardLoginPage() {
   const router = useRouter();
@@ -22,7 +25,6 @@ export default function DashboardLoginPage() {
     setLoading(true);
 
     try {
-      // NextAuth signIn — redirect: false means we handle routing ourselves
       const res = await signIn("credentials", {
         username,
         password,
@@ -35,12 +37,10 @@ export default function DashboardLoginPage() {
       }
 
       if (res.error) {
-        // NextAuth returns "CredentialsSignin" for wrong credentials
         setError("Invalid username or password.");
         return;
       }
 
-      // Success — push to dashboard
       router.push("/dashboard");
       router.refresh();
     } catch {
@@ -51,46 +51,37 @@ export default function DashboardLoginPage() {
   }, [username, password, router]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-5 font-[var(--font-primary)]">
+    <div
+      className="min-h-screen w-full bg-cover bg-center flex flex-col items-center justify-center px-4 py-12"
+      style={{ backgroundImage: "url('/img/all/book-appointement.webp')" }}
+    >
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-10">
+        <Image
+          src="/img/logo-white.svg"
+          alt="Looks Salon"
+          width={180}
+          height={60}
+          className="mx-auto mb-6"
+          priority
+        />
+        
+        
+      </div>
 
-      {/* Ambient glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 20% 50%, rgba(222,171,48,0.05) 0%, transparent 60%)," +
-            "radial-gradient(ellipse at 80% 50%, rgba(222,171,48,0.03) 0%, transparent 60%)",
-        }}
-      />
-
-      <div className="relative w-full max-w-[420px]">
-
-        {/* Branding */}
-        <div className="text-center mb-12">
-          
-          <h1 className="text-white text-[28px] font-light tracking-[6px] uppercase m-0">
-            LOOKS SALON
-          </h1>
-          <div className="w-10 h-px bg-[var(--primary)] mx-auto mt-3.5" />
-          <p className="text-[#555] text-[11px] tracking-[3px] uppercase mt-3.5">
-            Admin Portal
-          </p>
-        </div>
-
-        {/* Card */}
-        <div className="bg-[#111] border border-[#222] rounded-sm p-10">
-          <h2 className="text-white text-base font-light tracking-[2px] uppercase text-center mb-8">
+      {/* Login Form */}
+      <div className="max-w-3xl w-full mx-auto px-4 pb-12">
+        <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-sm p-10 max-w-md mx-auto">
+          <h2 className="text-white text-lg font-light tracking-[2px] uppercase font-medium text-center mb-8">
             Sign In
           </h2>
 
           <form onSubmit={handleSubmit} noValidate>
 
-            {/* Username */}
             <div className="mb-5">
               <label
                 htmlFor="login-user"
-                className="block text-[#666] text-[10px] tracking-[3px] uppercase mb-2.5"
+                className="block text-white text-sm tracking-[3px] uppercase mb-2.5"
               >Username</label>
               <input
                 id="login-user"
@@ -103,11 +94,10 @@ export default function DashboardLoginPage() {
               />
             </div>
 
-            {/* Password */}
             <div className="mb-8">
               <label
                 htmlFor="login-pass"
-                className="block text-[#666] text-[10px] tracking-[3px] uppercase mb-2.5"
+                className="block text-white text-sm tracking-[3px] uppercase mb-2.5"
               >Password</label>
               <input
                 id="login-pass"
@@ -120,7 +110,6 @@ export default function DashboardLoginPage() {
               />
             </div>
 
-            {/* Error */}
             {error && (
               <div
                 role="alert"
@@ -130,17 +119,13 @@ export default function DashboardLoginPage() {
               </div>
             )}
 
-            {/* Submit */}
-            <button
+            <Button
               type="submit"
+              label={loading ? "Signing in…" : "Sign In"}
+              variant="dark"
               disabled={loading}
-              className="w-full py-3.5 bg-[var(--primary)] text-black border-0 rounded-sm
-                         text-[11px] tracking-[3px] uppercase font-bold cursor-pointer
-                         transition-opacity duration-200 will-change-[opacity]
-                         hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {loading ? "Signing in…" : "Sign In"}
-            </button>
+              className="w-full justify-center"
+            />
 
           </form>
         </div>

@@ -2,6 +2,8 @@
 import React from "react";
 import Button from "../ui/Button";
 import FadeUp from "../animation/FadeUp";
+import BookingForm from "../booking/BookingForm";
+
 
 const BookAppointment = () => {
   return (
@@ -24,8 +26,8 @@ const BookAppointment = () => {
 
           {/* Form */}
           <div className="w-full md:pl-10">
-            <form className="space-y-8">
-              {/* Name */}
+            <BookingForm />
+            {/* <form className="space-y-8">
               <div className="relative">
                 <input
                   type="text"
@@ -44,7 +46,7 @@ const BookAppointment = () => {
                 </label>
               </div>
 
-              {/* Contact */}
+             
               <div className="relative">
                 <input
                   type="text"
@@ -63,7 +65,7 @@ const BookAppointment = () => {
                 </label>
               </div>
 
-              {/* City (SELECT) */}
+              
               <div className="relative">
                 <select
                   id="city"
@@ -93,7 +95,7 @@ const BookAppointment = () => {
                 </label>
               </div>
 
-              {/* Service Type (SELECT) */}
+              
               <div className="relative">
                 <select
                   id="service"
@@ -123,7 +125,7 @@ const BookAppointment = () => {
                 </label>
               </div>
 
-              {/* Button */}
+              
               <div className="text-center pt-4">
                 <Button
                   label="Book Now"
@@ -132,7 +134,7 @@ const BookAppointment = () => {
                   className="shadow-[0px_0px_24px_0px_#00000059]"
                 />
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>

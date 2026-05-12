@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState }    from "react";
 import { useRouter }   from "next/navigation";
 import { FormField }   from "@/components/ui/FormField";
+import Button          from "@/components/ui/Button";
 import { BookingSchema, CITIES, SERVICES, HOURS } from "@/lib/schemas";
 
 // ── Shared class strings (module-scope — never recreated per render) ──────────
@@ -179,19 +180,14 @@ export default function BookingForm() {
         )}
 
         {/* BOOK NOW */}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          aria-busy={isSubmitting}
-          className="block w-full py-4 min-h-[52px]
-                     bg-[var(--primary)] text-black border-0
-                     text-lg tracking-[5px] uppercase font-bold
-                     cursor-pointer mb-6
-                     transition-opacity duration-200 will-change-[opacity]
-                     hover:opacity-[0.88] disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? "Booking…" : "Book Now"}
-        </button>
+        <div className="flex justify-center mt-6 mb-6">
+          <Button
+            type="submit"
+            label={isSubmitting ? "Booking…" : "Book Now"}
+            variant="primary"
+            disabled={isSubmitting}
+          />
+        </div>
 
         {/* OR / phone */}
         <div className="text-center">

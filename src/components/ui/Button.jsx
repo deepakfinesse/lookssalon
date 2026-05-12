@@ -7,6 +7,10 @@ const Button = ({
   label = 'Click Here',
   className = '',
   variant = 'primary',
+  type = 'button',
+  disabled = false,
+  onClick,
+  target,
 }) => {
 
   const baseClass =
@@ -17,13 +21,8 @@ const Button = ({
     dark: 'border-2 border-primary bg-black text-white',
   }
 
-  return (
-    <Link
-      href={href}
-      aria-label={label}
-      className={`${baseClass} ${variants[variant]} ${className}`}
-    >
-      {/* Text */}
+  const inner = (
+    <>
       <span
         className={`
           relative z-10 transition duration-300 font-bold
@@ -32,16 +31,39 @@ const Button = ({
       >
         {label}
       </span>
-
-      {/* Overlay */}
       <span
         aria-hidden="true"
         className={`
           absolute inset-0 w-0 transition-all duration-500
           ${variant === 'primary' ? 'bg-black group-hover:w-full' : 'bg-primary group-hover:w-full'}
         `}
-      ></span>
-    </Link>
+      />
+    </>
+  )
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        aria-label={label}
+        target={target}
+        className={`${baseClass} ${variants[variant]} ${className}`}
+      >
+        {inner}
+      </Link>
+    )
+  }
+
+  return (
+    <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      aria-label={label}
+      className={`${baseClass} ${variants[variant]} ${className} disabled:opacity-60 disabled:cursor-not-allowed`}
+    >
+      {inner}
+    </button>
   )
 }
 
