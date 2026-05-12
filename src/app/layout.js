@@ -1,6 +1,4 @@
-import Footer from "@/components/layout/Footer";
 import "../styles/globals.css";
-import Header from "@/components/layout/Header";
 
 export const metadata = {
   metadataBase: new URL("http://localhost:3000/"),
@@ -75,9 +73,7 @@ export default function RootLayout({ children }) {
         </noscript> */}
       </head>
       <body className="font-primary">
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

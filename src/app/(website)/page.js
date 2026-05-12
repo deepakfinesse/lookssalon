@@ -16,8 +16,8 @@ export default function Home() {
       <HeroSlider />
       <section
         className="
-        relative 
-        bg-[url('/img/home/counter-bg.webp')] 
+        relative
+        bg-[url('/img/home/counter-bg.webp')]
         bg-cover bg-center bg-no-repeat
         py-16 md:py-24 lg:py-14 xl:pt-20 xl:pb-28
       "
