@@ -32,14 +32,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           // 2. Env var guard
           const adminUser = process.env.ADMIN_USERNAME;
-          const adminHash = process.env.ADMIN_PASSWORD_HASH;
+          const adminHashB64 = process.env.ADMIN_PASSWORD_HASH;
 
-          console.log("[auth] Attempting login for user:", username,password);
+          console.log("[auth] Attempting login for user:", username, password);
 
-          if (!adminUser || !adminHash) {
+          if (!adminUser || !adminHashB64) {
             console.error("[auth] Missing ADMIN_USERNAME or ADMIN_PASSWORD_HASH in env");
             return null;
           }
+
+          // Decode from base64 — stored as base64 to avoid dotenv-expand mangling $ signs
+          const adminHash = Buffer.from(adminHashB64.trim(), "base64").toString("utf8");
 
           // 3. Username check
           const isValidUser = username.trim() === adminUser.trim();

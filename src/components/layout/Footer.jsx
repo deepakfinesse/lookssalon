@@ -3,10 +3,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-import { getInstagramPosts } from "@/lib/getInstagramPosts";
+// import { getInstagramPosts } from "@/lib/getInstagramPosts";
 import Instagram from "./Instagram";
 
-const posts = await getInstagramPosts();
+// const posts = await getInstagramPosts();
 
 const Footer = () => {
   return (

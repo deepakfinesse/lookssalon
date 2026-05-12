@@ -3,6 +3,7 @@ import Image from "next/image";
 import FadeUp from "@/components/animation/FadeUp";
 import BookAppointment from "@/components/layout/BookAppointment";
 import PartnerBrands from "@/components/layout/PartnerBrands";
+import Button from "@/components/ui/Button";
 
 
 const page = () => {
@@ -65,6 +66,14 @@ const page = () => {
                   <span className="font-semibold">RS. 7,500</span>
                 </div>
               </div>
+              {/* Buttons */}
+              <div className="flex items-center gap-5 mt-6">
+                <Button
+                  href="/"
+                  label="Buy Now"
+                  variant="dark"
+                />
+              </div>
             </div>
             </FadeUp>
             <FadeUp delay={0.3}>
@@ -93,6 +102,14 @@ const page = () => {
                   <span className="font-semibold">RS. 20,000</span>
                 </div>
               </div>
+              {/* Buttons */}
+              <div className="flex items-center gap-5 mt-6">
+                <Button
+                  href="/"
+                  label="Buy Now"
+                  variant="dark"
+                />
+              </div>
             </div>
             </FadeUp>
             
@@ -119,6 +136,14 @@ const page = () => {
                   <span className="font-semibold">SERVICE WORTH</span>
                   <span className="font-semibold">RS. 75,000</span>
                 </div>
+              </div>
+              {/* Buttons */}
+              <div className="flex items-center gap-5 mt-6">
+                <Button
+                  href="/"
+                  label="Buy Now"
+                  variant="dark"
+                />
               </div>
             </div>
             </FadeUp>
