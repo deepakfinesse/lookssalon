@@ -1,28 +1,15 @@
-/**
- * components/ui/FormField.jsx
- *
- * Reusable field wrapper used across ALL dynamic pages.
- * Renders: label → input/select slot → inline error (below field, on typing)
- *
- * Props:
- *   id        string   — links label htmlFor + input id
- *   label     string   — uppercase field label text
- *   error     string   — react-hook-form error message (shown below field)
- *   isSelect  bool     — renders the gold ▼ arrow for <select> fields
- *   children  ReactNode — the actual <input> or <select> element
- */
 
 export function FormField({ id, label, error, isSelect = false, children }) {
   return (
-    <div className="relative mb-5">
+    <div className="relative mb-7">
 
       {/* Label */}
-      <label
+      {/* <label
         htmlFor={id}
         className="block text-white text-md font-medium uppercase"
       >
         {label}
-      </label>
+      </label> */}
 
       {/* Input / Select wrapper */}
       <div className="relative">
@@ -31,7 +18,7 @@ export function FormField({ id, label, error, isSelect = false, children }) {
         {isSelect && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute right-1 bottom-2 text-primary text-md"
+            className="pointer-events-none absolute right-1 bottom-2 text-white text-md"
           >▼</span>
         )}
       </div>

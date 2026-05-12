@@ -26,7 +26,7 @@ const BookAppointment = () => {
 
           {/* Form */}
           <div className="w-full md:pl-10">
-            <BookingForm />
+            <BookingForm inputBorder="border-black" />
             {/* <form className="space-y-8">
               <div className="relative">
                 <input

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export const metadata = {
   title:       "Booking Confirmed — Looks Salon",
@@ -105,14 +105,7 @@ export default function ThankYouPage({ searchParams }) {
 
         {/* ── CTAs ── */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/"
-            className="inline-block px-10 py-3.5 bg-primary text-black
-                       text-[11px] tracking-[4px] uppercase font-bold
-                       transition-opacity duration-200 hover:opacity-90"
-          >
-            Back to Home
-          </Link>
+          <Button href="/" label="Back to Home" variant="primary" />
           {/* <Link
             href="/salon-book-appointment"
             className="inline-block px-10 py-3.5 bg-transparent

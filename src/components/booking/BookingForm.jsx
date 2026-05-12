@@ -8,29 +8,24 @@ import { FormField }   from "@/components/ui/FormField";
 import Button          from "@/components/ui/Button";
 import { BookingSchema, CITIES, SERVICES, HOURS } from "@/lib/schemas";
 
-// ── Shared class strings (module-scope — never recreated per render) ──────────
+// ── Shared class strings ──────────────────────────────────────────────────────
 
-const INPUT_CLS =
-  "w-full py-1 px-0 bg-transparent border-0 border-b border-[var(--primary)] " +
-  "text-white text-base tracking-wide " +
+const BASE_INPUT =
+  "w-full py-1 px-0 bg-transparent border-0 border-b font-medium " +
+  "text-white text-md tracking-wide " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
-  "focus:border-white placeholder-transparent";
+  "placeholder:text-white placeholder:uppercase";
 
 const INPUT_ERR_CLS =
-  "w-full py-1 px-0 bg-transparent border-0 border-b border-red-400 " +
-  "text-white text-base tracking-wide " +
-  "outline-none appearance-none transition-[border-color] duration-200 " +
-  "focus:border-red-300 placeholder-transparent";
+  BASE_INPUT + " border-red-400 focus:border-red-300";
 
-const SELECT_CLS     = INPUT_CLS     + " cursor-pointer pr-5";
-const SELECT_ERR_CLS = INPUT_ERR_CLS + " cursor-pointer pr-5";
-
-const inp = (hasError) => hasError ? INPUT_ERR_CLS  : INPUT_CLS;
-const sel = (hasError) => hasError ? SELECT_ERR_CLS : SELECT_CLS;
+const mkCls  = (border) => BASE_INPUT + ` ${border} focus:border-white`;
+const inp    = (hasError, border) => hasError ? INPUT_ERR_CLS : mkCls(border);
+const sel    = (hasError, border, isEmpty) => inp(hasError, border) + " cursor-pointer pr-5" + (isEmpty ? " uppercase" : "");
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function BookingForm() {
+export default function BookingForm({ inputBorder = "border-[var(--primary)]" }) {
   const router = useRouter();
   const [serverError, setServerError] = useState("");
 
@@ -38,6 +33,7 @@ export default function BookingForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver:       zodResolver(BookingSchema),
@@ -87,9 +83,10 @@ export default function BookingForm() {
           <input
             id="bf-name"
             type="text"
+            placeholder="Name"
             autoComplete="name"
             maxLength={80}
-            className={inp(!!errors.name)}
+            className={inp(!!errors.name, inputBorder)}
             {...register("name")}
           />
         </FormField>
@@ -99,10 +96,11 @@ export default function BookingForm() {
           <input
             id="bf-contact"
             type="tel"
+            placeholder="Contact"
             inputMode="numeric"
             autoComplete="tel"
             maxLength={10}
-            className={inp(!!errors.contact)}
+            className={inp(!!errors.contact, inputBorder)}
             {...register("contact")}
           />
         </FormField>
@@ -112,9 +110,10 @@ export default function BookingForm() {
           <input
             id="bf-email"
             type="email"
+            placeholder="Email ID"
             autoComplete="email"
             maxLength={120}
-            className={inp(!!errors.email)}
+            className={inp(!!errors.email, inputBorder)}
             {...register("email")}
           />
         </FormField>
@@ -123,7 +122,7 @@ export default function BookingForm() {
         <FormField id="bf-gender" label="Gender" error={errors.gender?.message} isSelect>
           <select
             id="bf-gender"
-            className={sel(!!errors.gender)}
+            className={sel(!!errors.gender, inputBorder, !watch("gender"))}
             {...register("gender")}
           >
             <option value="">Select gender</option>
@@ -137,7 +136,7 @@ export default function BookingForm() {
         <FormField id="bf-city" label="City" error={errors.city?.message} isSelect>
           <select
             id="bf-city"
-            className={sel(!!errors.city)}
+            className={sel(!!errors.city, inputBorder, !watch("city"))}
             {...register("city")}
           >
             <option value="">Select city</option>
@@ -149,7 +148,7 @@ export default function BookingForm() {
         <FormField id="bf-service" label="Service Type" error={errors.service?.message} isSelect>
           <select
             id="bf-service"
-            className={sel(!!errors.service)}
+            className={sel(!!errors.service, inputBorder, !watch("service"))}
             {...register("service")}
           >
             <option value="">Select service</option>
@@ -161,7 +160,7 @@ export default function BookingForm() {
         <FormField id="bf-time" label="Preferred Time" error={errors.preferredTime?.message} isSelect>
           <select
             id="bf-time"
-            className={sel(!!errors.preferredTime)}
+            className={sel(!!errors.preferredTime, inputBorder, !watch("preferredTime"))}
             {...register("preferredTime")}
           >
             <option value="">Select time</option>
@@ -189,21 +188,7 @@ export default function BookingForm() {
           />
         </div>
 
-        {/* OR / phone */}
-        <div className="text-center">
-          <p className="text-white text-base tracking-[3px] uppercase mb-2">
-            OR
-          </p>
-          <p className="text-white text-lg tracking-wide">
-            CALL US @{" "}
-            <a
-              href="tel:180021256657"
-              className="text-[var(--primary)] font-bold no-underline hover:underline"
-            >
-              1800 212 56657
-            </a>
-          </p>
-        </div>
+        
 
       </form>
     </div>

@@ -22,7 +22,21 @@ const page = () => {
         </div> 
         <div className="max-w-3xl mx-auto px-4 pb-12 lg:pb-12">
           <BookingForm />
-          
+          {/* OR / phone */}
+        <div className="text-center">
+          <p className="text-white text-base tracking-[3px] uppercase mb-2">
+            OR
+          </p>
+          <p className="text-white text-lg tracking-wide">
+            CALL US @{" "}
+            <a
+              href="tel:180021256657"
+              className="text-primary font-bold no-underline hover:underline"
+            >
+              1800 212 56657
+            </a>
+          </p>
+        </div>
         </div>
       </div>
       <PartnerBrands/>
