@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { HiOutlineCalendar } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineCalendar } from "react-icons/hi";
 
 const NAV_LINKS = [
-  { href: "/dashboard", label: "Appointments", icon: HiOutlineCalendar },
+  { href: "/dashboard",              label: "Home",         icon: HiOutlineHome     },
+  { href: "/dashboard/appointments", label: "Appointments", icon: HiOutlineCalendar },
   // Add more nav items here
 ];
 
@@ -27,7 +28,7 @@ export default function DashboardHeader() {
         {/* Nav links */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(({ href, label, icon: Icon }) => {
-            const active = pathname === href;
+            const active = href === "/dashboard" ? pathname === href : pathname.startsWith(href);
             return (
               <Link
                 key={href}
