@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import BookingForm from "@/components/booking/BookingForm";
+import FranchiseForm from "@/components/booking/FranchiseForm";
 import FadeUp from "@/components/animation/FadeUp";
 import PartnerBrands from "@/components/layout/PartnerBrands";
 
@@ -147,7 +147,7 @@ const Franchise = () => {
               </div> 
               <div className="max-w-2xl mx-auto px-4 pb-12 lg:pb-12">
                 <FadeUp delay={0.2}>
-                <BookingForm />
+                <FranchiseForm />
                 </FadeUp>
               </div>
         </section>

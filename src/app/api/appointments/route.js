@@ -39,23 +39,24 @@ export async function POST(request) {
     const appointment = await Appointment.create({ bookingId, ...data });
 
     // Fire-and-forget emails — 8s timeout fits Vercel free 10s function limit
+    // Awaited so Vercel doesn't kill the function before emails dispatch.
+    // 5s timeout per email keeps total well under the 10s function limit.
     const withTimeout = (p) =>
       Promise.race([
         p,
         new Promise((_, rej) =>
-          setTimeout(() => rej(new Error("timeout")), 8_000)
+          setTimeout(() => rej(new Error("email_timeout")), 5_000)
         ),
       ]);
 
-    Promise.allSettled([
+    const emailResults = await Promise.allSettled([
       withTimeout(sendCustomerConfirmationEmail(appointment.toObject())),
       withTimeout(sendAdminNotificationEmail(appointment.toObject())),
-    ]).then(results =>
-      results.forEach((r, i) => {
-        if (r.status === "rejected")
-          console.error(`Email [${i === 0 ? "customer" : "admin"}] failed:`, r.reason?.message);
-      })
-    );
+    ]);
+    emailResults.forEach((r, i) => {
+      if (r.status === "rejected")
+        console.error(`Email [${i === 0 ? "customer" : "admin"}] failed:`, r.reason?.message);
+    });
 
     return NextResponse.json(
       { success: true, message: "Appointment booked successfully!", bookingId },

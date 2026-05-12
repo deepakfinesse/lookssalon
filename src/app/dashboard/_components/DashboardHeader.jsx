@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { HiOutlineHome, HiOutlineCalendar } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineCalendar, HiOutlineOfficeBuilding } from "react-icons/hi";
 
 const NAV_LINKS = [
-  { href: "/dashboard",              label: "Home",         icon: HiOutlineHome     },
-  { href: "/dashboard/appointments", label: "Appointments", icon: HiOutlineCalendar },
-  // Add more nav items here
+  { href: "/dashboard",              label: "Home",         icon: HiOutlineHome           },
+  { href: "/dashboard/appointments", label: "Appointments", icon: HiOutlineCalendar       },
+  { href: "/dashboard/franchise",    label: "Franchise",    icon: HiOutlineOfficeBuilding },
 ];
 
 export default function DashboardHeader() {

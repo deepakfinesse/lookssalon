@@ -22,10 +22,10 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      // Vercel free: keep connection pool small — 10s function timeout
-      maxPoolSize: 5,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 8000,
+      maxPoolSize:              5,
+      serverSelectionTimeoutMS: 4000,  // fail fast on cold-start DB unavailability
+      socketTimeoutMS:          6000,  // leaves ~4s for app logic within 10s limit
+      connectTimeoutMS:         4000,
     };
     cached.promise = mongoose.connect(MONGODB_URI, opts);
   }

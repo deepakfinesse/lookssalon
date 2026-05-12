@@ -42,8 +42,11 @@ export const BookingSchema = z.object({
     .string({ required_error: "Please enter your email address." })
     .trim()
     .toLowerCase()
-    .email("Please enter a valid email address.")
-    .max(120, "Email must be 120 characters or less."),
+    .max(120, "Email must be 120 characters or less.")
+    .refine(
+      v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      { message: "Please enter a valid email address." }
+    ),
 
   gender: z.enum(["Male","Female","Prefer not to say"], {
     required_error:  "Please select your gender.",
@@ -88,10 +91,82 @@ export const AppointmentUpdateSchema = z
 
 export const AppointmentQuerySchema = z.object({
   page:   z.coerce.number().int().min(1).default(1),
-  limit:  z.coerce.number().int().min(1).max(5000).default(15),
+  limit:  z.coerce.number().int().min(1).max(500).default(15),
   status: z.enum(["all", ...STATUSES]).default("all"),
   search: z.string().trim().max(100).default(""),
 });
+
+// ── Franchise inquiry schema ──────────────────────────────────────────────────
+
+export const FranchiseInquirySchema = z.object({
+  name: z
+    .string({ required_error: "Please enter your name." })
+    .trim()
+    .min(1, "Please enter your name.")
+    .max(80, "Name must be 80 characters or less."),
+
+  occupation: z
+    .string({ required_error: "Please enter your occupation." })
+    .trim()
+    .min(1, "Please enter your occupation.")
+    .max(100, "Occupation must be 100 characters or less."),
+
+  contact: z
+    .string({ required_error: "Please enter your contact number." })
+    .trim()
+    .min(1, "Please enter your contact number.")
+    .refine(
+      v => /^[6-9]\d{9}$/.test(v.replace(/\s/g, "")),
+      "Please enter a valid 10-digit Indian mobile number."
+    ),
+
+  email: z
+    .string({ required_error: "Please enter your email address." })
+    .trim()
+    .toLowerCase()
+    .max(120, "Email must be 120 characters or less.")
+    .refine(
+      v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      { message: "Please enter a valid email address." }
+    ),
+
+  location: z
+    .string({ required_error: "Please enter the desired franchise location." })
+    .trim()
+    .min(1, "Please enter the desired franchise location.")
+    .max(200, "Location must be 200 characters or less."),
+
+  message: z
+    .string()
+    .trim()
+    .max(1000, "Message must be 1000 characters or less.")
+    .optional()
+    .default(""),
+});
+
+export const FRANCHISE_STATUSES = ["new", "reviewed", "contacted", "closed"];
+
+export const FranchiseQuerySchema = z.object({
+  page:   z.coerce.number().int().min(1).default(1),
+  limit:  z.coerce.number().int().min(1).max(5000).default(15),
+  status: z.enum(["all", ...FRANCHISE_STATUSES]).default("all"),
+  search: z.string().trim().max(100).default(""),
+});
+
+export const FranchiseUpdateSchema = z
+  .object({
+    status: z.enum(FRANCHISE_STATUSES, {
+      invalid_type_error: "Invalid status value.",
+    }).optional(),
+    notes: z
+      .string()
+      .max(1000, "Notes must be 1000 characters or less.")
+      .optional(),
+  })
+  .refine(
+    data => data.status !== undefined || data.notes !== undefined,
+    { message: "Provide at least one field to update." }
+  );
 
 // ── Login schema ──────────────────────────────────────────────────────────────
 

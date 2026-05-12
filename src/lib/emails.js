@@ -518,3 +518,181 @@ export async function sendAdminNotificationEmail(appointment) {
     html:    emailShell(body),
   });
 }
+
+// ── Franchise: customer confirmation ──────────────────────────────────────────
+
+export async function sendFranchiseCustomerEmail(inquiry) {
+  const { name, email, occupation, contact, location, inquiryId } = inquiry;
+  const year = new Date().getFullYear();
+
+  const body = `
+    ${emailHeader("Franchise Inquiry Received")}
+
+    <tr>
+      <td style="padding:36px 40px 0">
+        <p style="margin:0 0 10px;font-family:${FONT};font-size:15px;
+                  color:#171717;line-height:1.8">
+          Dear <strong style="color:${GOLD}">${name}</strong>,
+        </p>
+        <p style="margin:0 0 8px;font-family:${FONT};font-size:14px;
+                  color:${BODY_TXT};line-height:1.8">
+          Thank you for your interest in becoming a Looks Salon franchise partner.
+          We have received your inquiry and our franchise team will get in touch with
+          you shortly.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:24px 40px 0">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation"
+               style="border:1px solid ${BORDER};border-radius:2px;overflow:hidden">
+          <tr>
+            <td colspan="2"
+                style="padding:13px 20px;background:${ROW_ALT};
+                       border-bottom:1px solid ${BORDER}">
+              <p style="margin:0;font-family:${FONT};font-size:10px;
+                        color:${GOLD};letter-spacing:4px;text-transform:uppercase">
+                Your Inquiry Details
+              </p>
+            </td>
+          </tr>
+          ${detailRow("Inquiry ID",
+            `<strong style="color:${GOLD};font-family:monospace;
+                            letter-spacing:2px">#${inquiryId}</strong>`)}
+          ${detailRow("Name",       name)}
+          ${detailRow("Occupation", occupation)}
+          ${detailRow("Contact",    contact)}
+          ${detailRow("Location",   location, true)}
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:20px 40px 32px">
+        <p style="margin:0;font-family:${FONT};font-size:11px;
+                  color:#aaaaaa;line-height:1.8;
+                  border-top:1px solid ${BORDER};padding-top:20px">
+          Your data is safe with us. We will only use your details to process
+          your franchise inquiry and won&apos;t share them with third parties.
+        </p>
+      </td>
+    </tr>
+
+    ${emailFooter(year)}
+  `;
+
+  await getResend().emails.send({
+    from:    `Looks Salon <${process.env.RESEND_FROM_EMAIL}>`,
+    to:      email,
+    subject: `✅ Franchise Inquiry Received — Looks Salon (#${inquiryId})`,
+    html:    emailShell(body),
+  });
+}
+
+// ── Franchise: admin notification ─────────────────────────────────────────────
+
+export async function sendFranchiseAdminEmail(inquiry) {
+  const { name, email, contact, occupation, location, message, inquiryId, createdAt } = inquiry;
+  const year = new Date().getFullYear();
+
+  const submittedDate = new Date(createdAt).toLocaleDateString("en-IN", {
+    timeZone: "Asia/Kolkata", day: "2-digit", month: "long", year: "numeric",
+  });
+  const submittedTime = new Date(createdAt).toLocaleTimeString("en-IN", {
+    timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: true,
+  });
+
+  const dashboardUrl = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/franchise`;
+
+  const body = `
+    ${emailHeader("New Franchise Inquiry")}
+
+    <tr>
+      <td style="background:${GOLD};padding:13px 40px">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+          <tr>
+            <td>
+              <p style="margin:0;font-family:${FONT};font-size:12px;
+                        color:${BLACK};font-weight:bold;letter-spacing:0.5px">
+                New franchise inquiry — follow up required
+              </p>
+            </td>
+            <td align="right">
+              <p style="margin:0;font-family:monospace;font-size:13px;
+                        color:${BLACK};letter-spacing:2px;font-weight:bold">
+                #${inquiryId}
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:28px 40px 0">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation"
+               style="border:1px solid ${BORDER};border-radius:2px;overflow:hidden">
+          <tr>
+            <td colspan="2"
+                style="padding:13px 20px;background:${ROW_ALT};
+                       border-bottom:1px solid ${BORDER}">
+              <p style="margin:0;font-family:${FONT};font-size:10px;
+                        color:${GOLD};letter-spacing:4px;text-transform:uppercase">
+                Inquiry Details
+              </p>
+            </td>
+          </tr>
+          ${detailRow("Inquiry ID",
+            `<strong style="color:${GOLD};font-family:monospace;
+                            letter-spacing:2px">#${inquiryId}</strong>`)}
+          ${detailRow("Date",     submittedDate)}
+          ${detailRow("Time",
+            `<strong style="color:${GOLD}">${submittedTime} IST</strong>`)}
+          ${detailRow("Name",     name)}
+          ${detailRow("Occupation", occupation)}
+          ${detailRow("Email",
+            `<a href="mailto:${email}"
+                style="color:${GOLD};text-decoration:none">${email}</a>`)}
+          ${detailRow("Contact",
+            `<a href="tel:${contact}"
+                style="color:${GOLD};text-decoration:none">${contact}</a>`)}
+          ${detailRow("Location", location)}
+          ${detailRow("Message",  message || "—", true)}
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:28px 40px" align="center">
+        <a href="${dashboardUrl}" target="_blank"
+           style="display:inline-block;background:${GOLD};color:${BLACK};
+                  padding:14px 40px;text-decoration:none;
+                  font-family:${FONT};font-size:11px;
+                  letter-spacing:3px;text-transform:uppercase;
+                  font-weight:bold;border-radius:2px">
+          View in Dashboard &rarr;
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:0 40px">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+          <tr>
+            <td style="border-top:1px solid ${BORDER};font-size:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    ${emailFooter(year)}
+  `;
+
+  await getResend().emails.send({
+    from:    `Looks Salon Franchise <${process.env.RESEND_FROM_EMAIL}>`,
+    to:      process.env.ADMIN_EMAIL,
+    subject: `🏪 New Franchise Inquiry #${inquiryId} — ${name} · ${location}`,
+    html:    emailShell(body),
+  });
+}
