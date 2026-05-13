@@ -231,6 +231,74 @@ export const SalonQuerySchema = z.object({
   city:   z.string().trim().max(100).default(""),
 });
 
+// ── Blog schemas ──────────────────────────────────────────────────────────────
+
+export const BLOG_STATUSES = ["draft", "published"];
+
+export const BlogCategoryCreateSchema = z.object({
+  name: z
+    .string({ required_error: "Category name is required." })
+    .trim()
+    .min(1, "Category name is required.")
+    .max(100, "Name must be 100 characters or less."),
+  slug: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .max(120, "Slug must be 120 characters or less.")
+    .optional(),
+  description: z.string().trim().max(500).optional().default(""),
+});
+
+export const BlogCategoryUpdateSchema = BlogCategoryCreateSchema.partial().refine(
+  data => Object.keys(data).length > 0,
+  { message: "Provide at least one field to update." }
+);
+
+export const BlogPostCreateSchema = z.object({
+  title: z
+    .string({ required_error: "Title is required." })
+    .trim()
+    .min(1, "Title is required.")
+    .max(200, "Title must be 200 characters or less."),
+  slug: z.string().trim().toLowerCase().max(250).optional(),
+  content: z.string().default(""),
+  excerpt: z.string().trim().max(500).optional().default(""),
+  featuredImage: z
+    .object({
+      url: z.string().trim().max(1000).optional().default(""),
+      alt: z.string().trim().max(200).optional().default(""),
+    })
+    .optional()
+    .default({}),
+  categories: z.array(z.string().trim()).optional().default([]),
+  tags: z.array(z.string().trim().max(60)).optional().default([]),
+  author: z.string().trim().max(100).optional().default("Admin"),
+  status: z.enum(BLOG_STATUSES).optional().default("draft"),
+  seo: z
+    .object({
+      title:       z.string().trim().max(70).optional().default(""),
+      description: z.string().trim().max(160).optional().default(""),
+      keywords:    z.array(z.string().trim().max(60)).optional().default([]),
+    })
+    .optional()
+    .default({}),
+});
+
+export const BlogPostUpdateSchema = BlogPostCreateSchema.partial().refine(
+  data => Object.keys(data).length > 0,
+  { message: "Provide at least one field to update." }
+);
+
+export const BlogQuerySchema = z.object({
+  page:     z.coerce.number().int().min(1).default(1),
+  limit:    z.coerce.number().int().min(1).max(100).default(20),
+  status:   z.enum(["all", ...BLOG_STATUSES]).default("all"),
+  category: z.string().trim().max(120).default(""),
+  search:   z.string().trim().max(100).default(""),
+  sort:     z.enum(["latest", "oldest"]).default("latest"),
+});
+
 // ── Helper: format first Zod error as a plain string ─────────────────────────
 
 export function firstError(result) {

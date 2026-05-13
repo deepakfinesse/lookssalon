@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import PartnerBrands from "@/components/layout/PartnerBrands";
 
 export const metadata = {
   title:   "Thank You — Looks Salon Franchise",
@@ -10,6 +11,7 @@ export default function FranchiseThankYouPage({ searchParams }) {
   const inquiryId = searchParams?.id ?? null;
 
   return (
+    <> 
     <main className="min-h-[calc(100vh-90px)] bg-black flex items-center justify-center px-4 py-12">
 
       {/* Ambient glow */}
@@ -82,5 +84,7 @@ export default function FranchiseThankYouPage({ searchParams }) {
 
       </div>
     </main>
+    <PartnerBrands/>
+    </>
   );
 }

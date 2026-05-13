@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -57,4 +58,100 @@ html {
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #DFAB31 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Blog post body content ─────────────────────────────────────────────────── */
+.blog-content {
+  color: #000;
+  font-family: var(--font-primary);
+}
+.blog-content p {
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+@media (min-width: 1024px) {
+  .blog-content p { font-size: 1.125rem; }
+}
+.blog-content h2 {
+  font-size: 1.875rem;
+  font-weight: 500;
+  color: #000;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.blog-content h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #000;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.blog-content strong { font-weight: 700; color: #000; }
+.blog-content em { font-style: italic; }
+.blog-content a { color: var(--primary); text-decoration: none; }
+.blog-content a:hover { text-decoration: underline; }
+.blog-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.blog-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.blog-content li {
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 0.4rem;
+  line-height: 1.75;
+}
+@media (min-width: 1024px) {
+  .blog-content li { font-size: 1.125rem; }
+}
+.blog-content blockquote {
+  border-left: 4px solid var(--primary);
+  background: oklch(from var(--primary) l c h / 0.05);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #000;
+}
+.blog-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2rem 0;
+}
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  display: block;
+}
+.blog-content code {
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+}
+.blog-content pre {
+  background: #f3f4f6;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.9em;
 }

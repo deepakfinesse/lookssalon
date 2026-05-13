@@ -153,38 +153,7 @@ function emailFooter(year) {
           </td>
         </tr>
 
-        <!-- Social text links -->
-        <tr>
-          <td align="center" style="padding-bottom:20px">
-            <table cellpadding="0" cellspacing="0" role="presentation">
-              <tr>
-                <td style="padding:0 8px">
-                  <a href="${FB_URL}" target="_blank"
-                     style="font-family:${FONT};font-size:10px;color:${MUTED};
-                            text-decoration:none;letter-spacing:1px;text-transform:uppercase">
-                    Facebook
-                  </a>
-                </td>
-                <td style="color:#cccccc;font-size:10px;padding:0 2px">|</td>
-                <td style="padding:0 8px">
-                  <a href="${IG_URL}" target="_blank"
-                     style="font-family:${FONT};font-size:10px;color:${MUTED};
-                            text-decoration:none;letter-spacing:1px;text-transform:uppercase">
-                    Instagram
-                  </a>
-                </td>
-                <td style="color:#cccccc;font-size:10px;padding:0 2px">|</td>
-                <td style="padding:0 8px">
-                  <a href="${TW_URL}" target="_blank"
-                     style="font-family:${FONT};font-size:10px;color:${MUTED};
-                            text-decoration:none;letter-spacing:1px;text-transform:uppercase">
-                    X (Twitter)
-                  </a>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+        
 
         <!-- Gold divider -->
         <tr>
@@ -207,10 +176,7 @@ function emailFooter(year) {
                  style="color:${GOLD};text-decoration:none">Looks Salon</a>.
               All rights reserved.
             </p>
-            <p style="margin:0;font-family:${FONT};font-size:11px;color:#cccccc">
-              <a href="${PHONE_HREF}"
-                 style="color:${MUTED};text-decoration:none">${PHONE}</a>
-            </p>
+            
           </td>
         </tr>
 

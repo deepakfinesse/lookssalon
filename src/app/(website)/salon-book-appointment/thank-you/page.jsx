@@ -1,3 +1,4 @@
+import PartnerBrands from "@/components/layout/PartnerBrands";
 import Button from "@/components/ui/Button";
 
 export const metadata = {
@@ -10,6 +11,7 @@ export default function ThankYouPage({ searchParams }) {
   const bookingId = searchParams?.id ?? null;
 
   return (
+    <> 
     <main className="min-h-[calc(100vh-90px)] bg-black flex items-center justify-center px-4 py-12">
 
       {/* Ambient glow */}
@@ -119,5 +121,7 @@ export default function ThankYouPage({ searchParams }) {
 
       </div>
     </main>
+    <PartnerBrands/>
+    </>
   );
 }

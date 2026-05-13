@@ -16,7 +16,7 @@ function SalonCard({ salon }) {
     <div className="flex flex-col gap-4">
       <h3 className="text-2xl font-bold text-black">{salon.name}</h3>
 
-      <p className="text-gray-600 text-base leading-relaxed">{salon.address}</p>
+      <p className="text-black text-base leading-relaxed">{salon.address}</p>
 
       <div className="flex items-start gap-3">
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
@@ -235,8 +235,8 @@ export default function LocateSalonPage() {
                       type="search"
                       value={search}
                       onChange={onSearchInput}
-                      placeholder="Search by city, area, or salon name…"
-                      className="w-full pl-10 pr-4 py-3 border-2 border-black bg-white text-black text-sm font-medium outline-none focus:border-primary transition-colors placeholder:text-black/40"
+                      placeholder="Enter City / Location…"
+                      className="w-full pl-10 pr-4 py-3 border-2 border-primary bg-black text-white text-sm font-semibold outline-none focus:border-primary transition-colors placeholder:text-white placeholder:uppercase"
                     />
                   </div>
 
@@ -244,7 +244,7 @@ export default function LocateSalonPage() {
                   <select
                     value={cityFilter}
                     onChange={onCityChange}
-                    className="w-full px-4 py-3 border-2 border-black bg-black text-white text-sm font-bold uppercase outline-none cursor-pointer appearance-none"
+                    className="w-full px-4 py-3 border-2 border-primary border-black bg-black text-white text-sm font-semibold uppercase outline-none cursor-pointer appearance-none"
                   >
                     <option value="">— Browse All Cities —</option>
                     {cities.map(c => (
