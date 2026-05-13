@@ -2,11 +2,35 @@
 
 import { useForm }     from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState }    from "react";
+import { useState, useEffect } from "react";
 import { useRouter }   from "next/navigation";
 import { FormField }   from "@/components/ui/FormField";
 import Button          from "@/components/ui/Button";
-import { BookingSchema, CITIES, SERVICES, HOURS } from "@/lib/schemas";
+import { BookingSchema, SERVICES, HOURS } from "@/lib/schemas";
+
+// ── IST time helpers ──────────────────────────────────────────────────────────
+
+function getNowIST() {
+  return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+}
+
+function toISTDateStr(date) {
+  const ist = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  return [
+    ist.getFullYear(),
+    String(ist.getMonth() + 1).padStart(2, "0"),
+    String(ist.getDate()).padStart(2, "0"),
+  ].join("-");
+}
+
+function parseHour24(timeStr) {
+  // "10:00 AM" → 10, "1:00 PM" → 13, "12:00 PM" → 12, "12:00 AM" → 0
+  const [time, period] = timeStr.split(" ");
+  let h = parseInt(time.split(":")[0], 10);
+  if (period === "PM" && h !== 12) h += 12;
+  if (period === "AM" && h === 12) h = 0;
+  return h;
+}
 
 // ── Shared class strings ──────────────────────────────────────────────────────
 
@@ -19,38 +43,106 @@ const BASE_INPUT =
 const INPUT_ERR_CLS =
   BASE_INPUT + " border-red-400 focus:border-red-300";
 
-const mkCls  = (border) => BASE_INPUT + ` ${border} focus:border-white`;
-const inp    = (hasError, border) => hasError ? INPUT_ERR_CLS : mkCls(border);
-const sel    = (hasError, border, isEmpty) => inp(hasError, border) + " cursor-pointer pr-5" + (isEmpty ? " uppercase" : "");
+const mkCls = (border) => BASE_INPUT + ` ${border} focus:border-white`;
+const inp   = (hasError, border) => hasError ? INPUT_ERR_CLS : mkCls(border);
+const sel   = (hasError, border, isEmpty) =>
+  inp(hasError, border) + " cursor-pointer pr-5" + (isEmpty ? " uppercase" : "");
 
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function BookingForm({ inputBorder = "border-[var(--primary)]" }) {
   const router = useRouter();
-  const [serverError, setServerError] = useState("");
+  const [serverError,   setServerError]   = useState("");
+  const [cities,        setCities]        = useState([]);
+  const [salonsInCity,  setSalonsInCity]  = useState([]);
+  const [loadingSalons, setLoadingSalons] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/salons/cities")
+      .then(r => r.json())
+      .then(d => setCities(d.cities ?? []))
+      .catch(() => {});
+  }, []);
 
   const {
     register,
     handleSubmit,
     reset,
     watch,
+    setValue,
+    setError,
+    clearErrors,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver:       zodResolver(BookingSchema),
     mode:           "onChange",
     reValidateMode: "onChange",
     defaultValues: {
-      name:          "",
-      contact:       "",
-      email:         "",
-      gender:        "",
-      city:          "",
-      service:       "",
-      preferredTime: "",
+      name:            "",
+      contact:         "",
+      email:           "",
+      gender:          "",
+      city:            "",
+      salonName:       "",
+      appointmentDate: "",
+      service:         "",
+      preferredTime:   "",
     },
   });
 
+  const cityValue     = watch("city");
+  const selectedDate  = watch("appointmentDate");
+  const selectedTime  = watch("preferredTime");
+  const selectedSalon = watch("salonName");
+
+  // ── Fetch salons when city changes ────────────────────────────────────────
+  useEffect(() => {
+    setValue("salonName", "");
+    clearErrors("salonName");
+    if (!cityValue) { setSalonsInCity([]); return; }
+    setLoadingSalons(true);
+    fetch(`/api/salons?city=${encodeURIComponent(cityValue)}&limit=50`)
+      .then(r => r.json())
+      .then(d => setSalonsInCity(d.salons ?? []))
+      .catch(() => setSalonsInCity([]))
+      .finally(() => setLoadingSalons(false));
+  }, [cityValue, setValue, clearErrors]);
+
+  // ── Clear salon error when a salon is selected ────────────────────────────
+  useEffect(() => {
+    if (selectedSalon) clearErrors("salonName");
+  }, [selectedSalon, clearErrors]);
+
+  // ── IST-aware date / time logic ───────────────────────────────────────────
+  const nowIST        = getNowIST();
+  const todayISTStr   = toISTDateStr(nowIST);
+  const currentHourIST = nowIST.getHours();
+  // Block today entirely once all slots are past (≥ 9 PM = last slot hour)
+  const isPast9PMIST  = currentHourIST >= 21;
+  const minDateStr    = isPast9PMIST
+    ? toISTDateStr(new Date(nowIST.getTime() + 86_400_000))
+    : todayISTStr;
+
+  // For same-day bookings, only show future time slots
+  const availableHours = selectedDate === todayISTStr
+    ? HOURS.filter(h => parseHour24(h) > currentHourIST)
+    : HOURS;
+
+  // Reset preferredTime if the selected slot is no longer available
+  useEffect(() => {
+    if (selectedTime && !availableHours.includes(selectedTime)) {
+      setValue("preferredTime", "");
+    }
+  }, [selectedDate]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Submit ────────────────────────────────────────────────────────────────
   const onSubmit = async (data) => {
+    // Salon is required when the city has active salons
+    if (cityValue && salonsInCity.length > 0 && !data.salonName) {
+      setError("salonName", { type: "manual", message: "Please select a salon." });
+      return;
+    }
+
     setServerError("");
     try {
       const res  = await fetch("/api/appointments", {
@@ -66,9 +158,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]" })
       }
 
       reset();
-      // Redirect to dedicated thank-you page, pass booking ID in URL
       router.push(`/salon-book-appointment/thank-you?id=${json.bookingId}`);
-
     } catch {
       setServerError("Network error. Please check your connection and try again.");
     }
@@ -140,7 +230,59 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]" })
             {...register("city")}
           >
             <option value="">Select city</option>
-            {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {cities.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </FormField>
+
+        {/* SALON NAME — shown only when a city is selected */}
+        {cityValue && (
+          <FormField id="bf-salon" label="Select Salon" error={errors.salonName?.message} isSelect>
+            <select
+              id="bf-salon"
+              disabled={loadingSalons}
+              className={sel(!!errors.salonName, inputBorder, !watch("salonName"))}
+              {...register("salonName")}
+            >
+              <option value="">
+                {loadingSalons
+                  ? "Loading salons…"
+                  : salonsInCity.length === 0
+                    ? "No salons available in this city"
+                    : "Select salon"}
+              </option>
+              {salonsInCity.map(s => (
+                <option key={s._id} value={s.name}>{s.name}</option>
+              ))}
+            </select>
+          </FormField>
+        )}
+
+        {/* APPOINTMENT DATE */}
+        <FormField id="bf-date" label="Appointment Date" error={errors.appointmentDate?.message}>
+          <input
+            id="bf-date"
+            type="date"
+            min={minDateStr}
+            className={inp(!!errors.appointmentDate, inputBorder) + " [&::-webkit-calendar-picker-indicator]:invert"}
+            {...register("appointmentDate")}
+          />
+        </FormField>
+
+        {/* PREFERRED TIME — filtered for same-day bookings */}
+        <FormField id="bf-time" label="Preferred Time" error={errors.preferredTime?.message} isSelect>
+          <select
+            id="bf-time"
+            className={sel(!!errors.preferredTime, inputBorder, !watch("preferredTime"))}
+            {...register("preferredTime")}
+          >
+            <option value="">
+              {selectedDate === todayISTStr && availableHours.length === 0
+                ? "No slots available today"
+                : "Select time"}
+            </option>
+            {availableHours.map(h => (
+              <option key={h} value={h}>{h}</option>
+            ))}
           </select>
         </FormField>
 
@@ -153,18 +295,6 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]" })
           >
             <option value="">Select service</option>
             {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
-          </select>
-        </FormField>
-
-        {/* PREFERRED TIME */}
-        <FormField id="bf-time" label="Preferred Time" error={errors.preferredTime?.message} isSelect>
-          <select
-            id="bf-time"
-            className={sel(!!errors.preferredTime, inputBorder, !watch("preferredTime"))}
-            {...register("preferredTime")}
-          >
-            <option value="">Select time</option>
-            {HOURS.map(h => <option key={h} value={h}>{h}</option>)}
           </select>
         </FormField>
 
@@ -187,8 +317,6 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]" })
             disabled={isSubmitting}
           />
         </div>
-
-        
 
       </form>
     </div>

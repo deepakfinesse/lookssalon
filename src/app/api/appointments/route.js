@@ -116,7 +116,7 @@ export async function GET(request) {
         .sort({ createdAt: -1 })
         .skip((page - 1) * limit)
         .limit(limit)
-        .select("bookingId name email contact service city gender preferredTime status notes createdAt updatedAt")
+        .select("bookingId name email contact service city salonName gender preferredTime appointmentDate status notes createdAt updatedAt")
         .lean(),
 
       Appointment.countDocuments(query),

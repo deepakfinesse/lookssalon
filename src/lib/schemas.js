@@ -2,10 +2,6 @@ import { z } from "zod";
 
 // ── Shared enum values (mirrors Mongoose schema — change in one place only) ───
 
-export const CITIES = [
-  "Mumbai","Delhi","Bengaluru","Hyderabad","Chennai",
-  "Kolkata","Pune","Ahmedabad","Jaipur","Lucknow","Other",
-];
 
 export const SERVICES = [
   "Hair Cut & Styling","Hair Color","Hair Treatment","Bridal Makeup",
@@ -16,6 +12,7 @@ export const HOURS = [
   "10:00 AM","11:00 AM","12:00 PM",
   "1:00 PM","2:00 PM","3:00 PM",
   "4:00 PM","5:00 PM","6:00 PM",
+  "7:00 PM","8:00 PM","9:00 PM"
 ];
 
 export const STATUSES = ["pending","confirmed","completed","cancelled"];
@@ -53,10 +50,17 @@ export const BookingSchema = z.object({
     invalid_type_error: "Please select a valid gender.",
   }),
 
-  city: z.enum(CITIES, {
-    required_error:  "Please select your city.",
-    invalid_type_error: "Please select a valid city.",
-  }),
+  city: z
+    .string({ required_error: "Please select your city." })
+    .trim()
+    .min(1, "Please select your city."),
+
+  salonName: z.string().trim().optional().default(""),
+
+  appointmentDate: z
+    .string({ required_error: "Please select an appointment date." })
+    .trim()
+    .min(1, "Please select an appointment date."),
 
   service: z.enum(SERVICES, {
     required_error:  "Please select a service type.",

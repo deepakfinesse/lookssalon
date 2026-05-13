@@ -40,6 +40,11 @@ const DATE_FMT = new Intl.DateTimeFormat("en-IN", {
 });
 const fmt = (d) => d ? DATE_FMT.format(new Date(d)) : "—";
 
+const APPT_DATE_FMT = new Intl.DateTimeFormat("en-IN", {
+  day: "2-digit", month: "long", year: "numeric",
+});
+const fmtApptDate = (d) => d ? APPT_DATE_FMT.format(new Date(d + "T00:00:00")) : "—";
+
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function StatusBadge({ status }) {
@@ -197,14 +202,15 @@ export default function AppointmentsPage() {
       const data = await res.json();
       const rows = data.appointments ?? [];
 
-      const COLS = ["Booking ID","Name","Email","Contact","Service","City","Gender","Preferred Time","Status","Notes","Booked At"];
+      const COLS = ["Booking ID","Name","Email","Contact","City","Salon","Appt. Date","Service","Gender","Preferred Time","Status","Notes","Booked At"];
       const escape = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
       const lines  = [
         COLS.join(","),
         ...rows.map(a => [
-          a.bookingId, a.name, a.email, a.contact, a.service,
-          a.city, a.gender, a.preferredTime, a.status, a.notes ?? "",
-          fmt(a.createdAt),
+          a.bookingId, a.name, a.email, a.contact,
+          a.city, a.salonName ?? "", a.appointmentDate ?? "",
+          a.service, a.gender, a.preferredTime,
+          a.status, a.notes ?? "", fmt(a.createdAt),
         ].map(escape).join(",")),
       ];
 
@@ -412,14 +418,16 @@ export default function AppointmentsPage() {
 
               <div className="grid grid-cols-2 gap-5 mb-6">
                 {[
-                  ["Booking ID", <span key="id" className="text-primary font-mono text-sm font-bold">#{selected.bookingId}</span>],
-                  ["Gender",     selected.gender],
-                  ["Email",      selected.email],
-                  ["Contact",    selected.contact],
-                  ["Service",    selected.service],
-                  ["City",       selected.city],
-                  ["Pref. Time", selected.preferredTime],
-                  ["Booked At",  fmt(selected.createdAt)],
+                  ["Booking ID",  <span key="id" className="text-primary font-mono text-sm font-bold">#{selected.bookingId}</span>],
+                  ["Gender",      selected.gender],
+                  ["Email",       selected.email],
+                  ["Contact",     selected.contact],
+                  ["City",        selected.city],
+                  ["Salon",       selected.salonName || "—"],
+                  ["Appt. Date",  fmtApptDate(selected.appointmentDate)],
+                  ["Service",     selected.service],
+                  ["Pref. Time",  selected.preferredTime],
+                  ["Booked At",   fmt(selected.createdAt)],
                 ].map(([label, value]) => (
                   <div key={label}>
                     <p className="text-grey/60 text-xs tracking-[2px] uppercase m-0 mb-1.5 font-bold">{label}</p>

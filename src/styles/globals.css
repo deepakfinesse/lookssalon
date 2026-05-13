@@ -134,7 +134,7 @@ html {
 .blog-content img {
   max-width: 100%;
   height: auto;
-  margin: 1.5rem auto;
+  margin: 1rem 0px 1.5rem 0;
   display: block;
 }
 .blog-content code {

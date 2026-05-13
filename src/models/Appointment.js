@@ -37,19 +37,17 @@ const AppointmentSchema = new Schema(
     city: {
       type: String,
       required: true,
-      enum: [
-        "Mumbai",
-        "Delhi",
-        "Bengaluru",
-        "Hyderabad",
-        "Chennai",
-        "Kolkata",
-        "Pune",
-        "Ahmedabad",
-        "Jaipur",
-        "Lucknow",
-        "Other",
-      ],
+      trim: true,
+    },
+    salonName: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    appointmentDate: {
+      type: String,
+      required: true,
+      trim: true,
     },
     service: {
       type: String,
@@ -81,6 +79,9 @@ const AppointmentSchema = new Schema(
         "4:00 PM",
         "5:00 PM",
         "6:00 PM",
+        "7:00 PM",
+        "8:00 PM",
+        "9:00 PM",
       ],
     },
     status: {
@@ -111,7 +112,13 @@ AppointmentSchema.index({ name: 1 });
 AppointmentSchema.index({ email: 1 });
 AppointmentSchema.index({ contact: 1 });
 
-// ── Prevent model re-compilation on every hot reload (Next.js dev) ────────────
+// ── Model registration ────────────────────────────────────────────────────────
+// In dev, delete the cached model before re-registering so that schema changes
+// (new fields, updated enums) are always picked up on hot reload instead of
+// Mongoose silently stripping fields not present in the stale cached schema.
+if (process.env.NODE_ENV !== "production" && models.Appointment) {
+  delete models.Appointment;
+}
 const Appointment =
   models.Appointment ?? model("Appointment", AppointmentSchema);
 

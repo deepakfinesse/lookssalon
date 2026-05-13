@@ -13,7 +13,7 @@ const page = () => {
                 Our online bookings service operates between{" "}
                 <strong className="text-primary font-semibold">10:00a.m.</strong>{" "}
                 and{" "}
-                <strong className="text-[var(--primary)] font-semibold">6:00p.m.</strong>
+                <strong className="text-[var(--primary)] font-semibold">9:00p.m.</strong>
           </p>
           <p className="text-md lg:text-lg text-white">
                 Your data is safe with us! We will only use your details to process your salon

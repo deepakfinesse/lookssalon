@@ -252,9 +252,16 @@ function emailShell(bodyRows) {
 export async function sendCustomerConfirmationEmail(appointment) {
   const {
     name, email, contact, service,
-    city, gender, preferredTime, bookingId,
+    city, salonName, gender, preferredTime,
+    appointmentDate, bookingId,
   } = appointment;
   const year = new Date().getFullYear();
+
+  const fmtApptDate = appointmentDate
+    ? new Date(appointmentDate + "T00:00:00").toLocaleDateString("en-IN", {
+        day: "2-digit", month: "long", year: "numeric",
+      })
+    : "—";
 
   const body = `
     ${emailHeader("Appointment Confirmed")}
@@ -295,12 +302,14 @@ export async function sendCustomerConfirmationEmail(appointment) {
           ${detailRow("Booking ID",
             `<strong style="color:${GOLD};font-family:monospace;
                             letter-spacing:2px">#${bookingId}</strong>`)}
-          ${detailRow("Name",           name)}
-          ${detailRow("Contact",        contact)}
-          ${detailRow("Gender",         gender)}
-          ${detailRow("Service",        service)}
-          ${detailRow("City",           city)}
-          ${detailRow("Preferred Time", preferredTime, true)}
+          ${detailRow("Name",             name)}
+          ${detailRow("Contact",          contact)}
+          ${detailRow("Gender",           gender)}
+          ${detailRow("Service",          service)}
+          ${detailRow("City",             city)}
+          ${detailRow("Salon",            salonName || "—")}
+          ${detailRow("Appointment Date", fmtApptDate)}
+          ${detailRow("Preferred Time",   preferredTime, true)}
 
         </table>
       </td>
@@ -365,9 +374,16 @@ export async function sendCustomerConfirmationEmail(appointment) {
 export async function sendAdminNotificationEmail(appointment) {
   const {
     name, email, contact, service,
-    city, gender, preferredTime, bookingId, createdAt,
+    city, salonName, gender, preferredTime,
+    appointmentDate, bookingId, createdAt,
   } = appointment;
   const year = new Date().getFullYear();
+
+  const fmtApptDate = appointmentDate
+    ? new Date(appointmentDate + "T00:00:00").toLocaleDateString("en-IN", {
+        day: "2-digit", month: "long", year: "numeric",
+      })
+    : "—";
 
   const submittedDate = new Date(createdAt).toLocaleDateString("en-IN", {
     timeZone: "Asia/Kolkata",
@@ -430,9 +446,8 @@ export async function sendAdminNotificationEmail(appointment) {
           ${detailRow("Booking ID",
             `<strong style="color:${GOLD};font-family:monospace;
                             letter-spacing:2px">#${bookingId}</strong>`)}
-          ${detailRow("Date",     submittedDate)}
-          ${detailRow("Time",
-            `<strong style="color:${GOLD}">${submittedTime} IST</strong>`)}
+          ${detailRow("Submitted",
+            `${submittedDate}, <strong style="color:${GOLD}">${submittedTime} IST</strong>`)}
           ${detailRow("Name",     name)}
           ${detailRow("Email",
             `<a href="mailto:${email}"
@@ -440,10 +455,12 @@ export async function sendAdminNotificationEmail(appointment) {
           ${detailRow("Contact",
             `<a href="tel:${contact}"
                 style="color:${GOLD};text-decoration:none">${contact}</a>`)}
-          ${detailRow("Gender",         gender)}
-          ${detailRow("City",           city)}
-          ${detailRow("Service",        service)}
-          ${detailRow("Preferred Time", preferredTime, true)}
+          ${detailRow("Gender",           gender)}
+          ${detailRow("City",             city)}
+          ${detailRow("Salon",            salonName || "—")}
+          ${detailRow("Service",          service)}
+          ${detailRow("Appointment Date", fmtApptDate)}
+          ${detailRow("Preferred Time",   preferredTime, true)}
 
         </table>
       </td>

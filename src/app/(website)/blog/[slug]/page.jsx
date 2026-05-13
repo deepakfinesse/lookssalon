@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }) {
           </h1>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-md lg:text-lg text-black border-b border-gray-100 pb-6 mb-8">
+          <div className="flex flex-wrap items-center gap-4 text-md lg:text-lg text-black border-b border-gray-100 pb-2">
             {/* <span>By <span className="font-semibold text-gray-700">{post.author || "Looks Salon"}</span></span> */}
             {publishDate && <span>{publishDate}</span>} |
             {post.readTime && <span>{post.readTime} min read</span>}
