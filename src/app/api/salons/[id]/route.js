@@ -23,13 +23,15 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ error: firstError(result) }, { status: 400 });
   }
 
+  const { id } = await params;
+
   try {
     await connectDB();
 
     const salon = await Salon.findByIdAndUpdate(
-      params.id,
+      id,
       { $set: result.data },
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true }
     ).lean();
 
     if (!salon) {
@@ -49,16 +51,18 @@ export async function PATCH(request, { params }) {
 
 // ── DELETE /api/salons/[id] — admin only ──────────────────────────────────────
 
-export async function DELETE(request, { params }) {
+export async function DELETE(_request, { params }) {
   const session = await auth();
   if (!session) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
+  const { id } = await params;
+
   try {
     await connectDB();
 
-    const salon = await Salon.findByIdAndDelete(params.id);
+    const salon = await Salon.findByIdAndDelete(id);
     if (!salon) {
       return NextResponse.json({ error: "Salon not found." }, { status: 404 });
     }

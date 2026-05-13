@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, memo } from "react";
 import { useRouter } from "next/navigation";
-import { HiOutlineEye, HiOutlinePencil, HiOutlinePlus, HiOutlineCheck, HiOutlineX } from "react-icons/hi";
+import { HiOutlinePencil, HiOutlinePlus, HiOutlineCheck, HiOutlineX } from "react-icons/hi";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -245,16 +245,19 @@ export default function SalonsPage() {
   const fetchPage = useCallback(async (page = 1, q = search) => {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ page, limit: 50, search: q, admin: "1" });
+      // Limit 500 covers all ~200 salons in one request so stats are accurate
+      const params = new URLSearchParams({ page, limit: 500, search: q, admin: "1" });
       const res  = await fetch(`/api/salons?${params}`);
       if (res.status === 401) { router.push("/dashboard/login"); return; }
       const data = await res.json();
       const list = data.salons ?? [];
       setSalons(list);
       setPagination(data.pagination ?? {});
-      const active   = list.filter(s => s.isActive).length;
-      const total    = data.pagination?.total ?? list.length;
-      setStats({ total, active: list.filter(s => s.isActive).length, inactive: list.filter(s => !s.isActive).length });
+      setStats({
+        total:    data.pagination?.total ?? list.length,
+        active:   list.filter(s => s.isActive).length,
+        inactive: list.filter(s => !s.isActive).length,
+      });
     } catch {
       showToast("Failed to load salons.", "error");
     } finally {
@@ -340,10 +343,6 @@ export default function SalonsPage() {
   const openEdit = (salon) => { setModalError(""); setModal({ mode: "edit", salon }); };
   const closeModal = () => { if (!saving) setModal(null); };
 
-  // Compute stats from current page (accurate for small datasets)
-  const activeCount   = salons.filter(s => s.isActive).length;
-  const inactiveCount = salons.filter(s => !s.isActive).length;
-
   return (
     <>
       {/* Toast */}
@@ -362,9 +361,9 @@ export default function SalonsPage() {
 
         {/* Stats */}
         <div className="flex gap-3 mb-8 flex-wrap">
-          <StatCard label="Total Salons" value={pagination.total || salons.length} />
-          <StatCard label="Active"       value={activeCount}   valueCls="text-emerald-600" />
-          <StatCard label="Inactive"     value={inactiveCount} valueCls="text-red-500" />
+          <StatCard label="Total Salons" value={stats.total}    />
+          <StatCard label="Active"       value={stats.active}   valueCls="text-emerald-600" />
+          <StatCard label="Inactive"     value={stats.inactive} valueCls="text-red-500" />
         </div>
 
         {/* Toolbar */}

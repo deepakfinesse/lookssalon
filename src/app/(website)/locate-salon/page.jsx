@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import BookAppointment from "@/components/layout/BookAppointment";
 import PartnerBrands from "@/components/layout/PartnerBrands";
 import FadeUp from "@/components/animation/FadeUp";
