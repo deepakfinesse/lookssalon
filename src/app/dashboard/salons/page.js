@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef, memo } from "react";
 import { useRouter } from "next/navigation";
-import { HiOutlinePencil, HiOutlinePlus, HiOutlineCheck, HiOutlineX } from "react-icons/hi";
+import { HiOutlinePencil, HiOutlinePlus, HiOutlineCheck, HiOutlineX,
+         HiOutlineDownload, HiOutlineUpload, HiOutlineTemplate } from "react-icons/hi";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -34,6 +35,267 @@ function salonToForm(s) {
     bookAppointmentUrl: s.bookAppointmentUrl ?? "",
     isActive: s.isActive ?? true,
   };
+}
+
+// ── CSV helpers ───────────────────────────────────────────────────────────────
+
+const CSV_HEADERS = ["name","city","address","phone1","phone2","phone3","timing",
+                     "googleMapUrl","salonTourUrl","bookAppointmentUrl","isActive"];
+
+function csvQuote(val) {
+  const s = String(val ?? "");
+  return s.includes(",") || s.includes('"') || s.includes("\n")
+    ? `"${s.replace(/"/g, '""')}"`
+    : s;
+}
+
+function salonsToCsv(list) {
+  const rows = [CSV_HEADERS.join(",")];
+  for (const s of list) {
+    rows.push([
+      s.name, s.city, s.address,
+      s.phones?.[0] ?? "", s.phones?.[1] ?? "", s.phones?.[2] ?? "",
+      s.timing,
+      s.googleMapUrl ?? "", s.salonTourUrl ?? "", s.bookAppointmentUrl ?? "",
+      s.isActive ? "true" : "false",
+    ].map(csvQuote).join(","));
+  }
+  return rows.join("\r\n");
+}
+
+function downloadBlob(content, filename, mime = "text/csv;charset=utf-8;") {
+  const bom  = new Uint8Array([0xEF, 0xBB, 0xBF]); // UTF-8 BOM for Excel
+  const blob = new Blob([bom, content], { type: mime });
+  const url  = URL.createObjectURL(blob);
+  const a    = Object.assign(document.createElement("a"), { href: url, download: filename });
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+const CSV_TEMPLATE =
+  CSV_HEADERS.join(",") + "\r\n" +
+  ["Vibhav Nagar","Agra","Shop 12 Near Vibhav Nagar Chauraha Agra 282004",
+   "9876543210","","","10:00 AM - 09:00 PM",
+   "https://maps.google.com/?q=example","","","true"].map(csvQuote).join(",");
+
+// ── Import Modal ───────────────────────────────────────────────────────────────
+
+function ImportModal({ onClose, onImportDone }) {
+  const [file,     setFile]     = useState(null);
+  const [preview,  setPreview]  = useState(null); // { rows, errors }
+  const [result,   setResult]   = useState(null); // API response
+  const [loading,  setLoading]  = useState(false);
+  const [error,    setError]    = useState("");
+  const fileRef = useRef(null);
+
+  function parsePreview(text) {
+    const lines = text.split(/\r?\n/).filter(l => l.trim());
+    if (lines.length < 2) return { rows: [], errors: ["No data rows found."] };
+    return {
+      rows:   lines.slice(1, 6).map(l => l.split(",").map(c => c.replace(/^"|"$/g, "").trim())),
+      total:  lines.length - 1,
+      errors: [],
+    };
+  }
+
+  const handleFile = (e) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    setError("");
+    setResult(null);
+    if (f.size > 500_000) { setError("File too large. Maximum 500 KB."); return; }
+    setFile(f);
+    const reader = new FileReader();
+    reader.onload = (ev) => setPreview(parsePreview(ev.target.result));
+    reader.readAsText(f);
+  };
+
+  const handleSubmit = async () => {
+    if (!file) return;
+    setLoading(true);
+    setError("");
+    setResult(null);
+    const fd = new FormData();
+    fd.append("file", file);
+    try {
+      const res  = await fetch("/api/salons/import", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok && res.status !== 207 && res.status !== 422) {
+        setError(data.error || "Import failed.");
+      } else {
+        setResult(data);
+        if (data.inserted > 0) onImportDone();
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const headerCols = CSV_HEADERS;
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/40 z-[1000] flex items-center justify-center p-5"
+      onClick={e => e.target === e.currentTarget && !loading && onClose()}
+      role="dialog" aria-modal="true" aria-label="Import Salons from CSV"
+    >
+      <div className="bg-white border border-black/10 rounded w-full max-w-170 max-h-[90vh] overflow-y-auto shadow-xl">
+
+        {/* Header */}
+        <div className="flex items-center justify-between px-7 py-5 border-b border-black/10">
+          <p className="text-foreground text-lg font-bold m-0">Import Salons from CSV</p>
+          <button onClick={onClose} disabled={loading} aria-label="Close"
+            className="bg-transparent border-0 text-grey/60 text-2xl cursor-pointer leading-none hover:text-foreground disabled:opacity-40">✕</button>
+        </div>
+
+        <div className="p-7 flex flex-col gap-5">
+
+          {/* Instructions */}
+          <div className="bg-primary/5 border border-primary/20 rounded p-4 text-sm text-grey">
+            <p className="font-bold text-foreground mb-1.5">CSV Format</p>
+            <p className="mb-1">Required columns: <span className="font-mono text-xs bg-black/5 px-1 rounded">name, city, address, timing, phone1</span></p>
+            <p className="text-xs text-grey/70">Optional: phone2, phone3, googleMapUrl, salonTourUrl, bookAppointmentUrl, isActive (true/false)</p>
+            <p className="mt-2 text-xs text-grey/70">Max 300 rows · Max 500 KB · Duplicates (same name + city) are skipped automatically.</p>
+          </div>
+
+          {/* Template download */}
+          <button
+            onClick={() => downloadBlob(CSV_TEMPLATE, "salons_import_template.csv")}
+            className="flex items-center gap-2 self-start px-4 py-2 border-2 border-black/10 text-grey
+                       rounded text-xs font-bold uppercase tracking-wide cursor-pointer
+                       hover:border-primary hover:text-primary transition-colors"
+          >
+            <HiOutlineTemplate size={15} /> Download Template
+          </button>
+
+          {/* File picker */}
+          {!result && (
+            <>
+              <div>
+                <label className="block text-grey/60 text-xs tracking-[2px] uppercase mb-1.5 font-bold">Select CSV File</label>
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept=".csv,text/csv"
+                  onChange={handleFile}
+                  className="block w-full text-sm text-grey
+                             file:mr-4 file:py-2 file:px-4 file:rounded
+                             file:border-0 file:text-xs file:font-bold file:uppercase
+                             file:bg-primary file:text-black file:cursor-pointer
+                             hover:file:opacity-90"
+                />
+              </div>
+
+              {error && (
+                <div className="bg-red-50 border border-red-300 text-red-600 text-sm px-4 py-3 rounded">{error}</div>
+              )}
+
+              {/* Preview */}
+              {preview && preview.rows.length > 0 && (
+                <div>
+                  <p className="text-grey/60 text-xs tracking-[2px] uppercase mb-2 font-bold">
+                    Preview — {preview.total} row{preview.total !== 1 ? "s" : ""} detected
+                    {preview.total > 5 ? " (showing first 5)" : ""}
+                  </p>
+                  <div className="overflow-x-auto border border-black/10 rounded text-xs">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-black/3">
+                          {headerCols.map(h => (
+                            <th key={h} className="px-3 py-2 text-left text-grey/60 font-bold whitespace-nowrap border-b border-black/10">
+                              {h}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {preview.rows.map((row, i) => (
+                          <tr key={i} className="border-b border-black/5">
+                            {row.map((cell, j) => (
+                              <td key={j} className="px-3 py-2 text-grey max-w-40 truncate">{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {preview.errors?.map((e, i) => (
+                    <p key={i} className="text-red-500 text-xs mt-1">{e}</p>
+                  ))}
+                </div>
+              )}
+
+              {/* Actions */}
+              <div className="flex gap-3 pt-2 border-t border-black/10">
+                <button
+                  onClick={handleSubmit}
+                  disabled={!file || loading}
+                  className="flex-1 px-5 py-3 bg-primary border-2 border-primary text-black text-sm font-bold
+                             uppercase tracking-wide rounded cursor-pointer transition-opacity disabled:opacity-40"
+                >
+                  {loading ? "Importing…" : "Import Salons"}
+                </button>
+                <button
+                  onClick={onClose}
+                  disabled={loading}
+                  className="px-5 py-3 bg-white border-2 border-black/10 text-grey text-sm font-bold
+                             uppercase tracking-wide rounded cursor-pointer hover:border-primary hover:text-primary transition-colors disabled:opacity-40"
+                >Cancel</button>
+              </div>
+            </>
+          )}
+
+          {/* Results */}
+          {result && (
+            <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-emerald-50 border border-emerald-200 rounded p-4 text-center">
+                  <p className="text-[28px] font-light text-emerald-600 leading-none mb-1">{result.inserted}</p>
+                  <p className="text-xs text-emerald-600/70 uppercase tracking-wide font-bold">Inserted</p>
+                </div>
+                <div className="bg-amber-50 border border-amber-200 rounded p-4 text-center">
+                  <p className="text-[28px] font-light text-amber-600 leading-none mb-1">{result.skipped ?? 0}</p>
+                  <p className="text-xs text-amber-600/70 uppercase tracking-wide font-bold">Skipped</p>
+                </div>
+                <div className="bg-red-50 border border-red-200 rounded p-4 text-center">
+                  <p className="text-[28px] font-light text-red-500 leading-none mb-1">{result.errors?.length ?? 0}</p>
+                  <p className="text-xs text-red-500/70 uppercase tracking-wide font-bold">Errors</p>
+                </div>
+              </div>
+
+              {result.skippedList?.length > 0 && (
+                <div className="bg-amber-50 border border-amber-200 rounded p-3 text-xs text-amber-700">
+                  <p className="font-bold mb-1">Skipped (already exist):</p>
+                  <ul className="list-disc list-inside space-y-0.5">
+                    {result.skippedList.map((s, i) => <li key={i}>{s}</li>)}
+                  </ul>
+                </div>
+              )}
+
+              {result.errors?.length > 0 && (
+                <div className="bg-red-50 border border-red-300 rounded p-3 text-xs text-red-600">
+                  <p className="font-bold mb-1">Row errors:</p>
+                  <ul className="list-disc list-inside space-y-0.5">
+                    {result.errors.map((e, i) => (
+                      <li key={i}>{typeof e === "string" ? e : `Row ${e.row}: ${e.error}`}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <button
+                onClick={onClose}
+                className="w-full px-5 py-3 bg-primary border-2 border-primary text-black text-sm font-bold
+                           uppercase tracking-wide rounded cursor-pointer transition-opacity hover:opacity-90"
+              >Done</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
@@ -235,6 +497,7 @@ export default function SalonsPage() {
   const [updatingId,  setUpdatingId]  = useState(null);
   const [toast,       setToast]       = useState(null);
   const [deleting,    setDeleting]    = useState(null);
+  const [importOpen,  setImportOpen]  = useState(false);
 
   const showToast = useCallback((message, type = "success") => {
     if (toastTimer.current) clearTimeout(toastTimer.current);
@@ -386,6 +649,25 @@ export default function SalonsPage() {
           >↻</button>
 
           <button
+            onClick={() => downloadBlob(salonsToCsv(salons), "salons_export.csv")}
+            disabled={salons.length === 0}
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-black/10 text-grey
+                       rounded text-xs tracking-wide uppercase font-bold cursor-pointer
+                       hover:border-primary hover:text-primary transition-colors disabled:opacity-40"
+          >
+            <HiOutlineDownload size={15} /> Export CSV
+          </button>
+
+          <button
+            onClick={() => setImportOpen(true)}
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-black/10 text-grey
+                       rounded text-xs tracking-wide uppercase font-bold cursor-pointer
+                       hover:border-primary hover:text-primary transition-colors"
+          >
+            <HiOutlineUpload size={15} /> Import CSV
+          </button>
+
+          <button
             onClick={openAdd}
             className="flex items-center gap-2 px-5 py-2.5 bg-primary border-2 border-primary text-black
                        rounded text-xs tracking-wide uppercase font-bold cursor-pointer hover:opacity-90 transition-opacity"
@@ -463,6 +745,14 @@ export default function SalonsPage() {
           onSave={handleSave}
           saving={saving}
           error={modalError}
+        />
+      )}
+
+      {/* Import Modal */}
+      {importOpen && (
+        <ImportModal
+          onClose={() => setImportOpen(false)}
+          onImportDone={() => { setImportOpen(false); fetchPage(1, search); showToast("Salons imported successfully."); }}
         />
       )}
 
