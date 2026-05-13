@@ -3,6 +3,7 @@ import FadeUp from "@/components/animation/FadeUp";
 import BookAppointment from "@/components/layout/BookAppointment";
 import PartnerBrands from "@/components/layout/PartnerBrands";
 import Image from "next/image";
+import Link from "next/link";
 
 
 const services = [
@@ -47,27 +48,32 @@ export default function ladiesServices() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-30  p-4">
             {/* Left Images */}
             <div className="space-y-14">
-              <Image
-                src="/img/services/mens-one.webp"
-                alt=""
-                width={532}
-                height={651}
-                className="w-full h-auto"
-              />
-              <Image
-                src="/img/services/mens-three.webp"
-                alt=""
-                width={532}
-                height={483}
-                className="w-full h-auto"
-              />
+              <div className="overflow-hidden group">
+                <Image
+                  src="/img/services/mens-one.webp"
+                  alt=""
+                  width={532}
+                  height={651}
+                  className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="overflow-hidden group">
+                <Image
+                  src="/img/services/mens-three.webp"
+                  alt=""
+                  width={532}
+                  height={483}
+                  className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
 
               {/* CTA BOX */}
-              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white">
-                <h4 className="text-3xl lg:text-6xl font-medium leading-snug">
+              <Link href="/salon-book-appointment" className="relative block overflow-hidden border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white group cursor-pointer">
+                <h4 className="relative z-10 text-3xl lg:text-6xl font-medium leading-snug transition duration-300 group-hover:text-white">
                   Book Now & give yourself a head turning LOOK
                 </h4>
-              </div>
+                <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+              </Link>
             </div>
 
             {/* Right Content */}
@@ -77,41 +83,63 @@ export default function ladiesServices() {
                   SERVICES
                 </h3>
 
-                <Image
-                  src="/img/services/mens-two.webp"
-                  alt=""
-                  width={532}
-                  height={336}
-                  className="w-full mb-4"
-                />
+                <div className="overflow-hidden group mb-4">
+                  <Image
+                    src="/img/services/mens-two.webp"
+                    alt=""
+                    width={532}
+                    height={336}
+                    className="w-full transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
 
                 <ul className="text-center text-[44px] font-extrabold my-15 space-y-2">
-                  <li>
-                    <FadeUp delay={0.1}>CUT & HAIR CARE</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-0" className="block">
+                      <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">CUT & HAIR CARE</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
-                  <li>
-                    <FadeUp delay={0.2}>BEARD CARE</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-1" className="block">
+                      <FadeUp delay={0.2}><span className="relative z-10 transition duration-300 group-hover:text-white">BEARD CARE</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
-                  <li>
-                    <FadeUp delay={0.3}>HAIR CARE</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-2" className="block">
+                      <FadeUp delay={0.3}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR CARE</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
-                  <li>
-                    <FadeUp delay={0.4}>HAIR COLOR</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-3" className="block">
+                      <FadeUp delay={0.4}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR COLOR</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
-                  <li>
-                    <FadeUp delay={0.5}>HAIR TEXTURE</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-4" className="block">
+                      <FadeUp delay={0.5}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR TEXTURE</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
-                  <li>
-                    <FadeUp delay={0.6}>HAIR SPA TREATMENTS</FadeUp>
+                  <li className="relative overflow-hidden group">
+                    <a href="#service-5" className="block">
+                      <FadeUp delay={0.6}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR SPA TREATMENTS</span></FadeUp>
+                      <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                    </a>
                   </li>
                 </ul>
-                <Image
-                  src="/img/services/mens-four.webp"
-                  alt=""
-                  width={400}
-                  height={200}
-                  className="w-full mt-4"
-                />
+                <div className="overflow-hidden group mt-4">
+                  <Image
+                    src="/img/services/mens-four.webp"
+                    alt=""
+                    width={400}
+                    height={200}
+                    className="w-full transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -140,8 +168,9 @@ export default function ladiesServices() {
           {services.map((item, index) => (
             <div
               key={index}
+              id={`service-${index}`}
               className={`
-              
+
               ${
                 index % 2 === 0 ? "bg-black text-white" : "bg-[#fff] text-black"
               }

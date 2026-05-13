@@ -33,13 +33,14 @@ const page = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
             {/* CARD 1 */}
             <FadeUp delay={0.3}>
-            <div className="flex flex-col items-center">
-              <div className="relative">
+            <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
+              <div className="relative overflow-hidden">
                 <Image
                   src="/img/all/prepaid-blue.webp"
                   width={320}
                   height={200}
                   alt="Looks Blue"
+                  className="transition-transform duration-500 group-hover:scale-95"
                 />
 
                 {/* Reflection */}
@@ -78,13 +79,14 @@ const page = () => {
             </FadeUp>
             <FadeUp delay={0.3}>
             {/* CARD 2 */}
-            <div className="flex flex-col items-center">
-              <div className="relative">
+            <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
+              <div className="relative overflow-hidden">
                 <Image
                   src="/img/all/prepaid-silver.webp"
                   width={320}
                   height={200}
                   alt="Looks Silver"
+                  className="transition-transform duration-500 group-hover:scale-95"
                 />
               </div>
 
@@ -115,13 +117,14 @@ const page = () => {
             
             <FadeUp delay={0.3}>
             {/* CARD 3 */}
-            <div className="flex flex-col items-center">
-              <div className="relative">
+            <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
+              <div className="relative overflow-hidden">
                 <Image
                   src="/img/all/prepaid-gold.webp"
                   width={320}
                   height={200}
                   alt="Looks Gold"
+                  className="transition-transform duration-500 group-hover:scale-95"
                 />
               </div>
               <h2 className="text-2xl lg:text-3xl font-semibold  uppercase text-[#CA9957]">

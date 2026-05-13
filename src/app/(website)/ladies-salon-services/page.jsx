@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import FadeUp from "@/components/animation/FadeUp";
 import BookAppointment from "@/components/layout/BookAppointment";
 import PartnerBrands from "@/components/layout/PartnerBrands";
@@ -73,15 +74,20 @@ export default function ladiesServices() {
 
           {/* Left Images */}
           <div className="space-y-14">
-            <Image src="/img/services/ladies-one.webp" alt="" width={400} height={300} className="w-full h-auto" />
-            <Image src="/img/services/ladies-two.webp" alt="" width={400} height={300} className="w-full h-auto" />
+            <div className="overflow-hidden group">
+              <Image src="/img/services/ladies-one.webp" alt="" width={400} height={300} className="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
+            </div>
+            <div className="overflow-hidden group">
+              <Image src="/img/services/ladies-two.webp" alt="" width={400} height={300} className="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
+            </div>
 
              {/* CTA BOX */}
-              <div className="border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white">
-                <h4 className="text-3xl lg:text-6xl font-medium leading-snug">
+              <Link href="/salon-book-appointment" className="relative block overflow-hidden border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white group cursor-pointer">
+                <h4 className="relative z-10 text-3xl lg:text-6xl font-medium leading-snug transition duration-300 group-hover:text-white">
                   Book Now & give yourself a head turning LOOK
                 </h4>
-              </div>
+                <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+              </Link>
           </div>
 
           {/* Right Content */}
@@ -92,20 +98,69 @@ export default function ladiesServices() {
                 SERVICES
               </h3>
 
-              <Image src="/img/services/ladies-three.webp" alt="" width={532} height={336} className="w-full mb-4" />
+              <div className="overflow-hidden group mb-4">
+                <Image src="/img/services/ladies-three.webp" alt="" width={532} height={336} className="w-full transition-transform duration-500 group-hover:scale-110" />
+              </div>
 
               <ul className="text-center text-[44px] font-extrabold my-15 space-y-2">
-                <li><FadeUp delay={0.1}>CUT & STYLE</FadeUp></li>
-                <li><FadeUp delay={0.1}>HAIR STYLING</FadeUp></li>
-                <li><FadeUp delay={0.1}>HAIR COLOUR</FadeUp></li>
-                <li><FadeUp delay={0.1}>HAIR TEXTURE SERVICES</FadeUp></li>
-                <li><FadeUp delay={0.1}>HAIR & SCALP TREATMENTS</FadeUp></li>
-                <li><FadeUp delay={0.1}>BODY REJUVENATION</FadeUp></li>
-                <li><FadeUp delay={0.1}>FACIALS & CLEAN UPS</FadeUp></li>
-                <li><FadeUp delay={0.1}>HANDS & FEET</FadeUp></li>
-                <li><FadeUp delay={0.1}>NAIL ART SERVICES</FadeUp></li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-0" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">CUT & STYLE</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-1" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR STYLING</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-2" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR COLOUR</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-3" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR TEXTURE SERVICES</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-4" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">HAIR & SCALP TREATMENTS</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-5" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">BODY REJUVENATION</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-6" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">FACIALS & CLEAN UPS</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-7" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">HANDS & FEET</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
+                <li className="relative overflow-hidden group">
+                  <a href="#service-8" className="block">
+                    <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">NAIL ART SERVICES</span></FadeUp>
+                    <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </li>
               </ul>
-              <Image src="/img/services/ladies-four.webp" alt="" width={400} height={200} className="w-full mt-4 md:p-8" />
+              <div className="overflow-hidden group mt-4 md:p-8">
+                <Image src="/img/services/ladies-four.webp" alt="" width={400} height={200} className="w-full transition-transform duration-500 group-hover:scale-110" />
+              </div>
             </div>
 
             
@@ -135,8 +190,9 @@ export default function ladiesServices() {
             
           <div
             key={index}
+            id={`service-${index}`}
             className={`
-              
+
               ${index % 2 === 0 ? 'bg-black text-white' : 'bg-[#fff] text-black'}
               p-6
             `}
@@ -206,13 +262,13 @@ export default function ladiesServices() {
                   </p>
                 </div>
                  {/* Image */}
-                <div className="relative md:-mt-36 flex flex-col  items-right">
+                <div className="relative md:-mt-36 flex flex-col items-right overflow-hidden group">
                   <Image
                     src="/img/services/nail-art-services.webp"
                     alt="Our Salon"
                     width={365}
                     height={500}
-                    className=""
+                    className="transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
               </div>
