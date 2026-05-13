@@ -181,6 +181,56 @@ export const LoginSchema = z.object({
     .min(1, "Password is required."),
 });
 
+// ── Salon schemas ─────────────────────────────────────────────────────────────
+
+export const SalonCreateSchema = z.object({
+  name: z
+    .string({ required_error: "Salon name is required." })
+    .trim()
+    .min(1, "Salon name is required.")
+    .max(100, "Name must be 100 characters or less."),
+
+  city: z
+    .string({ required_error: "City is required." })
+    .trim()
+    .min(1, "City is required.")
+    .max(100, "City must be 100 characters or less."),
+
+  address: z
+    .string({ required_error: "Address is required." })
+    .trim()
+    .min(1, "Address is required.")
+    .max(300, "Address must be 300 characters or less."),
+
+  phones: z
+    .array(z.string().trim().min(1, "Phone number cannot be empty.").max(20))
+    .min(1, "At least one phone number is required.")
+    .max(3, "Maximum 3 phone numbers allowed."),
+
+  timing: z
+    .string({ required_error: "Timing is required." })
+    .trim()
+    .min(1, "Timing is required.")
+    .max(100, "Timing must be 100 characters or less."),
+
+  googleMapUrl:       z.string().trim().max(500).optional().default(""),
+  salonTourUrl:       z.string().trim().max(500).optional().default(""),
+  bookAppointmentUrl: z.string().trim().max(500).optional().default(""),
+  isActive:           z.boolean().optional().default(true),
+});
+
+export const SalonUpdateSchema = SalonCreateSchema.partial().refine(
+  data => Object.keys(data).length > 0,
+  { message: "Provide at least one field to update." }
+);
+
+export const SalonQuerySchema = z.object({
+  page:   z.coerce.number().int().min(1).default(1),
+  limit:  z.coerce.number().int().min(1).max(500).default(200),
+  search: z.string().trim().max(100).default(""),
+  city:   z.string().trim().max(100).default(""),
+});
+
 // ── Helper: format first Zod error as a plain string ─────────────────────────
 
 export function firstError(result) {
