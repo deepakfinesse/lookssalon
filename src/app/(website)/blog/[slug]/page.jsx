@@ -146,17 +146,17 @@ export default async function BlogPostPage({ params }) {
       <article className="bg-white">
         {/* ── Featured Image ── */}
         {post.featuredImage?.url && (
-          <div className="w-full overflow-hidden max-h-[520px]">
+          <div className="w-full max-w-6xl mx-auto">
             <img
               src={post.featuredImage.url}
               alt={post.featuredImage.alt || post.title}
-              className="w-full object-cover max-h-[520px]"
+              className="w-full h-auto"
             />
           </div>
         )}
 
         {/* ── Post Header ── */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-10 pb-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-4 pb-4">
           {/* Breadcrumb */}
           <nav className="text-xs text-gray-400 mb-6 flex items-center gap-1.5">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }) {
                 <Link
                   key={cat._id.toString()}
                   href={`/blog?category=${cat.slug}`}
-                  className="border border-primary text-grey text-lg uppercase font-bold px-5.5 py-0.5 hover:bg-primary/10 transition-colors"
+                  className="border border-primary text-grey text-sm uppercase font-bold px-5.5 py-0.5 hover:bg-primary/10 transition-colors"
                 >
                   {cat.name}
                 </Link>
@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }) {
           </h1>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-md lg:text-lg text-black border-b border-gray-100 pb-2">
+          <div className="flex flex-wrap items-center gap-4 text-sm lg:text-sm text-black border-b border-gray-100 pb-2">
             {/* <span>By <span className="font-semibold text-gray-700">{post.author || "Looks Salon"}</span></span> */}
             {publishDate && <span>{publishDate}</span>} |
             {post.readTime && <span>{post.readTime} min read</span>}
@@ -253,14 +253,14 @@ export default async function BlogPostPage({ params }) {
                     </div>
                     <div className="p-4">
                       {p.categories?.[0] && (
-                        <span className="border border-primary text-grey text-lg font-bold uppercase px-5.5 py-0.5 mb-2 inline-block">
+                        <span className="border border-primary text-grey text-sm font-bold uppercase px-5.5 py-0.5 mb-2 inline-block">
                           {p.categories[0].name}
                         </span>
                       )}
-                      <h3 className="text-3xl text-black group-hover:text-primary font-medium transition-colors duration-300 mt-1">
+                      <h3 className="text-xl text-black group-hover:text-primary font-medium transition-colors duration-300 mt-1">
                         {p.title}
                       </h3>
-                      <p className="text-md lg:text-lg text-black mt-1 line-clamp-2">{p.excerpt}</p>
+                      <p className="text-md lg:text-md text-black mt-1 line-clamp-2">{p.excerpt}</p>
                     </div>
                   </Link>
                 ))}

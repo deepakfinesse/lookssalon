@@ -127,7 +127,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
                 </div>
 
                 <div className="pt-3 relative max-w-5xl mx-auto">
-                  <div className="absolute md:-top-20 left-0 p-4 bg-white">
+                  <div className="absolute md:-top-20 left-0 p-4 w-full bg-white">
                     {featuredPost.categories?.[0] && (
                       <span className="border-1 border-primary text-grey text-lg uppercase font-bold px-5.5 py-0.5 mb-2 inline-block">
                         {featuredPost.categories[0].name}

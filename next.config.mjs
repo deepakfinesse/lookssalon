@@ -6,7 +6,7 @@ const nextConfig = {  images: {
     ],
     // Local uploads served from /public are always allowed
   },
-  allowedDevOrigins: ['10.5.48.54'],
+  allowedDevOrigins: ['10.5.48.54', '192.168.1.11'],
 };
 
 export default nextConfig;
