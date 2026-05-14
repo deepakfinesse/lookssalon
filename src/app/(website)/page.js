@@ -25,7 +25,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           {/* Heading */}
           <FadeUp delay={0.1}>
-            <div className="text-center mb-10 md:mb-14">
+            <div className="text-center mb-4 md:mb-14">
               <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold uppercase tracking-wider text-black">
                 Looks in Numbers
               </h1>
