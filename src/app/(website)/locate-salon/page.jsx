@@ -18,11 +18,11 @@ function SalonCard({ salon }) {
 
       <p className="text-black text-base leading-relaxed">{salon.address}</p>
 
-      <div className="flex items-start gap-3">
+      <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
           <FaPhone className="text-white text-sm" />
         </div>
-        <div className="flex flex-col text-black font-medium gap-1">
+        <div className="flex flex-col md:flex-col  text-black font-medium gap-1">
           {salon.phones.map((p, i) => (
             <a key={i} href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-primary transition-colors">
               {p}
@@ -120,17 +120,15 @@ function groupByCity(salons) {
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function LocateSalonPage() {
-  const searchTimer = useRef(null);
-  const resultsRef  = useRef(null);
+  const resultsRef = useRef(null);
 
   const [salons,     setSalons]     = useState([]);
   const [cities,     setCities]     = useState([]);
   const [search,     setSearch]     = useState("");
   const [cityFilter, setCityFilter] = useState("");
   const [loading,    setLoading]    = useState(false);
-  const [fetched,    setFetched]    = useState(false); // true after first fetch
+  const [fetched,    setFetched]    = useState(false);
 
-  // Load city list for dropdown
   useEffect(() => {
     fetch("/api/salons/cities")
       .then(r => r.json())
@@ -155,33 +153,19 @@ export default function LocateSalonPage() {
     }
   }, []);
 
-  // Load all salons on mount
   useEffect(() => { fetchSalons("", ""); }, [fetchSalons]);
 
-  const handleSearch = useCallback((q, city) => {
-    if (searchTimer.current) clearTimeout(searchTimer.current);
-    searchTimer.current = setTimeout(() => {
-      fetchSalons(q, city);
-      // Smooth scroll to results on filter change
-      if (q || city) {
-        setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
-      }
-    }, 1200);
-  }, [fetchSalons]);
-
-  const onSearchInput = (e) => {
-    const q = e.target.value;
-    setSearch(q);
-    handleSearch(q, cityFilter);
+  const handleSubmit = (e) => {
+    e?.preventDefault();
+    fetchSalons(search, cityFilter);
+    setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
   };
 
   const onCityChange = (e) => {
     const city = e.target.value;
     setCityFilter(city);
-    handleSearch(search, city);
-    if (city) {
-      setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 400);
-    }
+    fetchSalons(search, city);
+    setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 400);
   };
 
   const clearFilters = () => {
@@ -229,16 +213,22 @@ export default function LocateSalonPage() {
               <FadeUp delay={0.3}>
                 <div className="flex flex-col gap-3 w-full max-w-md">
                   {/* Text search */}
-                  <div className="relative">
-                    <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-black/40 text-sm pointer-events-none" />
+                  <form onSubmit={handleSubmit} className="flex">
                     <input
-                      type="search"
+                      type="text"
                       value={search}
-                      onChange={onSearchInput}
+                      onChange={e => setSearch(e.target.value)}
                       placeholder="Enter City / Location…"
-                      className="w-full pl-10 pr-4 py-3 border-2 border-primary bg-black text-white text-sm font-semibold outline-none focus:border-primary transition-colors placeholder:text-white placeholder:uppercase"
+                      className="flex-1 min-w-0 px-4 py-3 border-2 border-r-0 border-primary bg-black text-white text-sm font-semibold outline-none placeholder:text-white/60 placeholder:uppercase"
                     />
-                  </div>
+                    <button
+                      type="submit"
+                      aria-label="Search"
+                      className="px-5 bg-primary border-2 border-primary flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity shrink-0"
+                    >
+                      <FaSearch className="text-black text-base" />
+                    </button>
+                  </form>
 
                   {/* City dropdown */}
                   <select
