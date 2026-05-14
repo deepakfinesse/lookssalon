@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 const HairColour = () => {
   return (
-    <section className="w-full bg-gradient-to-r from-[#EBF0F6] to-[#C4CAD6] pt-4">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-12 items-center gap-0">
+    <section className="w-full bg-gradient-to-r from-[#EBF0F6] to-[#C4CAD6] pt-0 md:pt-4">
+      <div className="max-w-7xl mx-auto px-4 py-10 md:py-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-0">
           {/* Image (no animation for performance) */}
           <div className="md:col-span-6">
             <Image
@@ -21,7 +21,7 @@ const HairColour = () => {
 
           {/* Content */}
           <motion.div
-            className="md:col-span-5 flex flex-col items-center justify-center text-center"
+            className="md:col-span-5 flex flex-col items-center justify-center text-center pt-3 md:pt-0 pb-0 md:pb-0"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -38,7 +38,7 @@ const HairColour = () => {
             </motion.h2>
 
             <motion.p
-              className="mt-4 text-lg sm:text-xl md:text-2xl font-medium uppercase text-black"
+              className="mt-1 md:mt-3 text-base sm:text-xl md:text-2xl font-medium uppercase text-black"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -48,7 +48,7 @@ const HairColour = () => {
             </motion.p>
 
             <motion.div
-              className="flex items-center gap-5 mt-6"
+              className="flex items-center gap-5 mt-3 md:mt-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

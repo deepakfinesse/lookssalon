@@ -30,7 +30,7 @@ const OurSalons = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-4">
+    <section className="py-10 md:py-4">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
 
@@ -83,7 +83,7 @@ const OurSalons = () => {
 
             {/* Buttons */}
             <FadeUp delay={0.3}>
-              <div className="flex items-center gap-2 md:gap-5 mt-6">
+              <div className="flex items-center gap-2 md:gap-5 mt-3 md:mt-6">
                 <Button href="/" label="locate salon Near you" />
                 <Button href="/" label="opening soon" />
               </div>
