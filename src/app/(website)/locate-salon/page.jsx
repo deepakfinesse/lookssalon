@@ -38,18 +38,18 @@ function SalonCard({ salon }) {
         <span className="text-black font-medium">{salon.timing}</span>
       </div>
 
-      <div className="flex flex-col gap-3 mt-1">
+      <div className="flex flex-col md:flex-row gap-2 mt-1">
         {salon.googleMapUrl ? (
           <a
             href={salon.googleMapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-black text-white px-5 py-3 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+            className="flex items-center gap-2 bg-black text-white px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
           >
             <FaMapMarkerAlt className="text-lg" /> Google Map
           </a>
         ) : (
-          <span className="flex items-center gap-3 bg-black/30 text-white px-5 py-3 font-bold uppercase text-sm w-fit cursor-not-allowed">
+          <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
             <FaMapMarkerAlt className="text-lg" /> Google Map
           </span>
         )}
@@ -59,19 +59,19 @@ function SalonCard({ salon }) {
             href={salon.salonTourUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-black text-white px-5 py-3 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+            className="flex items-center gap-3 bg-black text-white px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
           >
             <FaImage className="text-lg" /> Salon Tour
           </a>
         ) : (
-          <span className="flex items-center gap-3 bg-black/30 text-white px-5 py-3 font-bold uppercase text-sm w-fit cursor-not-allowed">
+          <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
             <FaImage className="text-lg" /> Salon Tour
           </span>
         )}
 
         <a
           href={bookUrl}
-          className="flex items-center justify-center border-2 border-primary text-primary px-5 py-3 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+          className="flex items-center justify-center border-2 border-primary text-primary px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
         >
           Book Appointment
         </a>
@@ -166,7 +166,7 @@ export default function LocateSalonPage() {
       if (q || city) {
         setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
       }
-    }, 380);
+    }, 1200);
   }, [fetchSalons]);
 
   const onSearchInput = (e) => {
@@ -202,21 +202,21 @@ export default function LocateSalonPage() {
 
             {/* Image */}
             <div className="md:col-span-6 flex justify-end pt-4">
-              <Image
+              {/* <Image
                 src="/img/all/salon-locator-hero.webp"
                 alt="Salon Locator"
                 width={638}
                 height={300}
                 className="w-full max-w-[638px] h-auto object-contain"
                 priority
-              />
+              /> */}
             </div>
 
             {/* Content + Search */}
             <div className="md:col-span-6 flex flex-col items-center justify-center text-center pb-6">
               <FadeUp delay={0.1}>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black leading-tight mb-4">
-                  locate salon <br /> near you
+                  locate salon near you
                 </h2>
               </FadeUp>
               <FadeUp delay={0.2}>
@@ -270,7 +270,7 @@ export default function LocateSalonPage() {
 
       {/* ── Results Section ───────────────────────────────────────────────── */}
       <section ref={resultsRef} className="w-full py-14 bg-white scroll-mt-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
 
           {/* Loading */}
           {loading && (

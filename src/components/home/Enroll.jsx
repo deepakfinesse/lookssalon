@@ -46,7 +46,7 @@ const Enroll = () => {
             <FadeUp delay={0.3}>
               {/* Buttons */}
               <div className="flex items-center gap-5 mt-6">
-                <Button href="/" label="enroll now" variant="dark" />
+                <Button href="https://www.looksschool.com/" label="enroll now" variant="dark" />
               </div>
             </FadeUp>
           </div>

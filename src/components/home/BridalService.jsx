@@ -26,7 +26,7 @@ const BridalService = () => {
 
             <FadeUp delay={0.3}>
               <div className="flex items-center gap-5 mt-6">
-                <Button href="/" label="Bridal services" variant="dark" />
+                <Button href="/ladies-salon-services" label="Bridal services" variant="dark" />
               </div>
             </FadeUp>
           </div>
