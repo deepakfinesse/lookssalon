@@ -121,7 +121,8 @@ function groupByCity(salons) {
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function LocateSalonPage() {
-  const resultsRef = useRef(null);
+  const resultsRef    = useRef(null);
+  const citiesSeeded  = useRef(false);
 
   const [salons,     setSalons]     = useState([]);
   const [cities,     setCities]     = useState([]);
@@ -129,13 +130,6 @@ export default function LocateSalonPage() {
   const [cityFilter, setCityFilter] = useState("");
   const [loading,    setLoading]    = useState(false);
   const [fetched,    setFetched]    = useState(false);
-
-  useEffect(() => {
-    fetch("/api/salons/cities")
-      .then(r => r.json())
-      .then(d => setCities(d.cities ?? []))
-      .catch(() => {});
-  }, []);
 
   const fetchSalons = useCallback(async (q, city) => {
     setLoading(true);
@@ -145,8 +139,15 @@ export default function LocateSalonPage() {
       if (city) params.set("city", city);
       const res  = await fetch(`/api/salons?${params}`);
       const data = await res.json();
-      setSalons(data.salons ?? []);
+      const list = data.salons ?? [];
+      setSalons(list);
       setFetched(true);
+      // Seed the city dropdown once from the full unfiltered load — always matches the list
+      if (!q && !city && !citiesSeeded.current) {
+        citiesSeeded.current = true;
+        const unique = [...new Set(list.map(s => s.city))].sort((a, b) => a.localeCompare(b, "en-IN"));
+        setCities(unique);
+      }
     } catch {
       setSalons([]);
     } finally {
@@ -235,7 +236,7 @@ export default function LocateSalonPage() {
                   <select
                     value={cityFilter}
                     onChange={onCityChange}
-                    className="w-full px-4 py-3 border-2 border-primary border-black bg-black text-white text-sm font-semibold uppercase outline-none cursor-pointer appearance-none"
+                    className="w-full px-4 py-3 border-2 border-primary border-black bg-black text-white text-sm font-semibold uppercase outline-none cursor-pointer appearance-none scheme-dark [&>option]:bg-black [&>option]:text-white"
                   >
                     <option value="">— Browse All Cities —</option>
                     {cities.map(c => (

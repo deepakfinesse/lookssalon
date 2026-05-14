@@ -44,8 +44,8 @@ const INPUT_ERR_CLS =
 
 const mkCls = (border) => BASE_INPUT + ` ${border} focus:border-white`;
 const inp   = (hasError, border) => hasError ? INPUT_ERR_CLS : mkCls(border);
-const sel   = (hasError, border, isEmpty) =>
-  inp(hasError, border) + " cursor-pointer pr-5" + (isEmpty ? "" : "");
+const sel   = (hasError, border) =>
+  inp(hasError, border) + " cursor-pointer pr-5 scheme-dark [&>option]:bg-[#1a1a1a] [&>option]:text-white";
 
 // ── Main component ────────────────────────────────────────────────────────────
 
@@ -230,7 +230,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
           <FormField id="bf-gender" label="Gender" error={errors.gender?.message} isSelect>
             <select
               id="bf-gender"
-              className={sel(!!errors.gender, inputBorder, !watch("gender"))}
+              className={sel(!!errors.gender, inputBorder)}
               {...register("gender")}
             >
               <option value="">Select gender</option>
@@ -246,7 +246,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
           <FormField id="bf-city" label="City" error={errors.city?.message} isSelect>
             <select
               id="bf-city"
-              className={sel(!!errors.city, inputBorder, !watch("city"))}
+              className={sel(!!errors.city, inputBorder)}
               {...register("city", {
                 onChange: () => {
                   setSalonsInCity([]);
@@ -265,7 +265,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
               <select
                 id="bf-salon"
                 disabled={loadingSalons}
-                className={sel(!!errors.salonName, inputBorder, !watch("salonName"))}
+                className={sel(!!errors.salonName, inputBorder)}
                 {...register("salonName")}
               >
                 <option value="">
@@ -298,7 +298,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
           <FormField id="bf-time" label="Preferred Time" error={errors.preferredTime?.message} isSelect>
             <select
               id="bf-time"
-              className={sel(!!errors.preferredTime, inputBorder, !watch("preferredTime"))}
+              className={sel(!!errors.preferredTime, inputBorder)}
               {...register("preferredTime")}
             >
               <option value="">
@@ -317,7 +317,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
         <FormField id="bf-service" label="Service Type" error={errors.service?.message} isSelect>
           <select
             id="bf-service"
-            className={sel(!!errors.service, inputBorder, !watch("service"))}
+            className={sel(!!errors.service, inputBorder)}
             {...register("service")}
           >
             <option value="">Select service</option>
