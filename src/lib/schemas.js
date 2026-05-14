@@ -67,11 +67,21 @@ export const BookingSchema = z.object({
     invalid_type_error: "Please select a valid service.",
   }),
 
+  otherService: z
+    .string()
+    .trim()
+    .max(200, "Please keep it under 200 characters.")
+    .optional()
+    .default(""),
+
   preferredTime: z.enum(HOURS, {
     required_error:  "Please select your preferred time.",
     invalid_type_error: "Please select a valid time.",
   }),
-});
+}).refine(
+  data => data.service !== "Other" || (data.otherService && data.otherService.trim().length > 0),
+  { message: "Please describe the service you need.", path: ["otherService"] }
+);
 
 // ── Appointment update schema (dashboard PATCH) ───────────────────────────────
 

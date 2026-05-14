@@ -251,10 +251,11 @@ function emailShell(bodyRows) {
 
 export async function sendCustomerConfirmationEmail(appointment) {
   const {
-    name, email, contact, service,
+    name, email, contact, service, otherService,
     city, salonName, gender, preferredTime,
     appointmentDate, bookingId,
   } = appointment;
+  const serviceLabel = service === "Other" && otherService ? `Other — ${otherService}` : service;
   const year = new Date().getFullYear();
 
   const fmtApptDate = appointmentDate
@@ -305,7 +306,7 @@ export async function sendCustomerConfirmationEmail(appointment) {
           ${detailRow("Name",             name)}
           ${detailRow("Contact",          contact)}
           ${detailRow("Gender",           gender)}
-          ${detailRow("Service",          service)}
+          ${detailRow("Service",          serviceLabel)}
           ${detailRow("City",             city)}
           ${detailRow("Salon",            salonName || "—")}
           ${detailRow("Appointment Date", fmtApptDate)}
@@ -373,10 +374,11 @@ export async function sendCustomerConfirmationEmail(appointment) {
 
 export async function sendAdminNotificationEmail(appointment) {
   const {
-    name, email, contact, service,
+    name, email, contact, service, otherService,
     city, salonName, gender, preferredTime,
     appointmentDate, bookingId, createdAt,
   } = appointment;
+  const serviceLabel = service === "Other" && otherService ? `Other — ${otherService}` : service;
   const year = new Date().getFullYear();
 
   const fmtApptDate = appointmentDate
@@ -458,7 +460,7 @@ export async function sendAdminNotificationEmail(appointment) {
           ${detailRow("Gender",           gender)}
           ${detailRow("City",             city)}
           ${detailRow("Salon",            salonName || "—")}
-          ${detailRow("Service",          service)}
+          ${detailRow("Service",          serviceLabel)}
           ${detailRow("Appointment Date", fmtApptDate)}
           ${detailRow("Preferred Time",   preferredTime, true)}
 
@@ -497,7 +499,7 @@ export async function sendAdminNotificationEmail(appointment) {
   await getResend().emails.send({
     from:    `Looks Salon Bookings <${process.env.RESEND_FROM_EMAIL}>`,
     to:      process.env.ADMIN_EMAIL,
-    subject: `🔔 New Booking #${bookingId} — ${name} · ${service}`,
+    subject: `🔔 New Booking #${bookingId} — ${name} · ${serviceLabel}`,
     html:    emailShell(body),
   });
 }

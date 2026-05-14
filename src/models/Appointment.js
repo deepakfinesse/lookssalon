@@ -90,6 +90,12 @@ const AppointmentSchema = new Schema(
       default: "pending",
       index: true,
     },
+    otherService: {
+      type: String,
+      default: "",
+      trim: true,
+      maxlength: 200,
+    },
     notes: {
       type: String,
       default: "",

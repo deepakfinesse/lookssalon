@@ -82,14 +82,16 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
       salonName:       "",
       appointmentDate: "",
       service:         "",
+      otherService:    "",
       preferredTime:   "",
     },
   });
 
-  const cityValue     = watch("city");
-  const selectedDate  = watch("appointmentDate");
-  const selectedTime  = watch("preferredTime");
-  const selectedSalon = watch("salonName");
+  const cityValue      = watch("city");
+  const selectedDate   = watch("appointmentDate");
+  const selectedTime   = watch("preferredTime");
+  const selectedSalon  = watch("salonName");
+  const selectedService = watch("service");
 
   // ── 1. Load city list ─────────────────────────────────────────────────────
   useEffect(() => {
@@ -324,6 +326,21 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
             {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </FormField>
+
+        {/* Other service — shown only when "Other" is selected */}
+        {selectedService === "Other" && (
+          <FormField id="bf-other-service" label="Please specify" error={errors.otherService?.message}>
+            <input
+              id="bf-other-service"
+              type="text"
+              placeholder="Describe the service you need…"
+              maxLength={200}
+              autoFocus
+              className={inp(!!errors.otherService, inputBorder)}
+              {...register("otherService")}
+            />
+          </FormField>
+        )}
 
         {/* Server-level error */}
         {serverError && (

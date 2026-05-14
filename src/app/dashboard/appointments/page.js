@@ -81,7 +81,9 @@ const TableRow = memo(function TableRow({ appt, onStatusChange, onView, updating
       </td>
 
       <td className="px-4 py-4 align-middle text-grey text-sm">{appt.contact}</td>
-      <td className="px-4 py-4 align-middle text-grey text-sm max-w-[160px]">{appt.service}</td>
+      <td className="px-4 py-4 align-middle text-grey text-sm max-w-[160px]">
+        {appt.service === "Other" && appt.otherService ? `Other — ${appt.otherService}` : appt.service}
+      </td>
       <td className="px-4 py-4 align-middle text-grey text-sm">{appt.city}</td>
       <td className="px-4 py-4 align-middle text-grey text-sm">{appt.preferredTime}</td>
 
@@ -425,7 +427,7 @@ export default function AppointmentsPage() {
                   ["City",        selected.city],
                   ["Salon",       selected.salonName || "—"],
                   ["Appt. Date",  fmtApptDate(selected.appointmentDate)],
-                  ["Service",     selected.service],
+                  ["Service",     selected.service === "Other" && selected.otherService ? `Other — ${selected.otherService}` : selected.service],
                   ["Pref. Time",  selected.preferredTime],
                   ["Booked At",   fmt(selected.createdAt)],
                 ].map(([label, value]) => (
