@@ -13,10 +13,10 @@ const PrepaidCards = () => {
         
       "
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto py-10 md:py-0 px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-10">
           {/* Image */}
-          <div className="md:col-span-7 flex justify-end pt-4">
+          <div className="md:col-span-7 flex justify-end pt-0 md:pt-4">
             <Image
               src="/img/home/prepaid-card.webp"
               alt="Pay Less Get More"
@@ -29,18 +29,18 @@ const PrepaidCards = () => {
           {/* Content */}
           <div className="md:col-span-4 flex flex-col items-center justify-center text-center">
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black leading-tight">
                 Pay Less <br /> Get More
               </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="mt-3 text-lg sm:text-xl md:text-2xl font-medium uppercase text-black">
+              <p className="mt-2 md:mt-3 text-lg sm:text-xl md:text-2xl font-medium uppercase text-black">
                 with Pre-paid cards
               </p>
             </FadeUp>
             {/* Buttons */}
             <FadeUp delay={0.3}>
-              <div className="flex items-center gap-5 mt-6">
+              <div className="flex items-center gap-5 mt-3 md:mt-6">
                 <Button
                   href="/prepaid-cards"
                   label="Buy your prepaid cards"

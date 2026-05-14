@@ -1,6 +1,6 @@
 
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Nav from './Nav';
 import Link from 'next/link';
@@ -8,7 +8,9 @@ import Button from '../ui/Button';
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const lastScrollY = useRef(0);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -16,19 +18,30 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
+      const currentScrollY = window.scrollY;
+
+      setHasScrolled(currentScrollY > 150);
+
+      if (currentScrollY < 150) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(currentScrollY < lastScrollY.current);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <>
+      <div style={{ height: '88px' }} />
       <header
-        className={`py-3 bg-white transition-shadow duration-300 ${
-          isSticky ? 'fixed top-0 left-0 w-full z-50 shadow-md' : 'relative'
-        }`}
+        className={`py-3 bg-white fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          hasScrolled ? 'shadow-md' : ''
+        } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="max-w-7xl mx-auto px-4">
           
@@ -70,12 +83,9 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Nav */}
-        <Nav isActive={isActive} toggleMenu={toggleMenu} />
       </header>
 
-      {/* Placeholder to prevent layout jump when header becomes fixed */}
-      {isSticky && <div style={{ height: '88px' }} />}
+      <Nav isActive={isActive} toggleMenu={toggleMenu} />
     </>
   );
 };

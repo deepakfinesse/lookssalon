@@ -11,7 +11,7 @@ export default async function LooksKart() {
 
   return (
     <section
-      className="relative py-24 overflow-hidden
+      className="relative py-10 md:py-24 overflow-hidden
       bg-[url('/img/home/looks-kart-bg.png')] 
       bg-cover bg-center bg-no-repeat"
     >

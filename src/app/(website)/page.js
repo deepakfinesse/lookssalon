@@ -19,13 +19,13 @@ export default function Home() {
         relative
         bg-[url('/img/home/counter-bg.webp')]
         bg-cover bg-center bg-no-repeat
-        py-10 md:py-24 lg:py-14 xl:pt-20 xl:pb-28
+        py-10 md:py-12 lg:py-14 xl:pt-20 xl:pb-28
       "
       >
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 md:px-4">
           {/* Heading */}
           <FadeUp delay={0.1}>
-            <div className="text-center mb-4 md:mb-14">
+            <div className="text-center mb-4 md:mb-6 xl:mb-12">
               <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold uppercase tracking-wider text-black">
                 Looks in Numbers
               </h1>
@@ -34,7 +34,7 @@ export default function Home() {
           <Counter
             stats={[
               { value: 250, label: "Salons Pan India" },
-              { value: 36, label: "Years of Experience" },
+              { value: 37, label: "Years of Experience" },
               { value: 7000, label: "Artists & Technicians" },
             ]}
           />

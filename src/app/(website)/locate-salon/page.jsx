@@ -188,14 +188,14 @@ export default function LocateSalonPage() {
 
             {/* Image */}
             <div className="md:col-span-6 flex justify-end pt-4">
-              {/* <Image
+              <Image
                 src="/img/all/salon-locator-hero.webp"
                 alt="Salon Locator"
                 width={638}
                 height={300}
                 className="w-full max-w-[638px] h-auto object-contain"
                 priority
-              /> */}
+              />
             </div>
 
             {/* Content + Search */}

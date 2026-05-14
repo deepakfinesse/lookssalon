@@ -166,17 +166,17 @@ const page = () => {
         <section className='bg-black'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
                 <FadeUp delay={0.1}>
-                <h2 className="text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase mb-2 text-center">
+                <h2 className="text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase mb-0 md:mb-2 text-center">
                     Our Proud Moments
                 </h2>
                 </FadeUp>
                 <div className='relative bg-black overflow-hidden py-10'>
-                  <div className="absolute left-0 right-0"  style={{ top: "42%", height: 1.5, background: "#b8860b", zIndex: 0 }}/>
+                  <div className="absolute left-0 right-0 hidden md:block"  style={{ top: "42%", height: 1.5, background: "#b8860b", zIndex: 0 }}/>
                   <FadeUp delay={0.2}>
-                  <div className="relative z-10 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+                  <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
                       {/* ── LEFT PANEL ── */}
-                      <div className="flex-1 min-w-0 mt-6">
+                      <div className="w-full md:flex-1 md:min-w-0 mt-0 md:mt-6">
                         {/* Year label sits ON the gold line */}
                         <p
                           className="text-2xl md:text-3xl font-semibold mb-6"
@@ -203,19 +203,10 @@ const page = () => {
                       </div>
 
                       {/* ── CENTER MEDAL ── */}
-                      <div
-                        className="flex-shrink-0 flex flex-col items-center"
-                        style={{ marginTop: 190 }}
-                      >
+                      <div className="order-first md:order-0 shrink-0 flex flex-col items-center mt-0 md:-mt-1.5">
                         {/* Gold outer ring → White ring → Image */}
                         <div
-                          className="rounded-full flex items-center justify-center"
-                          style={{
-                            width: 200,
-                            height: 200,
-                            
-                            
-                          }}
+                          className="relative rounded-full overflow-hidden flex items-center justify-center w-48 h-48 md:w-80 md:h-80"
                         >
                           
                             {/* Inner image circle */}
@@ -231,8 +222,8 @@ const page = () => {
                               {/* Text overlay */}
                               <div className="absolute inset-0 flex items-center justify-center">
                                 <h2
-                                  className="text-white text-center font-black leading-tight"
-                                  style={{ fontSize: "2rem", textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
+                                  className="text-white text-center text-md md:text-2xl font-black leading-tight"
+                                  style={{  textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
                                 >
                                   Indian<br />Hairdressing<br />Awards
                                 </h2>
@@ -241,9 +232,9 @@ const page = () => {
                       </div>
 
                       {/* ── RIGHT PANEL ── */}
-                      <div className="flex-1 min-w-0 text-right mt-6">
+                      <div className="w-full md:flex-1 md:min-w-0 text-left md:text-right mt-0 md:mt-6">
                         <p
-                          className="text-2xl md:text-3xl font-semibold mb-6 text-right"
+                          className="text-2xl md:text-3xl font-semibold mb-6 text-left md:text-right"
                           style={{ color: "#DFAB31" }}
                         >
                           2016-17
@@ -315,11 +306,9 @@ function AchievementCard({ item }) {
 
       {/* Gold ring + circular image */}
       <div
-        className="rounded-full p-[3px] mb-5 flex-shrink-0"
+        className="rounded-full p-[3px] mb-5 shrink-0 w-40 h-40 md:w-55 md:h-55"
         style={{
           background: "linear-gradient(145deg, #e8c96a, #a07820, #e8c96a, #7a5c10)",
-          width: 220,
-          height: 220,
         }}
       >
         <div className="w-full h-full rounded-full overflow-hidden relative bg-zinc-900">

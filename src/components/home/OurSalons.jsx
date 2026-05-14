@@ -13,17 +13,15 @@ const salonImages = [
 
 const OurSalons = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [prevIndex, setPrevIndex] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % salonImages.length);
-        setIsTransitioning(false);
-      }, 400); // fade-out duration before swapping image
-
+      setCurrentIndex((prev) => {
+        setPrevIndex(prev);
+        return (prev + 1) % salonImages.length;
+      });
+      setTimeout(() => setPrevIndex(null), 500);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -31,23 +29,42 @@ const OurSalons = () => {
 
   return (
     <section className="py-10 md:py-4">
-      <div className="max-w-6xl mx-auto px-4">
+      <style>{`
+        @keyframes slideIn {
+          from { transform: translateX(100%); }
+          to   { transform: translateX(0); }
+        }
+        @keyframes slideOut {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-100%); }
+        }
+      `}</style>
+      <div className="max-w-4xl xl:max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
 
           {/* Image Carousel */}
-          <div className="relative md:-mt-28 lg:pr-20">
+          <div className="relative md:-mt-18 lg:pr-20 overflow-hidden w-full">
+            {/* Outgoing image */}
+            {prevIndex !== null && (
+              <Image
+                key={`prev-${prevIndex}`}
+                src={salonImages[prevIndex].src}
+                alt={salonImages[prevIndex].alt}
+                width={420}
+                height={570}
+                className="absolute top-0 left-0 w-full h-auto object-contain"
+                style={{ animation: "slideOut 0.5s ease-in-out forwards", zIndex: 1 }}
+              />
+            )}
+            {/* Incoming image */}
             <Image
-              key={currentIndex}
+              key={`curr-${currentIndex}`}
               src={salonImages[currentIndex].src}
               alt={salonImages[currentIndex].alt}
               width={420}
               height={570}
-              className="max-w-4xl h-auto object-contain"
-              // className="w-full h-auto object-contain"
-              style={{
-                transition: "opacity 0.4s ease-in-out",
-                opacity: isTransitioning ? 0 : 1,
-              }}
+              className="relative w-full h-auto object-contain"
+              style={{ animation: "slideIn 0.5s ease-in-out forwards", zIndex: 2 }}
             />
 
             {/* Dot Indicators */}
@@ -70,7 +87,7 @@ const OurSalons = () => {
           {/* Content */}
           <div className="flex flex-col items-center text-center">
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center uppercase text-black">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-center uppercase text-black">
                 Our Salons
               </h2>
             </FadeUp>
