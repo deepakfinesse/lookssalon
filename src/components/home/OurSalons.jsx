@@ -31,18 +31,19 @@ const OurSalons = () => {
 
   return (
     <section className="py-10 md:py-4">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
 
           {/* Image Carousel */}
-          <div className="relative md:-mt-32 lg:pr-20">
+          <div className="relative md:-mt-28 lg:pr-20">
             <Image
               key={currentIndex}
               src={salonImages[currentIndex].src}
               alt={salonImages[currentIndex].alt}
-              width={600}
-              height={500}
-              className="w-full h-auto object-contain"
+              width={420}
+              height={570}
+              className="max-w-4xl h-auto object-contain"
+              // className="w-full h-auto object-contain"
               style={{
                 transition: "opacity 0.4s ease-in-out",
                 opacity: isTransitioning ? 0 : 1,

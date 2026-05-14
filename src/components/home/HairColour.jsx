@@ -11,7 +11,7 @@ const HairColour = () => {
           {/* Image (no animation for performance) */}
           <div className="md:col-span-6">
             <Image
-              src="/img/home/hair-colour.webp"
+              src="/img/home/hair-colour.gif"
               alt="Hair Colour"
               width={700}
               height={500}

@@ -10,7 +10,8 @@ import { FaPhone, FaClock, FaMapMarkerAlt, FaImage, FaSearch } from "react-icons
 // ── Salon card ─────────────────────────────────────────────────────────────────
 
 function SalonCard({ salon }) {
-  const bookUrl = salon.bookAppointmentUrl || "/salon-book-appointment";
+  const bookUrl = salon.bookAppointmentUrl ||
+    `/salon-book-appointment?city=${encodeURIComponent(salon.city)}&salon=${encodeURIComponent(salon.name)}`;
 
   return (
     <div className="flex flex-col gap-4">
