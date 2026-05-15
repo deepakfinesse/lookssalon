@@ -13,7 +13,7 @@ const BookAppointment = () => {
           {/* Left Content */}
           <div className="flex flex-col items-center  text-center">
             <FadeUp delay={0.1}>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase text-black">
+              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase text-black">
                 Let's not wait for the Perfect Look
               </h2>
             </FadeUp>

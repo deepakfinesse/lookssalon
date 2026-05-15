@@ -70,10 +70,10 @@ export default function ladiesServices() {
       {/* TOP GRID SECTION */}
       <div className="max-w-7xl mx-auto p-4 md:p-8  text-black">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-30  p-4">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-30  p-4">
 
           {/* Left Images */}
-          <div className="space-y-14">
+          <div className="hidden md:block space-y-14">
             <div className="overflow-hidden group">
               <Image src="/img/services/ladies-one.webp" alt="" width={400} height={300} className="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
             </div>
@@ -94,7 +94,7 @@ export default function ladiesServices() {
           <div className="flex flex-col justify-between">
 
             <div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
+              <h3 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
                 SERVICES
               </h3>
 
@@ -102,7 +102,7 @@ export default function ladiesServices() {
                 <Image src="/img/services/ladies-three.webp" alt="" width={532} height={336} className="w-full transition-transform duration-500 group-hover:scale-110" />
               </div>
 
-              <ul className="text-center text-[44px] font-extrabold my-15 space-y-2">
+              <ul className="text-center text-2xl md:text-[44px] font-extrabold my-10 md:my-15 space-y-2">
                 <li className="relative overflow-hidden group">
                   <a href="#service-0" className="block">
                     <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">CUT & STYLE</span></FadeUp>
@@ -170,7 +170,7 @@ export default function ladiesServices() {
 
         <div className="grid mt-14">
           <FadeUp delay={0.1}>
-            <h2 className="text-3xl font-bold  mb-4">LOOKS Salon – Luxurious Grooming & Beauty Services for Women </h2>
+            <h2 className="text-2xl md:text-3xl font-bold  mb-4">LOOKS Salon – Luxurious Grooming & Beauty Services for Women </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
             <p className="text-lg text-black font-medium">
@@ -210,7 +210,7 @@ export default function ladiesServices() {
             <div>
               <FadeUp delay={0.1}>
               <h3
-                className={`text-3xl font-semibold tracking-wide mb-4 ${
+                className={`text-2xl md:text-3xl font-semibold tracking-wide mb-4 ${
                   index % 2 === 0 ? "text-primary" : "text-black"
                 }`}
               >
@@ -234,11 +234,12 @@ export default function ladiesServices() {
 
 
 {/* BOTTOM IMAGE */}
-    <section className="bg-black">
+    <section className="bg-black" id="service-8">
        <div className="max-w-7xl mx-auto py-14 px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-50">
                 {/* Content */}
                 <div className="flex flex-col items-left ">
+                  <FadeUp delay={0.2}>
                   <h2 className="text-3xl text-primary font-semibold tracking-wide mb-4">
                     NAIL ART SERVICES
                   </h2>
@@ -260,15 +261,16 @@ export default function ladiesServices() {
                     <p className="mt-4 text-base sm:text-lg font-normal text-white leading-relaxed max-w-lg">
                     We use high-quality, long-lasting products to ensure your nails stay stunning between visits.
                   </p>
+                  </FadeUp>
                 </div>
                  {/* Image */}
-                <div className="relative md:-mt-36 flex flex-col items-right overflow-hidden group">
+                <div className="relative md:-mt-20 flex flex-col items-center md:items-right overflow-hidden group">
                   <Image
                     src="/img/services/nail-art-services.webp"
                     alt="Our Salon"
                     width={365}
                     height={500}
-                    className="transition-transform duration-500 group-hover:scale-110"
+                    className="transition-transform duration-500 group-hover:scale-95"
                   />
                 </div>
               </div>

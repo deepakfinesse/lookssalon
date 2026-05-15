@@ -144,21 +144,9 @@ export default async function BlogPostPage({ params }) {
       />
 
       <article className="bg-white">
-        {/* ── Featured Image ── */}
-        {post.featuredImage?.url && (
-          <div className="w-full max-w-6xl mx-auto">
-            <img
-              src={post.featuredImage.url}
-              alt={post.featuredImage.alt || post.title}
-              className="w-full h-auto"
-            />
-          </div>
-        )}
-
-        {/* ── Post Header ── */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-4 pb-4">
-          {/* Breadcrumb */}
-          <nav className="text-xs text-gray-400 mb-6 flex items-center gap-1.5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 pb-2 pt-4">
+         {/* Breadcrumb */}
+         {/* <nav className="text-xs text-grey mb-3 flex items-center gap-1.5">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
             <Link href="/blog" className="hover:text-primary transition-colors">Blog</Link>
@@ -170,7 +158,28 @@ export default async function BlogPostPage({ params }) {
                 </Link>
               </>
             )}
-          </nav>
+          </nav> */}
+          
+
+          {/* Title */}
+          <h1 className="text-3xl md:text-3xl xl:text-4xl text-black font-medium mb-1">
+            {post.title}
+          </h1>
+        </div>
+        {/* ── Featured Image ── */}
+        {post.featuredImage?.url && (
+          <div className="max-w-6xl mx-auto px-4 sm:px-8">
+            <img
+              src={post.featuredImage.url}
+              alt={post.featuredImage.alt || post.title}
+              className="w-full h-auto"
+            />
+          </div>
+        )}
+
+        {/* ── Post Header ── */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-4 pb-4">
+         
 
           {/* Categories */}
           {post.categories?.length > 0 && (
@@ -186,11 +195,6 @@ export default async function BlogPostPage({ params }) {
               ))}
             </div>
           )}
-
-          {/* Title */}
-          <h1 className="text-3xl md:text-3xl xl:text-3xl text-black font-medium mb-1">
-            {post.title}
-          </h1>
 
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-4 text-sm lg:text-sm text-black border-b border-gray-100 pb-2">
@@ -234,9 +238,9 @@ export default async function BlogPostPage({ params }) {
 
         {/* ── Related Posts ── */}
         {related.length > 0 && (
-          <section className="bg-gray-50 py-14">
+          <section className="bg-gray-50 py-12">
             <div className="max-w-6xl mx-auto px-4 sm:px-8">
-              <h2 className="text-2xl font-bold text-grey uppercase mb-8">Related Posts</h2>
+              <h2 className="text-3xl font-bold text-grey uppercase mb-4">Related Posts</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {related.map(p => (
                   <Link key={p._id} href={`/blog/${p.slug}`} className="group block bg-white border border-gray-100 hover:shadow-md transition-shadow overflow-hidden">

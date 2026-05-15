@@ -19,43 +19,46 @@ const Footer = () => {
             {/* Quick Links */}
 
             <div className="lg:col-span-6">
-              <h3 className="text-2xl text-primary uppercase font-semibold mb-6">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-2 md:mb-6">
                 Quick Links
               </h3>
 
               <div className="flex">
-                <ul className="w-1/2 space-y-2">
+                <ul className="w-1/2 space-y-0 md:space-y-2">
                   {[
-                    "About Us",
-                    "Services",
-                    "Franchise",
-                    "E-shop",
-                    "Academy",
+                    { label: "About Us",   href: "/aboutus", target: "_self" },
+                    { label: "Ladies",   href: "/ladies-salon-services", target: "_self" },
+                    { label: "Gents",   href: "/gents-salon-services", target: "_self" },
+                    { label: "Franchise",  href: "/franchise", target: "_self" },
+                    { label: "E-shop",     href: "https://lookskart.com/", target: "_blank" }
                   ].map((item, i) => (
                     <li key={i}>
                       <Link
-                        href="#"
+                        href={item.href}
+                        target={item.target}
                         className="relative text-white uppercase text-lg font-medium leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
                       >
-                        {item}
+                        {item.label}
                       </Link>
                     </li>
                   ))}
                 </ul>
 
-                <ul className="w-1/2 space-y-2">
+                <ul className="w-1/2 space-y-0 md:space-y-2">
                   {[
-                    "Contact",
-                    "Book Appointment",
-                    "Salon Finder",
-                    "Offers",
+                    { label: "Contact",           href: "/", target: "_self" },
+                    { label: "Academy",    href: "https://www.looksschool.com/", target: "_blank" },
+                    { label: "Book Appointment",  href: "/salon-book-appointment", target: "_self" },
+                    { label: "Salon Finder",      href: "/locate-salon", target: "_self" },
+                    { label: "Offers",            href: "/", target: "_self" }
                   ].map((item, i) => (
                     <li key={i}>
                       <Link
-                        href="#"
+                        href={item.href}
+                        target={item.target}
                         className="relative text-white uppercase text-lg font-medium leading-[40px] transition duration-300 hover:text-primary before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[1px] before:bg-secondary before:transition-all before:duration-500 hover:before:w-full"
                       >
-                        {item}
+                        {item.label}
                       </Link>
                     </li>
                   ))}
@@ -65,7 +68,7 @@ const Footer = () => {
 
             {/* Join Us */}
             <div className="lg:col-span-3">
-              <h3 className="text-2xl text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-3 md:mb-6 mt-8 lg:mt-0">
                 Join Us
               </h3>
 
@@ -105,7 +108,7 @@ const Footer = () => {
 
             {/* Instagram */}
             <div className="lg:col-span-3">
-              <h3 className="text-2xl text-primary uppercase font-semibold mb-6 mt-8 lg:mt-0">
+              <h3 className="text-2xl text-primary uppercase font-semibold mb-3 md:mb-6 mt-8 lg:mt-0">
                 Instagram
               </h3>
 
@@ -124,7 +127,7 @@ const Footer = () => {
             {/* Left */}
             <div className="lg:col-span-5 text-black">
               © 2024.{" "}
-              <Link href="#" className="no-underline">
+              <Link href="https://www.lookssalon.in/" className="no-underline">
                 Looks Salon
               </Link>{" "}
               All Rights Reserved
@@ -133,10 +136,14 @@ const Footer = () => {
             {/* Center */}
             <div className="lg:col-span-5 mt-2 lg:mt-0">
               <ul className="flex flex-wrap text-black">
-                {["Privacy Policy", "Disclaimer", "Site Map"].map((item, i) => (
+                {[ 
+                { label: "Privacy Policy", href: "/privacy-policy", target: "_self" },
+                { label: "Disclaimer",           href: "/disclaimer", target: "_self" },
+                { label: "Site Map",           href: "/", target: "_self" },
+              ].map((item, i) => (
                   <li key={i} className="flex items-center">
-                    <Link href="#" className="no-underline">
-                      {item}
+                    <Link href={item.href} target={item.target} className="no-underline">
+                      {item.label}
                     </Link>
                     {i !== 2 && (
                       <span className="mx-2 border-r border-black h-3"></span>

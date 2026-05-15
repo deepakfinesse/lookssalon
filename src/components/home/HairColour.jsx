@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const HairColour = () => {
   return (
     <section className="w-full bg-gradient-to-r from-[#EBF0F6] to-[#C4CAD6] pt-0 md:pt-4">
-      <div className="max-w-7xl mx-auto px-4 pt-8 md:py-0">
+      <div className="max-w-6xl mx-auto px-4 pt-8 md:py-0">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-0">
           {/* Image (no animation for performance) */}
           <div className="order-2 md:order-1 md:col-span-6">
@@ -48,7 +48,7 @@ const HairColour = () => {
             </motion.p>
 
             <motion.div
-              className="flex items-center gap-5 mt-3 md:mt-6"
+              className="flex items-center gap-5 mt-3 mb-4 md:mb-0 md:mt-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

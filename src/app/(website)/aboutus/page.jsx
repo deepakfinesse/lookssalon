@@ -100,15 +100,15 @@ const page = () => {
         <section>
             <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
               <FadeUp delay={0.1}>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
                     The journey
                 </h1>
                 </FadeUp>
                 <FadeUp delay={0.2}>
-                  <p className='text-md lg:text-lg text-black'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India <br className='hidden lg:md:block'/> From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
+                  <p className='text-md lg:text-lg text-black text-left md:text-center'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India <br className='hidden lg:md:block'/> From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
                 </FadeUp>
             </div>
-            <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 pb-10 md:pb-8  lg:pb-12  text-center">
+            <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 pb-0 md:pb-4  lg:pb-4  text-center">
                
               <FadeUp delay={0.3}>
                 {/* Hero Video Dialog */}
@@ -132,10 +132,10 @@ const page = () => {
                     </div>
                 <div>
                     <Counter
-                    gridCols="grid-cols-1  md:grid-cols-1"
+                    gridCols="grid-cols-3  md:grid-cols-1"
                     stats={[
                         { value: 250, label: "Salons Pan India" },
-                        { value: 36, label: "Years" },
+                        { value: 37, label: "Years" },
                         { value: 55, label: "cities" },
                     ]}
                     />
@@ -170,7 +170,7 @@ const page = () => {
                     Our Proud Moments
                 </h2>
                 </FadeUp>
-                <div className='relative bg-black overflow-hidden py-10'>
+                <div className='relative bg-black overflow-hidden pt-4 md:pt-0 py-0 md:py-10'>
                   <div className="absolute left-0 right-0 hidden md:block"  style={{ top: "42%", height: 1.5, background: "#b8860b", zIndex: 0 }}/>
                   <FadeUp delay={0.2}>
                   <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
@@ -179,7 +179,7 @@ const page = () => {
                       <div className="w-full md:flex-1 md:min-w-0 mt-0 md:mt-6">
                         {/* Year label sits ON the gold line */}
                         <p
-                          className="text-2xl md:text-3xl font-semibold mb-6"
+                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6"
                           style={{ color: "#DFAB31" }}
                         >
                           2014-15
@@ -234,7 +234,7 @@ const page = () => {
                       {/* ── RIGHT PANEL ── */}
                       <div className="w-full md:flex-1 md:min-w-0 text-left md:text-right mt-0 md:mt-6">
                         <p
-                          className="text-2xl md:text-3xl font-semibold mb-6 text-left md:text-right"
+                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6 text-left md:text-right"
                           style={{ color: "#DFAB31" }}
                         >
                           2016-17
@@ -306,7 +306,7 @@ function AchievementCard({ item }) {
 
       {/* Gold ring + circular image */}
       <div
-        className="rounded-full p-[3px] mb-5 shrink-0 w-40 h-40 md:w-55 md:h-55"
+        className="rounded-full p-[3px] mb-2 md:mb-5 shrink-0 w-40 h-40 md:w-55 md:h-55"
         style={{
           background: "linear-gradient(145deg, #e8c96a, #a07820, #e8c96a, #7a5c10)",
         }}

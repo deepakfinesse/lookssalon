@@ -66,9 +66,9 @@ const Testimonial = () => {
   return (
     <>
       <section className="">
-        <div className="max-w-4xl mx-auto px-4 py-12 text-center">
+        <div className="max-w-4xl mx-auto px-4 py-4 md:py-12 text-center">
           <FadeUp delay={0.1}>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
+          <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
             Voice Of Experience
           </h1>
           </FadeUp>
@@ -83,7 +83,7 @@ const Testimonial = () => {
                 className="grid grid-cols-12 gap-6 items-center cursor-pointer"
               >
                 {/* Image */}
-                <div className="col-span-12 md:col-span-3 flex justify-center">
+                <div className="col-span-12 md:col-span-3 flex justify-start md:justify-center">
                   <img
                     src={testimonial.image}
                     alt={`Testimonial ${testimonial.id}`}
@@ -101,7 +101,7 @@ const Testimonial = () => {
                   </div>
 
                   {/* Name */}
-                  <h3 className="text-3xl text-black font-bold mb-4">
+                  <h3 className="text-2xl md:text-3xl text-black font-bold mb-4">
                     {testimonial.name}
                   </h3>
 

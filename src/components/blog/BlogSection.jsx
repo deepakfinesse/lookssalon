@@ -42,16 +42,16 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
     <section className={`bg-white min-h-screen px-4 py-12 max-w-6xl mx-auto transition-opacity duration-200 ${isPending ? "opacity-60 pointer-events-none" : ""}`}>
       {/* ── Header ── */}
       <FadeUp delay={0.1}>
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase">
+        <div className="flex  items-center justify-between mb-8">
+          <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl pr-2 md:pr-0 text-grey font-bold uppercase">
             Blog
           </h1>
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             {/* Sort dropdown */}
             <div className="relative">
               <button
                 onClick={() => { setSortOpen(o => !o); setCategoryOpen(false); }}
-                className="text-lg font-bold border border-primary font-primary text-grey uppercase px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm md:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 Sort By
                 {sortOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}
@@ -75,7 +75,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
             <div className="relative">
               <button
                 onClick={() => { setCategoryOpen(o => !o); setSortOpen(false); }}
-                className="text-lg font-bold border border-primary font-primary text-grey uppercase px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm md:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 {categoryLabel}
                 {categoryOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}
@@ -113,7 +113,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
           {/* ── Featured / Hero Post ── */}
           {featuredPost && (
             <FadeUp delay={0.2}>
-              <article className="mb-80 md:mb-46 group">
+              <article className="mb-67 md:mb-46 group">
                 <div className="relative w-full overflow-hidden">
                   {featuredPost.featuredImage?.url ? (
                     <img
@@ -127,9 +127,9 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
                 </div>
 
                 <div className="pt-3 relative max-w-5xl mx-auto">
-                  <div className="absolute md:-top-20 left-0 p-4 w-full bg-white">
+                  <div className="absolute md:-top-20 left-0 p-0 md:p-4 w-full bg-white">
                     {featuredPost.categories?.[0] && (
-                      <span className="border-1 border-primary text-grey text-lg uppercase font-bold px-5.5 py-0.5 mb-2 inline-block">
+                      <span className="border-1 border-primary text-grey text-sm md:text-lg uppercase font-bold px-5.5 py-0.5 mb-2 inline-block">
                         {featuredPost.categories[0].name}
                       </span>
                     )}
@@ -207,12 +207,12 @@ function GridCard({ post }) {
       </div>
 
       {post.categories?.[0] && (
-        <span className="inline-block w-fit border border-primary text-grey text-lg font-bold uppercase px-5.5 py-1 mb-2">
+        <span className="inline-block w-fit border border-primary text-grey text-sm md:text-lg font-bold uppercase px-5.5 py-1 mb-2">
           {post.categories[0].name}
         </span>
       )}
 
-      <h2 className="text-3xl md:text-3xl xl:text-3xl text-black group-hover:text-primary font-medium mb-1 transition-colors duration-300">
+      <h2 className="text-2xl md:text-3xl xl:text-3xl text-black group-hover:text-primary font-medium mb-1 transition-colors duration-300">
         {post.title}
       </h2>
 

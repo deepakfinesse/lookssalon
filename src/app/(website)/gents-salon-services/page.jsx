@@ -47,7 +47,7 @@ export default function ladiesServices() {
         <div className="max-w-7xl mx-auto p-4 md:p-8  text-black">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-30  p-4">
             {/* Left Images */}
-            <div className="space-y-14">
+            <div className="hidden md:block space-y-14">
               <div className="overflow-hidden group">
                 <Image
                   src="/img/services/mens-one.webp"
@@ -79,9 +79,9 @@ export default function ladiesServices() {
             {/* Right Content */}
             <div className="flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
                   SERVICES
-                </h3>
+                </h1>
 
                 <div className="overflow-hidden group mb-4">
                   <Image
@@ -93,7 +93,7 @@ export default function ladiesServices() {
                   />
                 </div>
 
-                <ul className="text-center text-[44px] font-extrabold my-15 space-y-2">
+                <ul className="text-center text-2xl md:text-[44px] font-extrabold my-10 md:my-15 space-y-2">
                   <li className="relative overflow-hidden group">
                     <a href="#service-0" className="block">
                       <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">CUT & HAIR CARE</span></FadeUp>
@@ -146,7 +146,7 @@ export default function ladiesServices() {
 
           <div className="grid mt-14">
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl font-bold  mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold  mb-4">
                 LOOKS Salon – Premium Men’s Grooming Services
               </h2>
             </FadeUp>
@@ -190,7 +190,7 @@ export default function ladiesServices() {
                   <div>
                     <FadeUp delay={0.1}>
                       <h3
-                        className={`text-3xl font-semibold tracking-wide mb-4 ${
+                        className={`text-2xl md:text-3xl font-semibold tracking-wide mb-4 ${
                           index % 2 === 0 ? "text-primary" : "text-black"
                         }`}
                       >

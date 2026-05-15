@@ -87,9 +87,9 @@ function CityGroup({ city, salons }) {
   return (
     <div className="mb-14">
       <h2 className="text-4xl md:text-5xl font-bold text-black mb-3">{city}</h2>
-      <div className="h-1 bg-primary mb-10 w-full" />
+      <div className="h-1 bg-primary mb-4 w-full" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {salons.map((salon, idx) => (
           <div
             key={salon._id}

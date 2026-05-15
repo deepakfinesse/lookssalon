@@ -11,23 +11,23 @@ const Nav = ({ isActive, toggleMenu }) => {
   const [showSubServices, setShowSubServices] = useState(false);
 
   const menuItems = [
-    { href: "/aboutus", label: "About Us" },
+    { href: "/aboutus", label: "About Us", target: "_self" },
     {
       href: "#",
       label: "Services",
       subItems: [
-        { href: "/ladies-salon-services", label: "Ladies" },
-        { href: "/gents-salon-services", label: "Gents" },
-        { href: "/", label: "Bridal " },
-        { href: "/prepaid-cards", label: "Prepaid Cards" },
+        { href: "/ladies-salon-services", label: "Ladies", target: "_self" },
+        { href: "/gents-salon-services", label: "Gents", target: "_self" },
+        { href: "/", label: "Bridal ", target: "_self" },
+        { href: "/prepaid-cards", label: "Prepaid Cards", target: "_self" },
       ],
     },
-    { href: "/testimonial", label: "Testimonials" },
-    { href: "/blog", label: "Blog" },
-    { href: "/franchise", label: "Franchise" },
-    { href: "https://www.looksschool.com/", label: "Academy" },
-    { href: "/", label: "Offers" },
-    { href: "/", label: "Contact Us" },
+    { href: "/testimonial", label: "Testimonials", target: "_self" },
+    { href: "/blog", label: "Blog", target: "_self" },
+    { href: "/franchise", label: "Franchise", target: "_self" },
+    { href: "https://www.looksschool.com/", label: "Academy", target: "_blank" },
+    { href: "/", label: "Offers", target: "_self" },
+    { href: "/", label: "Contact Us", target: "_self" },
   ];
 
   return (
@@ -59,6 +59,7 @@ const Nav = ({ isActive, toggleMenu }) => {
     <li className="mb-2">
       <Link
         href={item.href}
+        target={item.target}
         onClick={
           item.subItems
             ? (e) => {
@@ -67,7 +68,7 @@ const Nav = ({ isActive, toggleMenu }) => {
               }
             : toggleMenu
         }
-        className="text-[34px] leading-[1.1] sm:text-3xl md:text-3xl lg:text-4xl xl:text-[48px] font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center uppercase gap-2"
+        className="text-3xl leading-[1.1] md:text-3xl lg:text-4xl xl:text-[48px] font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center uppercase gap-2"
       >
         {item.label}
 
@@ -90,8 +91,9 @@ const Nav = ({ isActive, toggleMenu }) => {
               <li>
                 <Link
                   href={subItem.href}
+                  target={subItem.target}
                   onClick={toggleMenu}
-                  className="text-[34px] leading-[1.1] sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center uppercase gap-2"
+                  className="text-2xl leading-[1.1]  md:text-3xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center uppercase gap-2"
                 >
                   {subItem.label}
                 </Link>

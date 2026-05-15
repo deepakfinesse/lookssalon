@@ -65,7 +65,7 @@ const Franchise = () => {
       >
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-90px)] px-4 py-12 flex items-start justify-center text-center">
           <FadeUp delay={0.1}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-white font-bold uppercase leading-normal">
+            <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-white font-bold uppercase leading-normal">
               Start your journey with us today
               <br className="hidden md:block" />
               Be a Looks Franchise
@@ -77,7 +77,7 @@ const Franchise = () => {
       {/* Why Looks Section */}
       <section className="max-w-7xl mx-auto px-4 py-12 bg-white relative -mt-22 md:-mt-30 lg:-mt-32 z-10 ">
         <FadeUp delay={0.1}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-10 text-center">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-4 md:mb-10 text-center">
             Why Looks?
           </h2>
         </FadeUp>
@@ -105,9 +105,9 @@ const Franchise = () => {
       </section>
 
       {/* Franchisee Section */}
-      <section className="max-w-6xl mx-auto px-4 py-16 bg-white">
+      <section className="max-w-6xl mx-auto px-4 py-10 md:py-16 bg-white">
         <FadeUp delay={0.1}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-12 text-center">
+        <h2 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-4 md:mb-10 text-center">
           What We Provide to Franchisee
         </h2>
         </FadeUp>
@@ -117,7 +117,7 @@ const Franchise = () => {
             <FadeUp delay={0.1}>
             <div
               key={item.id}
-              className="grid lg:grid-cols-12 md:gap-16 xl:gap-24  pb-8 items-center"
+              className="grid lg:grid-cols-12 md:gap-16 xl:gap-24 pb-0 md:pb-8 items-center"
             >
               <div className="lg:col-span-4">
                 <h3 className="text-2xl md:text-4xl lg:text-5xl text-primary font-bold uppercase leading-tight">
@@ -140,12 +140,12 @@ const Franchise = () => {
       <section className="w-full  bg-cover bg-center" style={{ backgroundImage: "url('/img/all/franchisee-query-bg.webp')" }}>
              <div className="max-w-6xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
                 <FadeUp delay={0.1}>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-white font-bold uppercase mb-4">
-                  Start your journey with us
+                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-white font-bold uppercase mb-4">
+                  Start your journey <br className="md:hiccen"/> with us
                 </h1>
                 </FadeUp>
               </div> 
-              <div className="max-w-2xl mx-auto px-4 pb-12 lg:pb-12">
+              <div className="max-w-2xl mx-auto px-4 pb-10 lg:pb-12">
                 <FadeUp delay={0.2}>
                 <FranchiseForm />
                 </FadeUp>
