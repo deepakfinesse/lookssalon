@@ -19,7 +19,7 @@ const PartnerBrands = () => {
         {/* Heading */}
         <FadeUp delay={0.1}>
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-black">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black">
               Our Partner Brands
             </h2>
           </div>

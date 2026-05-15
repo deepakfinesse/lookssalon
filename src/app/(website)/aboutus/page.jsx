@@ -108,7 +108,7 @@ const page = () => {
                   <p className='text-md lg:text-lg text-black'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India <br className='hidden lg:md:block'/> From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
                 </FadeUp>
             </div>
-            <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
+            <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 pb-10 md:pb-8  lg:pb-12  text-center">
                
               <FadeUp delay={0.3}>
                 {/* Hero Video Dialog */}
@@ -222,7 +222,7 @@ const page = () => {
                               {/* Text overlay */}
                               <div className="absolute inset-0 flex items-center justify-center">
                                 <h2
-                                  className="text-white text-center text-md md:text-2xl font-black leading-tight"
+                                  className="text-white text-center text-md md:text-2xl font-black leading-tight -mt-16"
                                   style={{  textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
                                 >
                                   Indian<br />Hairdressing<br />Awards
