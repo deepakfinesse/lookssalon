@@ -9,34 +9,34 @@ const testimonialData = [
   {
     id: 1,
     image: "/img/testimonial/testimonial1.webp",
-    rating: 4,
-    name: "Seema Ohri",
+    rating: 5,
+    name: "Priya Sharma, Mumbai",
     quote:
-      "Amazing Ambience and service was too good. I got my hair and beauty service done. There is a good space for setting. Got specialized face mapping and then dermalogica treatment from the therapists. Result was great. Fully satisfied. Everyone must visit..",
+      "I've been going to Looks Salon for three years now . The stylist understood exactly what I want. Totally worth every rupee!",
   },
   {
     id: 2,
     image: "/img/testimonial/testimonial2.webp",
-    rating: 3,
-    name: "Seema Ohri",
+    rating: 5,
+    name: "Rahul Mehta, Delhi",
     quote:
-      "Amazing Ambience and service was too good. I got my hair and beauty service done. There is a good space for setting. Got specialized face mapping and then dermalogica treatment from the therapists. Result was great. Fully satisfied. Everyone must visit..",
+      "The beard shaping was precise and the stylist gave great suggestions for my face shape. My go-to salon now.",
   },
   {
     id: 3,
     image: "/img/testimonial/testimonial3.webp",
     rating: 5,
-    name: "Seema Ohri",
+    name: "Ananya Iyer, Bangalore",
     quote:
-      "Amazing Ambience and service was too good. I got my hair and beauty service done. There is a good space for setting. Got specialized face mapping and then dermalogica treatment from the therapists. Result was great. Fully satisfied. Everyone must visit..",
+      "Got my bridal makeup and hair done at Looks Salon and I genuinely felt great. The team was patient, professional and made me feel absolutely beautiful on my big day.",
   },
   {
     id: 4,
     image: "/img/testimonial/testimonial4.webp",
-    rating: 4.5,
-    name: "Seema Ohri",
+    rating: 5,
+    name: "Vikram Nair, Chennai",
     quote:
-      "Amazing Ambience and service was too good. I got my hair and beauty service done. There is a good space for setting. Got specialized face mapping and then dermalogica treatment from the therapists. Result was great. Fully satisfied. Everyone must visit..",
+      "Tried the global hair colour with a scalp treatment and I'm happyby how natural it looks. No damage — just clean, sharp colour. The staff really is very professional",
   },
 ];
 

@@ -126,7 +126,7 @@ const Footer = () => {
           <div className="grid lg:grid-cols-12 items-center text-[13px] font-semibold uppercase">
             {/* Left */}
             <div className="lg:col-span-5 text-black">
-              © 2024.{" "}
+              © 2026.{" "}
               <Link href="https://www.lookssalon.in/" className="no-underline">
                 Looks Salon
               </Link>{" "}

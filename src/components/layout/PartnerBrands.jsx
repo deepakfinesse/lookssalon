@@ -11,7 +11,7 @@ import "swiper/css";
 const PartnerBrands = () => {
   const swiperRef = useRef(null);
 
-  const partners = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+  const partners = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15];
 
   return (
     <section className="py-16 md:py-20">
@@ -56,10 +56,10 @@ const PartnerBrands = () => {
                 <SwiperSlide key={index}>
                   <div className="flex justify-center items-center">
                     <Image
-                      src={`/img/home/partner/${item}.png`}
+                      src={`/img/home/partner/${item}.webp`}
                       alt={`Partner ${item}`}
-                      width={248}
-                      height={60}
+                      width={84}
+                      height={36}
                       className="w-full max-w-45 md:max-w-55 h-auto object-contain grayscale hover:grayscale-0 transition duration-300"
                     />
                   </div>
