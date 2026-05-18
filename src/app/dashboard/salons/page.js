@@ -8,7 +8,8 @@ import { HiOutlinePencil, HiOutlinePlus, HiOutlineCheck, HiOutlineX,
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const EMPTY_FORM = {
-  name: "", city: "", address: "",
+  name: "", city: "",
+  address1: "", address2: "", address3: "", pinCode: "",
   phone1: "", phone2: "", phone3: "",
   timing: "",
   googleMapUrl: "", salonTourUrl: "", bookAppointmentUrl: "",
@@ -18,7 +19,9 @@ const EMPTY_FORM = {
 function formToPayload(f) {
   const phones = [f.phone1, f.phone2, f.phone3].map(p => p.trim()).filter(Boolean);
   return {
-    name: f.name, city: f.city, address: f.address, phones,
+    name: f.name, city: f.city,
+    address1: f.address1, address2: f.address2, address3: f.address3, pinCode: f.pinCode,
+    phones,
     timing: f.timing,
     googleMapUrl: f.googleMapUrl, salonTourUrl: f.salonTourUrl,
     bookAppointmentUrl: f.bookAppointmentUrl,
@@ -28,7 +31,9 @@ function formToPayload(f) {
 
 function salonToForm(s) {
   return {
-    name: s.name ?? "", city: s.city ?? "", address: s.address ?? "",
+    name: s.name ?? "", city: s.city ?? "",
+    address1: s.address1 ?? "", address2: s.address2 ?? "",
+    address3: s.address3 ?? "", pinCode: s.pinCode ?? "",
     phone1: s.phones?.[0] ?? "", phone2: s.phones?.[1] ?? "", phone3: s.phones?.[2] ?? "",
     timing: s.timing ?? "",
     googleMapUrl: s.googleMapUrl ?? "", salonTourUrl: s.salonTourUrl ?? "",
@@ -39,7 +44,8 @@ function salonToForm(s) {
 
 // ── CSV helpers ───────────────────────────────────────────────────────────────
 
-const CSV_HEADERS = ["name","city","address","phone1","phone2","phone3","timing",
+const CSV_HEADERS = ["name","city","address1","address2","address3","pinCode",
+                     "phone1","phone2","phone3","timing",
                      "googleMapUrl","salonTourUrl","bookAppointmentUrl","isActive"];
 
 function csvQuote(val) {
@@ -53,7 +59,8 @@ function salonsToCsv(list) {
   const rows = [CSV_HEADERS.join(",")];
   for (const s of list) {
     rows.push([
-      s.name, s.city, s.address,
+      s.name, s.city,
+      s.address1 ?? "", s.address2 ?? "", s.address3 ?? "", s.pinCode ?? "",
       s.phones?.[0] ?? "", s.phones?.[1] ?? "", s.phones?.[2] ?? "",
       s.timing,
       s.googleMapUrl ?? "", s.salonTourUrl ?? "", s.bookAppointmentUrl ?? "",
@@ -74,7 +81,7 @@ function downloadBlob(content, filename, mime = "text/csv;charset=utf-8;") {
 
 const CSV_TEMPLATE =
   CSV_HEADERS.join(",") + "\r\n" +
-  ["Vibhav Nagar","Agra","Shop 12 Near Vibhav Nagar Chauraha Agra 282004",
+  ["Vibhav Nagar","Agra","Shop 12 Near Vibhav Nagar Chauraha","Agra","","282004",
    "9876543210","","","10:00 AM - 09:00 PM",
    "https://maps.google.com/?q=example","","","true"].map(csvQuote).join(",");
 
@@ -155,9 +162,9 @@ function ImportModal({ onClose, onImportDone }) {
           {/* Instructions */}
           <div className="bg-primary/5 border border-primary/20 rounded p-4 text-sm text-grey">
             <p className="font-bold text-foreground mb-1.5">CSV Format</p>
-            <p className="mb-1">Required columns: <span className="font-mono text-xs bg-black/5 px-1 rounded">name, city, address, timing, phone1</span></p>
-            <p className="text-xs text-grey/70">Optional: phone2, phone3, googleMapUrl, salonTourUrl, bookAppointmentUrl, isActive (true/false)</p>
-            <p className="mt-2 text-xs text-grey/70">Max 300 rows · Max 500 KB · Duplicates (same name + city) are skipped automatically.</p>
+            <p className="mb-1">Required columns: <span className="font-mono text-xs bg-black/5 px-1 rounded">name, city, address1, timing, phone1</span></p>
+            <p className="text-xs text-grey/70">Optional: address2, address3, pinCode, phone2, phone3, googleMapUrl, salonTourUrl, bookAppointmentUrl, isActive (true/false)</p>
+            {/* <p className="mt-2 text-xs text-grey/70">Max 300 rows · Max 500 KB · Duplicates (same name + city) are skipped automatically.</p> */}
           </div>
 
           {/* Template download */}
@@ -320,7 +327,10 @@ const TableRow = memo(function TableRow({ salon, onEdit, onToggleActive, updatin
         <p className="text-sm font-medium m-0 leading-snug">{salon.name}</p>
       </td>
       <td className="px-4 py-3 align-middle text-sm text-grey">{salon.city}</td>
-      <td className="px-4 py-3 align-middle text-xs text-grey max-w-[220px] truncate">{salon.address}</td>
+      <td className="px-4 py-3 align-middle text-xs text-grey max-w-[220px]">
+        <span className="block truncate">{salon.address1 || salon.address}</span>
+        {salon.pinCode && <span className="text-grey/50">{salon.pinCode}</span>}
+      </td>
       <td className="px-4 py-3 align-middle">
         <div className="flex flex-col gap-0.5">
           {salon.phones.map((p, i) => (
@@ -400,14 +410,23 @@ function SalonModal({ salon, onClose, onSave, saving, error }) {
           </div>
 
           <div>
-            <label className={labelCls}>Address *</label>
-            <textarea
-              className={`${inputCls} resize-y`}
-              rows={3}
-              value={form.address}
-              onChange={e => set("address", e.target.value)}
-              placeholder="Full salon address..."
-            />
+            <label className={labelCls}>Address Line 1 *</label>
+            <input className={inputCls} value={form.address1} onChange={e => set("address1", e.target.value)} placeholder="Shop / building name and number" />
+          </div>
+
+          <div>
+            <label className={labelCls}>Address Line 2</label>
+            <input className={inputCls} value={form.address2} onChange={e => set("address2", e.target.value)} placeholder="Street / area (optional)" />
+          </div>
+
+          <div>
+            <label className={labelCls}>Address Line 3</label>
+            <input className={inputCls} value={form.address3} onChange={e => set("address3", e.target.value)} placeholder="Landmark / locality (optional)" />
+          </div>
+
+          <div className="w-40">
+            <label className={labelCls}>Pin Code</label>
+            <input className={inputCls} value={form.pinCode} onChange={e => set("pinCode", e.target.value)} placeholder="e.g. 282001" maxLength={10} />
           </div>
 
           <div className="grid grid-cols-3 gap-3">

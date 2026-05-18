@@ -87,12 +87,13 @@ export async function POST(request) {
   }
 
   // Parse and validate each row
-  const EXPECTED_COLS = ["name","city","address","phone1","phone2","phone3","timing",
+  const EXPECTED_COLS = ["name","city","address1","address2","address3","pinCode",
+                         "phone1","phone2","phone3","timing",
                          "googleMapUrl","salonTourUrl","bookAppointmentUrl","isActive"];
   const header = csvLineSplit(lines[0]).map(h => h.toLowerCase().replace(/\s/g, ""));
-  if (!header.includes("name") || !header.includes("city") || !header.includes("address") || !header.includes("timing")) {
+  if (!header.includes("name") || !header.includes("city") || !header.includes("address1") || !header.includes("timing")) {
     return NextResponse.json(
-      { error: "CSV must include columns: name, city, address, timing." },
+      { error: "CSV must include columns: name, city, address1, timing." },
       { status: 400 }
     );
   }
@@ -115,7 +116,10 @@ export async function POST(request) {
     const raw = {
       name:               cols[idx.name]               ?? "",
       city:               cols[idx.city]               ?? "",
-      address:            cols[idx.address]            ?? "",
+      address1:           cols[idx.address1]           ?? "",
+      address2:           idx.address2 >= 0            ? (cols[idx.address2]           ?? "") : "",
+      address3:           idx.address3 >= 0            ? (cols[idx.address3]           ?? "") : "",
+      pinCode:            idx.pinCode >= 0             ? (cols[idx.pinCode]            ?? "") : "",
       phones,
       timing:             idx.timing >= 0              ? (cols[idx.timing]             ?? "") : "",
       googleMapUrl:       idx.googleMapUrl >= 0        ? (cols[idx.googleMapUrl]       ?? "") : "",

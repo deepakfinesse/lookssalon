@@ -5,9 +5,13 @@ const { Schema, models, model } = mongoose;
 const SalonSchema = new Schema(
   {
     salonId: { type: String, required: true, unique: true, index: true },
-    name:    { type: String, required: true, trim: true, maxlength: 100 },
-    city:    { type: String, required: true, trim: true, maxlength: 100 },
-    address: { type: String, required: true, trim: true, maxlength: 300 },
+    name:     { type: String, required: true, trim: true, maxlength: 100 },
+    city:     { type: String, required: true, trim: true, maxlength: 100 },
+    address1: { type: String, required: true, trim: true, maxlength: 200 },
+    address2: { type: String, trim: true, default: "", maxlength: 200 },
+    address3: { type: String, trim: true, default: "", maxlength: 200 },
+    pinCode:  { type: String, trim: true, default: "", maxlength: 10 },
+    address:  { type: String, trim: true, default: "", maxlength: 300 }, // legacy
     phones: {
       type: [String],
       required: true,

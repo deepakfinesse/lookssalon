@@ -17,7 +17,12 @@ function SalonCard({ salon }) {
     <div className="flex flex-col gap-4">
       <h3 className="text-2xl font-bold text-black">{salon.name}</h3>
 
-      <p className="text-black text-base leading-relaxed">{salon.address}</p>
+      <div className="text-black text-base leading-relaxed">
+        {(salon.address1 || salon.address) && <span className="block">{salon.address1 || salon.address}</span>}
+        {salon.address2 && <span className="block">{salon.address2}</span>}
+        {salon.address3 && <span className="block">{salon.address3}</span>}
+        {salon.pinCode  && <span className="block font-semibold">Pin: {salon.pinCode}</span>}
+      </div>
 
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">

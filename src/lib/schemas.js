@@ -210,11 +210,17 @@ export const SalonCreateSchema = z.object({
     .min(1, "City is required.")
     .max(100, "City must be 100 characters or less."),
 
-  address: z
-    .string({ required_error: "Address is required." })
+  address1: z
+    .string({ required_error: "Address line 1 is required." })
     .trim()
-    .min(1, "Address is required.")
-    .max(300, "Address must be 300 characters or less."),
+    .min(1, "Address line 1 is required.")
+    .max(200, "Address line 1 must be 200 characters or less."),
+
+  address2: z.string().trim().max(200, "Address line 2 must be 200 characters or less.").optional().default(""),
+
+  address3: z.string().trim().max(200, "Address line 3 must be 200 characters or less.").optional().default(""),
+
+  pinCode: z.string().trim().max(10, "Pin code must be 10 characters or less.").optional().default(""),
 
   phones: z
     .array(z.string().trim().min(1, "Phone number cannot be empty.").max(20))

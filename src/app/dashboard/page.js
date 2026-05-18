@@ -40,11 +40,11 @@ export default function DashboardHomePage() {
       <div className="mb-10">
         <p className="text-grey/60 text-xs tracking-[3px] uppercase font-bold mb-2">{today}</p>
         <h1 className="text-3xl font-bold text-foreground m-0 mb-1">Welcome back 👋</h1>
-        <p className="text-grey text-base m-0">Here's an overview of your salon appointments.</p>
+        <p className="text-grey text-base m-0">Here's an overview of your salon.</p>
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+      {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
         {STAT_CARDS.map(({ key, label, icon: Icon, color, bg }) => (
           <div key={key} className="bg-white border border-black/10 rounded-lg p-5 shadow-sm">
             <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${bg} mb-4`}>
@@ -56,10 +56,10 @@ export default function DashboardHomePage() {
             </p>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Quick links */}
-      <div className="border-t border-black/10 pt-8">
+      {/* <div className="border-t border-black/10 pt-8">
         <p className="text-grey/60 text-xs tracking-[3px] uppercase font-bold mb-4">Quick Actions</p>
         <div className="flex flex-wrap gap-3">
           <Link
@@ -81,7 +81,7 @@ export default function DashboardHomePage() {
             View Booking Page ↗
           </Link>
         </div>
-      </div>
+      </div> */}
 
     </main>
   );
