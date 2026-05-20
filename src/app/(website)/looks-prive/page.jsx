@@ -24,14 +24,16 @@ const page = () => {
             </div>
           </div>
           {/* black 1 */}
-          <div className="w-full bg-black">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s1-bg.webp')" }} >
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative min-h-100">
+              <div className="w-full md:w-1/2 relative p-10">
                 <Image
-                  src="/img/all/prive/s1.png"
+                  src="/img/all/prive/s1.webp"
                   alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
+                  width={404}
+                  height={300}
+                  className=""
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
@@ -45,7 +47,8 @@ const page = () => {
             </div>
           </div>
         {/* white 1 */}
-          <div className="w-full bg-white">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
                 <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
                 <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
@@ -55,12 +58,13 @@ const page = () => {
                   Our treatment suites offer a retreat for the senses and a powerhouse for results. At <strong className="text-black">Looks Prive</strong> we specialize in medical-grade skin treatments and rejuvenating therapies that merge science with luxury. Led by the industry's best therapists, our services are designed to restore your glow and provide lasting, visible improvements to your skin’s health through years of refined technique.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 relative min-h-100">
+              <div className="w-full md:w-1/2 relative p-10">
                 <Image
-                  src="/img/all/prive/s2.png"
+                  src="/img/all/prive/s2.webp"
                   alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
+                  width={404}
+                  height={300}
+                  className="text-right"
                 />
               </div>
               
@@ -68,14 +72,16 @@ const page = () => {
           </div>
 
           {/* black 2 */}
-          <div className="w-full bg-black">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s3-bg.webp')" }}>
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative min-h-100">
+              <div className="w-full md:w-1/2 relative p-10">
                 <Image
-                  src="/img/all/prive/s3.png"
+                  src="/img/all/prive/s3.webp"
                   alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
+                  width={404}
+                  height={300}
+                  className=""
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
@@ -89,7 +95,8 @@ const page = () => {
             </div>
           </div>
         {/* white 2 */}
-          <div className="w-full bg-white">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s4-bg.webp')" }}>
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
                 <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
                 <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
@@ -99,12 +106,13 @@ const page = () => {
                   True beauty is maintained between appointments. Our retail gallery features an exclusive selection of the world’s finest professional products, hand-picked by the Looks Prive team for their efficacy. Your stylist will curate a personalized home-care regimen, ensuring you have the exact tools and formulas needed to preserve your salon-fresh look and protect your investment with the best in the field.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 relative min-h-100">
+              <div className="w-full md:w-1/2 relative p-10">
                 <Image
-                  src="/img/all/prive/s4.png"
+                  src="/img/all/prive/s4.webp"
                   alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
+                  width={404}
+                  height={300}
+                  className=""
                 />
               </div>
               
@@ -120,9 +128,9 @@ const page = () => {
             </h2>
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { name: "LOOKS PRIVÉ", location: "VASANT VIHAR", img: "/img/all/prive/s1.png",href:"/" },
-                { name: "LOOKS PRIVÉ", location: "MALCHA MARG", img: "/img/all/prive/s2.png",href:"/" },
-                { name: "LOOKS PRIVÉ", location: "AEROCITY", img: "/img/all/prive/s3.png",href:"/" },
+                { name: "LOOKS PRIVÉ", location: "VASANT VIHAR", img: "/img/all/prive/l1.webp",href:"/" },
+                { name: "LOOKS PRIVÉ", location: "MALCHA MARG", img: "/img/all/prive/l2.webp",href:"/" },
+                { name: "LOOKS PRIVÉ", location: "AEROCITY", img: "/img/all/prive/l3.webp",href:"/" },
               ].map((salon) => (
                 <div key={salon.location} className="flex flex-col items-center gap-0">
                   <div className="relative w-52 h-80 rounded-full overflow-hidden">

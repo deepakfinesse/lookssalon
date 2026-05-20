@@ -43,7 +43,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
       {/* ── Header ── */}
       <FadeUp delay={0.1}>
         <div className="flex  items-center justify-between mb-8">
-          <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl pr-2 md:pr-0 text-grey font-bold uppercase">
+          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl pr-2 md:pr-0 text-grey font-bold uppercase">
             Blog
           </h1>
           <div className="flex items-center gap-3 md:gap-10">
@@ -51,7 +51,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
             <div className="relative">
               <button
                 onClick={() => { setSortOpen(o => !o); setCategoryOpen(false); }}
-                className="text-sm md:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm lg:text-md xl:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 Sort By
                 {sortOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}
@@ -75,7 +75,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
             <div className="relative">
               <button
                 onClick={() => { setCategoryOpen(o => !o); setSortOpen(false); }}
-                className="text-sm md:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm lg:text-md xl:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 {categoryLabel}
                 {categoryOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}

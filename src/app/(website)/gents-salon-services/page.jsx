@@ -79,7 +79,7 @@ export default function ladiesServices() {
             {/* Right Content */}
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-grey font-bold uppercase text-center md:mt-6 mb-6">
                   SERVICES
                 </h1>
 

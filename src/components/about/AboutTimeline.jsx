@@ -65,7 +65,7 @@ export default function AboutTimeline() {
         {/* Heading */}
         <FadeUp delay={0.2}>
           <h2
-            className="text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-12 text-center"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-black font-bold uppercase mb-12 text-center"
           >
             Our Milestones
           </h2>

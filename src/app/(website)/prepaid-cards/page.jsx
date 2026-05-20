@@ -13,7 +13,7 @@ const page = () => {
       <section>
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
           <FadeUp delay={0.1}>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-grey font-bold uppercase mb-4">
             {" "}
             Prepaid Cards
           </h1>

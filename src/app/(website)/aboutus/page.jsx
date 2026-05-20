@@ -100,7 +100,7 @@ const page = () => {
         <section>
             <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
               <FadeUp delay={0.1}>
-                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-grey font-bold uppercase mb-4">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-grey font-bold uppercase mb-4">
                     The journey
                 </h1>
                 </FadeUp>
@@ -147,7 +147,7 @@ const page = () => {
         <section className='bg-primary'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
               <FadeUp delay={0.1}>
-                <h2 className="text-3xl md:text-4xl xl:text-6xl text-black font-bold uppercase mb-4 text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-black font-bold uppercase mb-4 text-center">
                     Our vision
                 </h2>
               </FadeUp>
@@ -166,7 +166,7 @@ const page = () => {
         <section className='bg-black'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
                 <FadeUp delay={0.1}>
-                <h2 className="text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase mb-0 md:mb-2 text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary font-bold uppercase mb-0 md:mb-2 lg:mb-4 text-center">
                     Our Proud Moments
                 </h2>
                 </FadeUp>
@@ -176,7 +176,7 @@ const page = () => {
                   <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
                       {/* ── LEFT PANEL ── */}
-                      <div className="w-full md:flex-1 md:min-w-0 mt-0 md:mt-6">
+                      <div className="w-full md:flex-1 md:min-w-0 mt-0 md:mt-6 lg:mt-20">
                         {/* Year label sits ON the gold line */}
                         <p
                           className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6"
@@ -232,7 +232,7 @@ const page = () => {
                       </div>
 
                       {/* ── RIGHT PANEL ── */}
-                      <div className="w-full md:flex-1 md:min-w-0 text-left md:text-right mt-0 md:mt-6">
+                      <div className="w-full md:flex-1 md:min-w-0 text-left md:text-right mt-0 md:mt-6 lg:mt-20">
                         <p
                           className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6 text-left md:text-right"
                           style={{ color: "#DFAB31" }}
