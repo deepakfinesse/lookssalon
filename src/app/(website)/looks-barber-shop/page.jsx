@@ -12,24 +12,28 @@ const page = () => {
             className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/barber/hero-bg.webp')" }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-              <div className="pl-0 md:pl-65 lg:pl-40 xl:pl-65 py-12 md:py-16 flex flex-col text-center">
-                <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={524} height={190} className='px-8' />
-                <h1 className="text-4xl md:text-5xl xl:text-6xl text-primary font-bold uppercase mt-6 leading-tight text-center">
+            <div className="grid grid-cols-1  md:grid-cols-2 items-end">
+              <div className="px-8 md:px-12 lg:px-20 py-10 md:py-16 flex flex-col items-center text-center self-center">
+                <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={390} height={175} />
+                <h1 className="text-4xl md:text-4xl xl:text-5xl text-primary font-bold uppercase mt-4 leading-snug">
                   THE GROOMING<br /> STANDARD
                 </h1>
               </div>
-              <div className="flex items-end justify-end">
-                <Image src="/img/all/barber/hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto" />
+              <div className="flex items-end justify-end overflow-hidden">
+                <Image src="/img/all/barber/hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom hidden md:block" />
+                <Image src="/img/all/barber/hero-mobile.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom block md:hidden" />
               </div>
             </div>
           </div>
 
           {/* Salons Section */}
           <div className="w-full bg-black py-16 px-4">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl text-primary font-bold uppercase text-center tracking-wide mb-14 leading-tight">
-              The Art of Transformation,<br />Perfected Over Years.....
+            <h2 className="text-3xl md:text-4xl xl:text-5xl text-primary font-bold uppercase text-center tracking-wide mb-4 leading-tight">
+              A Legacy of Refinement in <br className='hidden md:block' /> Delhi’s Elite Hubs
             </h2>
+            <p className="text-white text-center max-w-4xl mx-auto mb-10">
+              Situated in the heart of Delhi’s most iconic neighborhoods—from the sophisticated lanes of khan market to the leafy avenues of defence colony and the stately residences of new friends colony—looks barber shop is the definitive sanctuary for the modern gentleman. We have redefined the traditional barbershop experience, blending old-world charm with the "uber-luxury" expectations of Delhi’s most discerning clientele. Here, grooming is not a chore; it is a curated ritual of prestige.
+            </p>
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
                 { name: "LOOKS BARBER SHOP ", location: "KHAN MARKET ", img: "/img/all/barber/l1.webp",href:"/" },
