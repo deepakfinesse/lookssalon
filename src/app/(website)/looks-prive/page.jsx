@@ -10,7 +10,7 @@ const page = () => {
     {/* Hero Section */}
           <div
             className="w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/all/prive/hero-bg.png')" }}
+            style={{ backgroundImage: "url('/img/all/prive/hero-bg.webp')" }}
           >
             <div className="max-w-5xl mx-auto min-h-[calc(100vh-90px)] px-4 py-12 flex flex-col items-center justify-center text-center">
                 
@@ -26,8 +26,8 @@ const page = () => {
           {/* black 1 */}
           <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s1-bg.webp')" }} >
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative p-10">
+            <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
                 <Image
                   src="/img/all/prive/s1.webp"
                   alt="Couture Hair & Makeup"
@@ -36,8 +36,8 @@ const page = () => {
                   className=""
                 />
               </div>
-              <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-6">
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-1 md:mb-6">
                   Couture Hair &amp; Makeup
                 </h2>
                 <p className="text-white text-md lg:text-lg leading-relaxed">
@@ -49,22 +49,22 @@ const page = () => {
         {/* white 1 */}
           <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-                <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
+            <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
+                <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-1 md:mb-6">
                   Couture Hair &amp; Makeup
                 </h2>
                 <p className="text-black text-md lg:text-lg leading-relaxed">
                   Our treatment suites offer a retreat for the senses and a powerhouse for results. At <strong className="text-black">Looks Prive</strong> we specialize in medical-grade skin treatments and rejuvenating therapies that merge science with luxury. Led by the industry's best therapists, our services are designed to restore your glow and provide lasting, visible improvements to your skin’s health through years of refined technique.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 relative p-10">
+              <div className="order-0 md:order-1 w-full md:w-1/2 relative mb-4 md:mb-0">
                 <Image
                   src="/img/all/prive/s2.webp"
                   alt="Couture Hair & Makeup"
                   width={404}
                   height={300}
-                  className="text-right"
+                  className="ml-auto"
                 />
               </div>
               
@@ -74,8 +74,8 @@ const page = () => {
           {/* black 2 */}
           <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s3-bg.webp')" }}>
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative p-10">
+            <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
                 <Image
                   src="/img/all/prive/s3.webp"
                   alt="Couture Hair & Makeup"
@@ -84,8 +84,8 @@ const page = () => {
                   className=""
                 />
               </div>
-              <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-6">
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-1 md:mb-6">
                   THE FINISHING TOUCH: MANICURES & BEYOND
                 </h2>
                 <p className="text-white text-md lg:text-lg leading-relaxed">
@@ -97,22 +97,22 @@ const page = () => {
         {/* white 2 */}
           <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s4-bg.webp')" }}>
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-                <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
+            <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
+                <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-1 md:mb-6">
                   CURATED AFTERCARE: THE LOOKS PRIVE BOUTIQUE
                 </h2>
                 <p className="text-black text-md lg:text-lg leading-relaxed">
                   True beauty is maintained between appointments. Our retail gallery features an exclusive selection of the world’s finest professional products, hand-picked by the Looks Prive team for their efficacy. Your stylist will curate a personalized home-care regimen, ensuring you have the exact tools and formulas needed to preserve your salon-fresh look and protect your investment with the best in the field.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 relative p-10">
+              <div className="order-0 md:order-1 w-full md:w-1/2 relative mb-4 md:mb-0">
                 <Image
                   src="/img/all/prive/s4.webp"
                   alt="Couture Hair & Makeup"
                   width={404}
                   height={300}
-                  className=""
+                  className="ml-auto"
                 />
               </div>
               
@@ -123,7 +123,7 @@ const page = () => {
 
           {/* Salons Section */}
           <div className="w-full bg-black py-16 px-4">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl text-primary font-bold uppercase text-center tracking-wide mb-14 leading-tight">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl text-primary font-bold uppercase text-center tracking-wide mb-6 md:mb-14 leading-tight">
               The Art of Transformation,<br />Perfected Over Years.....
             </h2>
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -10,16 +10,18 @@ const page = () => {
     {/* Hero Section */}
           <div
             className="w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/all/barber/hero-bg.png')" }}
+            style={{ backgroundImage: "url('/img/all/barber/hero-bg.webp')" }}
           >
-            <div className="max-w-4xl mx-auto min-h-[calc(100vh-90px)] px-4 py-12 flex flex-col items-star justify-center ">
-                
-              
-                <Image src="/img/all/barber/logo.svg" alt="Looks Prive" className='text-center' width={290} height={90} />
-                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase mt-4">
-                  The Grooming <br className='hidden md:block'/> Standard
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+              <div className="pl-0 md:pl-65 lg:pl-40 xl:pl-65 py-12 md:py-16 flex flex-col text-center">
+                <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={524} height={190} className='px-8' />
+                <h1 className="text-4xl md:text-5xl xl:text-6xl text-primary font-bold uppercase mt-6 leading-tight text-center">
+                  THE GROOMING<br /> STANDARD
                 </h1>
-                
+              </div>
+              <div className="flex items-end justify-end">
+                <Image src="/img/all/barber/hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto" />
+              </div>
             </div>
           </div>
 
@@ -30,9 +32,9 @@ const page = () => {
             </h2>
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { name: "LOOKS BARBER SHOP ", location: "KHAN MARKET ", img: "/img/all/barber/l1.png",href:"/" },
-                { name: "LOOKS BARBER SHOP  ", location: "DEFENCE COLONY", img: "/img/all/barber/l2.png",href:"/" },
-                { name: "LOOKS BARBER SHOP ", location: "NEW FRIENDS COLONY", img: "/img/all/barber/l3.png",href:"/" },
+                { name: "LOOKS BARBER SHOP ", location: "KHAN MARKET ", img: "/img/all/barber/l1.webp",href:"/" },
+                { name: "LOOKS BARBER SHOP  ", location: "DEFENCE COLONY", img: "/img/all/barber/l2.webp",href:"/" },
+                { name: "LOOKS BARBER SHOP ", location: "NEW FRIENDS COLONY", img: "/img/all/barber/l3.webp",href:"/" },
               ].map((salon) => (
                 <div key={salon.location} className="flex flex-col items-center gap-0">
                   <div className="relative w-52 h-80 rounded-full overflow-hidden">
@@ -52,9 +54,10 @@ const page = () => {
           </div>
           
         {/* white 1 */}
-          <div className="w-full bg-white">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-                <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/barber/s1-bg.webp')" }}>
+            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
+                <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
                 <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
                   MASTERY IN EVERY CUT
                 </h2>
@@ -62,30 +65,33 @@ const page = () => {
                   Our chairs are manned by a collective of the industry’s finest master barbers and stylists who understand the nuances of a gentleman's aesthetic. Whether it is a precision fade, a classic scissor cut, or a meticulous beard sculpt, our experts bring a global perspective to local tradition. At Looks The Barber Shop, we honor the heritage of the craft while utilizing contemporary techniques to ensure every client leaves with a look of effortless authority.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 relative min-h-100">
-                <Image
-                  src="/img/all/barber/s1.png"
-                  alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
+              <div className="order-1 md:order-0 w-full md:w-1/2 relative mb-4 md:mb-0">
+                                            <Image
+                                              src="/img/all/barber/s1.webp"
+                                              alt="Couture Hair & Makeup"
+                                              width={404}
+                                              height={300}
+                                              className="ml-auto"
+                                            />
+                                          </div>
               
             </div>
           </div>
 
           {/* black 2 */}
-          <div className="w-full bg-black">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative min-h-100">
-                <Image
-                  src="/img/all/barber/s2.png"
-                  alt="Couture Hair & Makeup"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="w-full md:w-1/2 flex flex-col justify-center px-10 py-16">
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/barber/s2-bg.webp')" }}>
+            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
+                                            <Image
+                                              src="/img/all/barber/s2.webp"
+                                              alt="Couture Hair & Makeup"
+                                              width={404}
+                                              height={300}
+                                              className=""
+                                            />
+                                          </div>
+              <div className="w-full md:w-1/2 flex flex-col justify-center ">
                 <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-6">
                   THE RITUAL OF THE ROYAL SHAVE
                 </h2>
@@ -95,13 +101,7 @@ const page = () => {
               </div>
             </div>
           </div>
-        
-
-
-
-          
-
-              <BookAppointment/>
+          <BookAppointment/>
           <PartnerBrands/>
     </>
   )
