@@ -198,7 +198,15 @@ export default function LocateSalonPage() {
                 alt="Salon Locator"
                 width={638}
                 height={300}
-                className="w-full max-w-[638px] h-auto object-contain"
+                className="hidden md:block w-full max-w-[638px] h-auto object-contain"
+                priority
+              />
+              <Image
+                src="/img/all/salon-locator-hero-mobile.webp"
+                alt="Salon Locator"
+                width={638}
+                height={300}
+                className="block md:hidden w-full h-auto object-contain"
                 priority
               />
             </div>
