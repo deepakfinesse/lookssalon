@@ -273,7 +273,7 @@ export default function LocateSalonPage() {
           {loading && (
             <div className="flex flex-col items-center gap-4 py-20 text-black/40">
               <div className="w-8 h-8 border-2 border-black/10 border-t-primary rounded-full animate-spin" />
-              <span className="text-sm font-medium uppercase tracking-widest">Searching…</span>
+              <span className="text-sm font-medium uppercase">Searching…</span>
             </div>
           )}
 
@@ -281,7 +281,7 @@ export default function LocateSalonPage() {
           {!loading && fetched && salons.length > 0 && (
             <>
               {hasFilter && (
-                <p className="text-sm text-black/50 font-medium uppercase tracking-widest mb-10">
+                <p className="text-sm text-black/50 font-medium uppercase mb-10">
                   {salons.length} salon{salons.length !== 1 ? "s" : ""} found
                   {cityFilter ? ` in ${cityFilter}` : ""}
                   {search ? ` matching "${search}"` : ""}

@@ -162,6 +162,36 @@ const page = () => {
         {/* Our Milestones */}
         <AboutTimeline/>
 
+        {/* Opening soon */}
+        <div className="w-full bg-cover bg-center"
+                    style={{ backgroundImage: "url('/img/about/open-soon-bg.png')" }}>
+                    <div className="max-w-7xl  mx-auto px-4 flex flex-col md:flex-row items-stretch">
+                        <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center items-start">
+                        <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase mb-1 md:mb-6">
+                          Opening soon
+                        </h2>
+                        <ul className='text-white text-lg'>
+                          <li>Vista Square, Gurugram</li>
+                          <li>BRS Nagar, Ludhiana</li>
+                          <li>DLF Midtown, Moti Nagar</li>
+                          <li>Vibes Devika Retail, Noida</li>
+                          <li>Mayur Vihar Phase 1, Metro Station, Delhi</li>
+                        </ul>
+                        
+                      </div>
+                      <div className="order-0 md:order-1 w-full md:w-1/2 relative md:-mt-32 xl:-mt-32 mb-4 md:mb-0">
+                        <Image
+                          src="/img/about/open-soon.webp"
+                          alt="Couture Hair & Makeup"
+                          width={619}
+                          height={573}
+                          className="ml-auto"
+                        />
+                      </div>
+                      
+                    </div>
+                  </div>
+
         {/* Our Proud Moments */}
         <section className='bg-black'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">

@@ -42,7 +42,7 @@ function NumberedItem({ number, title, children }) {
 function CookieCard({ title, type, children }) {
   return (
     <div className="bg-white border border-primary/30 rounded-lg p-5">
-      <p className="text-xs uppercase tracking-widest text-primary font-medium mb-3">{title}</p>
+      <p className="text-xs uppercase  text-primary font-medium mb-3">{title}</p>
       <div className="space-y-1 text-md text-grey">
         <p><span className="font-medium text-black">Type:</span> {type}</p>
         <p><span className="font-medium text-black">Administered by:</span> Us</p>

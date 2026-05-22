@@ -37,7 +37,7 @@ const page = () => {
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-1 md:mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase mb-1 md:mb-6">
                   Couture Hair &amp; Makeup
                 </h2>
                 <p className="text-white text-md lg:text-lg leading-relaxed">
@@ -51,7 +51,7 @@ const page = () => {
             style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
             <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
                 <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-1 md:mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase mb-1 md:mb-6">
                   Couture Hair &amp; Makeup
                 </h2>
                 <p className="text-black text-md lg:text-lg leading-relaxed">
@@ -85,7 +85,7 @@ const page = () => {
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-1 md:mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase mb-1 md:mb-6">
                   THE FINISHING TOUCH: MANICURES & BEYOND
                 </h2>
                 <p className="text-white text-md lg:text-lg leading-relaxed">
@@ -99,7 +99,7 @@ const page = () => {
             style={{ backgroundImage: "url('/img/all/prive/s4-bg.webp')" }}>
             <div className="max-w-7xl p-10 mx-auto flex flex-col md:flex-row items-stretch">
                 <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-1 md:mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase mb-1 md:mb-6">
                   CURATED AFTERCARE: THE LOOKS PRIVE BOUTIQUE
                 </h2>
                 <p className="text-black text-md lg:text-lg leading-relaxed">

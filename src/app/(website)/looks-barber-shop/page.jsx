@@ -62,7 +62,7 @@ const page = () => {
             style={{ backgroundImage: "url('/img/all/barber/s1-bg.webp')" }}>
             <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
                 <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase tracking-widest mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase mb-6">
                   MASTERY IN EVERY CUT
                 </h2>
                 <p className="text-black text-md lg:text-lg leading-relaxed">
@@ -96,7 +96,7 @@ const page = () => {
                                             />
                                           </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center ">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase tracking-widest mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase mb-6">
                   THE RITUAL OF THE ROYAL SHAVE
                 </h2>
                 <p className="text-white text-md lg:text-lg leading-relaxed">
