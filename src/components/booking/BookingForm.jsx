@@ -287,12 +287,12 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
 
         {/* Row 4: Date + Time */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-          <FormField id="bf-date" label="Appointment Date" error={errors.appointmentDate?.message}>
+          <FormField id="bf-date" label="Appointment Date" error={errors.appointmentDate?.message} isDate>
             <input
               id="bf-date"
               type="date"
               min={minDateStr}
-              className={inp(!!errors.appointmentDate, inputBorder) + " [&::-webkit-calendar-picker-indicator]:invert"}
+              className={inp(!!errors.appointmentDate, inputBorder) + " [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"}
               {...register("appointmentDate")}
             />
           </FormField>

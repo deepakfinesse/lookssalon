@@ -15,7 +15,7 @@ const Footer = () => {
       {/* Footer */}
       <footer className="bg-black py-10">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-12 gap-10">
+          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
             {/* Quick Links */}
 
             <div className="lg:col-span-6">
@@ -46,11 +46,11 @@ const Footer = () => {
 
                 <ul className="w-1/2 space-y-0 md:space-y-2">
                   {[
-                    { label: "Contact",           href: "/", target: "_self" },
+                    { label: "Contact",           href: "/contact", target: "_self" },
                     { label: "Academy",    href: "https://www.looksschool.com/", target: "_blank" },
                     { label: "Book Appointment",  href: "/salon-book-appointment", target: "_self" },
                     { label: "Salon Finder",      href: "/locate-salon", target: "_self" },
-                    { label: "Offers",            href: "/", target: "_self" }
+                    { label: "Offers",            href: "/offers", target: "_self" }
                   ].map((item, i) => (
                     <li key={i}>
                       <Link

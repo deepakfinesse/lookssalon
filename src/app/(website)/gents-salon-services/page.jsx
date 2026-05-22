@@ -48,7 +48,7 @@ export default function ladiesServices() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-30  p-4">
             {/* Left Images */}
             <div className="hidden md:block space-y-14">
-              <div className="overflow-hidden group">
+              <div className="sticky top-[88px] overflow-hidden group">
                 <Image
                   src="/img/services/mens-one.webp"
                   alt=""
@@ -57,7 +57,7 @@ export default function ladiesServices() {
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="overflow-hidden group">
+              {/* <div className="overflow-hidden group">
                 <Image
                   src="/img/services/mens-three.webp"
                   alt=""
@@ -67,13 +67,13 @@ export default function ladiesServices() {
                 />
               </div>
 
-              {/* CTA BOX */}
+              
               <Link href="/salon-book-appointment" className="relative block overflow-hidden border-12 border-primary lg:ml-12 lg:-mr-12 px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white group cursor-pointer">
                 <h4 className="relative z-10 text-3xl lg:text-6xl font-medium leading-snug transition duration-300 group-hover:text-white">
                   Book Now & give yourself a head turning LOOK
                 </h4>
                 <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
-              </Link>
+              </Link> */}
             </div>
 
             {/* Right Content */}
@@ -93,7 +93,7 @@ export default function ladiesServices() {
                   />
                 </div>
 
-                <ul className="text-center text-2xl md:text-[44px] font-extrabold my-10 md:my-15 space-y-2">
+                <ul className="text-center text-2xl md:text-[44px] font-extrabold my-4 md:my-15 space-y-2">
                   <li className="relative overflow-hidden group">
                     <a href="#service-0" className="block">
                       <FadeUp delay={0.1}><span className="relative z-10 transition duration-300 group-hover:text-white">CUT & HAIR CARE</span></FadeUp>
@@ -131,7 +131,7 @@ export default function ladiesServices() {
                     </a>
                   </li>
                 </ul>
-                <div className="overflow-hidden group mt-4">
+                {/* <div className="overflow-hidden group mt-4">
                   <Image
                     src="/img/services/mens-four.webp"
                     alt=""
@@ -139,11 +139,34 @@ export default function ladiesServices() {
                     height={200}
                     className="w-full transition-transform duration-500 group-hover:scale-110"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
 
+          {/* CTA SECTION */}
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-30  md:p-4">
+            {/* Left Images */}
+            <div className=" space-y-4 md:space-y-14">
+              {/* CTA BOX */}
+                <Link href="/salon-book-appointment" className="relative block overflow-hidden border-12 border-primary  px-6 py-6 lg:px-12 lg:py-10 text-left mt-6 bg-white group cursor-pointer">
+                  <h4 className="relative z-10 text-3xl lg:text-6xl font-medium leading-snug transition duration-300 group-hover:text-white">
+                    Book Now & give yourself a head turning LOOK
+                  </h4>
+                  <span aria-hidden="true" className="absolute inset-0 w-0 bg-black transition-all duration-500 group-hover:w-full" />
+                </Link>
+            </div>
+
+            {/* Right Content */}
+            <div className="hidden md:block flex flex-col justify-between">
+                <div className="overflow-hidden group mt-4 md:p-1">
+                  <Image src="/img/services/mens-four.webp" alt="" width={400} height={200} className="w-full transition-transform duration-500 group-hover:scale-110" />
+                </div>
+            </div>
+          </div>
+
+
+          {/* Text Section */}
           <div className="grid mt-14">
             <FadeUp delay={0.1}>
               <h2 className="text-2xl md:text-3xl font-bold  mb-4">
@@ -182,7 +205,7 @@ export default function ladiesServices() {
                   {/* Icon Placeholder */}
                   <div className="flex items-center justify-center text-primary">
                     <FadeUp delay={0.1}>
-                      <Image src={item.icon} alt="Icon" width={70} height={0} />
+                      <Image src={item.icon} alt="Icon" width={70} height={0} className="w-8.75 md:w-20.5" />
                     </FadeUp>
                   </div>
 
