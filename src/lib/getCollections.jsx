@@ -12,7 +12,7 @@ export async function getCollections() {
       collections.map(async (col) => {
         const res = await fetch(
           `https://lookskart.com/collections/${col.handle}/products.json?limit=1`,
-          { cache: 'no-store' }
+          { next: { revalidate: 3600 } }
         )
 
         const data = await res.json()
