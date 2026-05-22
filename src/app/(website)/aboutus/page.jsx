@@ -164,18 +164,18 @@ const page = () => {
 
         {/* Opening soon */}
         <div className="w-full bg-cover bg-center"
-                    style={{ backgroundImage: "url('/img/about/open-soon-bg.png')" }}>
+                    style={{ backgroundImage: "url('/img/about/open-soon-bg.png')" }} id="opening-soon">
                     <div className="max-w-7xl  mx-auto px-4 flex flex-col md:flex-row items-stretch">
                         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
                         <h2 className="text-2xl md:text-3xl xl:text-5xl text-primary font-bold uppercase mb-1 md:mb-6">
                           Opening soon
                         </h2>
                         <ul className='text-white text-lg space-y-2 mb-6 text-center'>
-                          <li className='mb-4'>Vista Square, Gurugram</li>
-                          <li className='mb-4'>BRS Nagar, Ludhiana</li>
-                          <li className='mb-4'>DLF Midtown, Moti Nagar</li>
-                          <li className='mb-4'>Vibes Devika Retail, Noida</li>
-                          <li className=''>Mayur Vihar Phase 1, Metro Station, Delhi</li>
+                          <li className='mb-4'><FadeUp delay={0.1}> Vista Square, Gurugram </FadeUp></li>
+                          <li className='mb-4'><FadeUp delay={0.2}>BRS Nagar, Ludhiana</FadeUp></li>
+                          <li className='mb-4'><FadeUp delay={0.3}>DLF Midtown, Moti Nagar</FadeUp></li>
+                          <li className='mb-4'><FadeUp delay={0.4}>Vibes Devika Retail, Noida</FadeUp></li>
+                          <li className=''><FadeUp delay={0.5}>Mayur Vihar Phase 1, Metro Station, Delhi</FadeUp></li>
                         </ul>
                         
                       </div>

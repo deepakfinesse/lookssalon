@@ -53,26 +53,27 @@ const page = () => {
                 /> */}
               </div>
 
-              <h2 className="text-2xl lg:text-3xl font-semibold uppercase text-[#20ADDB]">
-                LOOKS BLUE
+              <h2 className="text-2xl lg:text-3xl font-semibold uppercase text-black">
+                LOOKS BLACK
               </h2>
 
               <div className="mt-4 w-full max-w-[260px]  text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
-                  <span className="font-semibold">RS. 6,000</span>
+                  <span className="font-semibold">RS. 10,500</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">SERVICE WORTH</span>
-                  <span className="font-semibold">RS. 7,500</span>
+                  <span className="font-semibold">RS. 13,000</span>
                 </div>
               </div>
               {/* Buttons */}
               <div className="flex items-center gap-5 mt-6">
                 <Button
-                  href="/"
+                  href="https://lookskart.com/collections/gift-card/products/looks-black-gift-card"
                   label="Buy Now"
                   variant="dark"
+                  target="_blank"
                 />
               </div>
             </div>
@@ -97,18 +98,19 @@ const page = () => {
               <div className="mt-4 w-full max-w-[260px] text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
-                  <span className="font-semibold">RS. 15,000</span>
+                  <span className="font-semibold">RS. 22,500</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">SERVICE WORTH</span>
-                  <span className="font-semibold">RS. 20,000</span>
+                  <span className="font-semibold">RS. 30,000</span>
                 </div>
               </div>
               {/* Buttons */}
               <div className="flex items-center gap-5 mt-6">
                 <Button
-                  href="/"
+                  href="https://lookskart.com/collections/gift-card/products/looks-silver-gift-card"
                   label="Buy Now"
+                  target="_blank"
                   variant="dark"
                 />
               </div>
@@ -133,7 +135,7 @@ const page = () => {
               <div className="mt-4 w-full max-w-[260px] text-md lg:text-lg">
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">PRE LOADED</span>
-                  <span className="font-semibold">RS. 50,000</span>
+                  <span className="font-semibold">RS. 52,500</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="font-semibold">SERVICE WORTH</span>
@@ -143,8 +145,9 @@ const page = () => {
               {/* Buttons */}
               <div className="flex items-center gap-5 mt-6">
                 <Button
-                  href="/"
+                  href="https://lookskart.com/collections/gift-card/products/looks-golden-gift-card"
                   label="Buy Now"
+                  target="_blank"
                   variant="dark"
                 />
               </div>

@@ -14,7 +14,7 @@ const page = () => {
                 </h1>
                 <div className='grid grid-cols-2 gap-12'>
                     <div className="relative group overflow-hidden cursor-pointer">
-                        <Image src="/img/all/offer-2.png" alt="Offer 1" width={600} height={600} className="" />
+                        <Image src="/img/all/offer-1.webp" alt="Offer 1" width={600} height={600} className="" />
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Button
@@ -25,7 +25,7 @@ const page = () => {
                         </div>
                     </div>
                     <div className="relative group overflow-hidden cursor-pointer">
-                        <Image src="/img/all/offer-2.png" alt="Offer 1" width={600} height={600} className="" />
+                        <Image src="/img/all/offer-2.webp" alt="Offer 1" width={600} height={600} className="" />
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Button
@@ -36,7 +36,7 @@ const page = () => {
                         </div>
                     </div>
                     <div className="relative group overflow-hidden cursor-pointer">
-                        <Image src="/img/all/offer-2.png" alt="Offer 1" width={600} height={600} className="" />
+                        <Image src="/img/all/offer-2.webp" alt="Offer 1" width={600} height={600} className="" />
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Button
@@ -47,7 +47,7 @@ const page = () => {
                         </div>
                     </div>
                     <div className="relative group overflow-hidden cursor-pointer">
-                        <Image src="/img/all/offer-2.png" alt="Offer 1" width={600} height={600} className="" />
+                        <Image src="/img/all/offer-1.webp" alt="Offer 1" width={600} height={600} className="" />
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Button

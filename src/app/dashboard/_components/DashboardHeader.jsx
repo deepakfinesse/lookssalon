@@ -19,6 +19,8 @@ const NAV_LINKS = [
 export default function DashboardHeader() {
   const pathname = usePathname();
 
+  if (pathname === "/dashboard/login") return null;
+
   return (
     <header
       className="sticky top-0 z-[100] h-16 flex items-center justify-between
@@ -29,7 +31,6 @@ export default function DashboardHeader() {
       <div className="flex items-center gap-6">
         <Image src="/img/logo.svg" width={120} height={48} alt="Looks Salon" priority />
 
-        {/* Nav links */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(({ href, label, icon: Icon }) => {
             const active = href === "/dashboard" ? pathname === href : pathname.startsWith(href);
@@ -52,7 +53,6 @@ export default function DashboardHeader() {
         </nav>
       </div>
 
-      {/* Sign out */}
       <button
         onClick={() => signOut({ callbackUrl: "/dashboard/login" })}
         className="border-2 border-black bg-white text-foreground

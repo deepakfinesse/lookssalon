@@ -106,7 +106,7 @@ const OurSalons = () => {
             <FadeUp delay={0.3}>
               <div className="flex items-center gap-2 md:gap-5 mt-3 md:mt-6">
                 <Button href="/locate-salon" label="locate salon Near you" />
-                <Button href="/" label="opening soon" />
+                <Button href="/aboutus#opening-soon" label="opening soon" />
               </div>
             </FadeUp>
           </div>
