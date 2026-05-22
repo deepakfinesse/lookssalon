@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { HiOutlineHome, HiOutlineCalendar, HiOutlineOfficeBuilding, HiOutlineLocationMarker, HiOutlinePencilAlt, HiOutlinePhotograph } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineCalendar, HiOutlineOfficeBuilding, HiOutlineLocationMarker, HiOutlinePencilAlt, HiOutlinePhotograph, HiOutlineMail } from "react-icons/hi";
 
 const NAV_LINKS = [
   { href: "/dashboard",              label: "Home",         icon: HiOutlineHome           },
   { href: "/dashboard/appointments", label: "Appointments", icon: HiOutlineCalendar       },
   { href: "/dashboard/franchise",    label: "Franchise",    icon: HiOutlineOfficeBuilding },
+  { href: "/dashboard/contact",      label: "Contact",      icon: HiOutlineMail           },
   { href: "/dashboard/salons",       label: "Salons",       icon: HiOutlineLocationMarker },
   { href: "/dashboard/blog",         label: "Blog",         icon: HiOutlinePencilAlt      },
   { href: "/dashboard/banners",      label: "Banners",      icon: HiOutlinePhotograph     },

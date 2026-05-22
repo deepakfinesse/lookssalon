@@ -563,3 +563,125 @@ export async function sendFranchiseAdminEmail(inquiry) {
     html:    emailShell(body),
   });
 }
+
+// ── Contact: customer confirmation ────────────────────────────────────────────
+
+export async function sendContactCustomerEmail(inquiry) {
+  const { name, email, phone, subject } = inquiry;
+  const year = new Date().getFullYear();
+
+  const body = `
+    ${emailHeader("Message Received")}
+
+    <tr>
+      <td style="padding:20px 40px 0">
+        <p style="margin:0 0 10px;font-family:${FONT};font-size:15px;
+                  color:#171717;line-height:1.8">
+          Dear <strong style="color:${GOLD}">${name}</strong>,
+        </p>
+        <p style="margin:0 0 1px;font-family:${FONT};font-size:14px;
+                  color:${BODY_TXT};line-height:1.8">
+          Thank you for getting in touch with Looks Salon. We have received your
+          message and our team will get back to you as soon as possible.
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:24px 40px 20px">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation"
+               style="border:1px solid ${BORDER};border-radius:2px;overflow:hidden">
+          <tr>
+            <td colspan="2"
+                style="padding:13px 20px;background:${ROW_ALT};
+                       border-bottom:1px solid ${BORDER}">
+              <p style="margin:0;font-family:${FONT};font-size:10px;
+                        color:${GOLD};letter-spacing:4px;text-transform:uppercase">
+                Your Message Details
+              </p>
+            </td>
+          </tr>
+          ${detailRow("Name",    name)}
+          ${detailRow("Phone",   phone)}
+          ${detailRow("Subject", subject, true)}
+        </table>
+      </td>
+    </tr>
+
+    ${emailFooter(year)}
+  `;
+
+  await getResend().emails.send({
+    from:    `Looks Salon <${process.env.RESEND_FROM_EMAIL}>`,
+    to:      email,
+    subject: `✅ Message Received — Looks Salon`,
+    html:    emailShell(body),
+  });
+}
+
+// ── Contact: admin notification ───────────────────────────────────────────────
+
+export async function sendContactAdminEmail(inquiry) {
+  const { name, email, phone, subject, query, createdAt } = inquiry;
+  const year = new Date().getFullYear();
+
+  const submittedDate = new Date(createdAt).toLocaleDateString("en-IN", {
+    timeZone: "Asia/Kolkata", day: "2-digit", month: "long", year: "numeric",
+  });
+  const submittedTime = new Date(createdAt).toLocaleTimeString("en-IN", {
+    timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: true,
+  });
+
+  const body = `
+    ${emailHeader("New Contact Message")}
+
+    <tr>
+      <td style="padding:28px 40px 20px">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation"
+               style="border:1px solid ${BORDER};border-radius:2px;overflow:hidden">
+          <tr>
+            <td colspan="2"
+                style="padding:13px 20px;background:${ROW_ALT};
+                       border-bottom:1px solid ${BORDER}">
+              <p style="margin:0;font-family:${FONT};font-size:10px;
+                        color:${GOLD};letter-spacing:4px;text-transform:uppercase">
+                Message Details
+              </p>
+            </td>
+          </tr>
+          ${detailRow("Date",    submittedDate)}
+          ${detailRow("Time",
+            `<strong style="color:${GOLD}">${submittedTime} IST</strong>`)}
+          ${detailRow("Name",    name)}
+          ${detailRow("Email",
+            `<a href="mailto:${email}"
+                style="color:${GOLD};text-decoration:none">${email}</a>`)}
+          ${detailRow("Phone",
+            `<a href="tel:${phone}"
+                style="color:${GOLD};text-decoration:none">${phone}</a>`)}
+          ${detailRow("Subject", subject)}
+          ${detailRow("Query",   query, true)}
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:0 40px">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+          <tr>
+            <td style="border-top:1px solid ${BORDER};font-size:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    ${emailFooter(year)}
+  `;
+
+  await getResend().emails.send({
+    from:    `Looks Salon Contact <${process.env.RESEND_FROM_EMAIL}>`,
+    to:      process.env.ADMIN_EMAIL,
+    subject: `📩 New Contact Message — ${subject}`,
+    html:    emailShell(body),
+  });
+}

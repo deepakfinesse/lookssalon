@@ -319,6 +319,71 @@ export const BlogQuerySchema = z.object({
   sort:     z.enum(["latest", "oldest"]).default("latest"),
 });
 
+// ── Contact inquiry schema ────────────────────────────────────────────────────
+
+export const ContactInquirySchema = z.object({
+  name: z
+    .string({ required_error: "Please enter your name." })
+    .trim()
+    .min(1, "Please enter your name.")
+    .max(80, "Name must be 80 characters or less."),
+
+  phone: z
+    .string({ required_error: "Please enter your phone number." })
+    .trim()
+    .min(1, "Please enter your phone number.")
+    .refine(
+      v => /^[6-9]\d{9}$/.test(v.replace(/\s/g, "")),
+      "Please enter a valid 10-digit Indian mobile number."
+    ),
+
+  email: z
+    .string({ required_error: "Please enter your email address." })
+    .trim()
+    .toLowerCase()
+    .max(120, "Email must be 120 characters or less.")
+    .refine(
+      v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      { message: "Please enter a valid email address." }
+    ),
+
+  subject: z
+    .string({ required_error: "Please enter a subject." })
+    .trim()
+    .min(1, "Please enter a subject.")
+    .max(200, "Subject must be 200 characters or less."),
+
+  query: z
+    .string({ required_error: "Please enter your query." })
+    .trim()
+    .min(1, "Please enter your query.")
+    .max(2000, "Query must be 2000 characters or less."),
+});
+
+export const CONTACT_STATUSES = ["new", "reviewed", "replied", "closed"];
+
+export const ContactQuerySchema = z.object({
+  page:   z.coerce.number().int().min(1).default(1),
+  limit:  z.coerce.number().int().min(1).max(5000).default(15),
+  status: z.enum(["all", ...CONTACT_STATUSES]).default("all"),
+  search: z.string().trim().max(100).default(""),
+});
+
+export const ContactUpdateSchema = z
+  .object({
+    status: z.enum(CONTACT_STATUSES, {
+      invalid_type_error: "Invalid status value.",
+    }).optional(),
+    notes: z
+      .string()
+      .max(1000, "Notes must be 1000 characters or less.")
+      .optional(),
+  })
+  .refine(
+    data => data.status !== undefined || data.notes !== undefined,
+    { message: "Provide at least one field to update." }
+  );
+
 // ── Helper: format first Zod error as a plain string ─────────────────────────
 
 export function firstError(result) {

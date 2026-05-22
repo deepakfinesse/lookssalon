@@ -26,8 +26,8 @@ const Nav = ({ isActive, toggleMenu }) => {
     { href: "/blog", label: "Blog", target: "_self" },
     { href: "/franchise", label: "Franchise", target: "_self" },
     { href: "https://www.looksschool.com/", label: "Academy", target: "_blank" },
-    { href: "/", label: "Offers", target: "_self" },
-    { href: "/", label: "Contact Us", target: "_self" },
+    { href: "/offers", label: "Offers", target: "_self" },
+    { href: "/contact", label: "Contact Us", target: "_self" },
   ];
 
   return (
