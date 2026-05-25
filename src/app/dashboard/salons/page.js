@@ -131,7 +131,7 @@ function ImportModal({ onClose, onImportDone }) {
         setError(data.error || "Import failed.");
       } else {
         setResult(data);
-        if (data.inserted > 0) onImportDone();
+        if ((data.inserted ?? 0) > 0 || (data.updated ?? 0) > 0) onImportDone();
       }
     } catch {
       setError("Network error. Please try again.");
@@ -262,24 +262,15 @@ function ImportModal({ onClose, onImportDone }) {
                   <p className="text-[28px] font-light text-emerald-600 leading-none mb-1">{result.inserted}</p>
                   <p className="text-xs text-emerald-600/70 uppercase tracking-wide font-bold">Inserted</p>
                 </div>
-                <div className="bg-amber-50 border border-amber-200 rounded p-4 text-center">
-                  <p className="text-[28px] font-light text-amber-600 leading-none mb-1">{result.skipped ?? 0}</p>
-                  <p className="text-xs text-amber-600/70 uppercase tracking-wide font-bold">Skipped</p>
+                <div className="bg-blue-50 border border-blue-200 rounded p-4 text-center">
+                  <p className="text-[28px] font-light text-blue-600 leading-none mb-1">{result.updated ?? 0}</p>
+                  <p className="text-xs text-blue-600/70 uppercase tracking-wide font-bold">Updated</p>
                 </div>
                 <div className="bg-red-50 border border-red-200 rounded p-4 text-center">
                   <p className="text-[28px] font-light text-red-500 leading-none mb-1">{result.errors?.length ?? 0}</p>
                   <p className="text-xs text-red-500/70 uppercase tracking-wide font-bold">Errors</p>
                 </div>
               </div>
-
-              {result.skippedList?.length > 0 && (
-                <div className="bg-amber-50 border border-amber-200 rounded p-3 text-xs text-amber-700">
-                  <p className="font-bold mb-1">Skipped (already exist):</p>
-                  <ul className="list-disc list-inside space-y-0.5">
-                    {result.skippedList.map((s, i) => <li key={i}>{s}</li>)}
-                  </ul>
-                </div>
-              )}
 
               {result.errors?.length > 0 && (
                 <div className="bg-red-50 border border-red-300 rounded p-3 text-xs text-red-600">

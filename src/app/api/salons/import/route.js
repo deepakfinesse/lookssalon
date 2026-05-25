@@ -9,24 +9,35 @@ export const runtime = "nodejs";
 const MAX_BYTES = 500_000; // 500 KB
 const MAX_ROWS  = 300;
 
-function csvLineSplit(line) {
-  const fields = [];
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
   let field = "";
   let inQuote = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
     if (inQuote) {
-      if (ch === '"' && line[i + 1] === '"') { field += '"'; i++; }
+      if (ch === '"' && text[i + 1] === '"') { field += '"'; i++; }
       else if (ch === '"') inQuote = false;
-      else field += ch;
+      else field += ch; // preserves embedded newlines inside quoted fields
     } else {
-      if (ch === '"') inQuote = true;
-      else if (ch === ",") { fields.push(field); field = ""; }
-      else field += ch;
+      if (ch === '"') { inQuote = true; }
+      else if (ch === ',') { row.push(field.trim()); field = ""; }
+      else if (ch === '\r') { /* skip */ }
+      else if (ch === '\n') {
+        row.push(field.trim());
+        field = "";
+        if (row.some(f => f !== "")) rows.push(row);
+        row = [];
+      } else { field += ch; }
     }
   }
-  fields.push(field);
-  return fields.map(f => f.trim());
+  // handle file without trailing newline
+  row.push(field.trim());
+  if (row.some(f => f !== "")) rows.push(row);
+
+  return rows;
 }
 
 function generateSalonId() {
@@ -73,13 +84,13 @@ export async function POST(request) {
     return NextResponse.json({ error: "Could not read file." }, { status: 400 });
   }
 
-  const lines = text.split(/\r?\n/).filter(l => l.trim() !== "");
-  if (lines.length < 2) {
+  const allRows = parseCsv(text);
+  if (allRows.length < 2) {
     return NextResponse.json({ error: "CSV has no data rows (only header or empty)." }, { status: 400 });
   }
 
-  const dataLines = lines.slice(1); // skip header
-  if (dataLines.length > MAX_ROWS) {
+  const dataRows = allRows.slice(1); // skip header
+  if (dataRows.length > MAX_ROWS) {
     return NextResponse.json(
       { error: `Too many rows. Maximum ${MAX_ROWS} rows per import.` },
       { status: 400 }
@@ -90,7 +101,7 @@ export async function POST(request) {
   const EXPECTED_COLS = ["name","city","address1","address2","address3","pinCode",
                          "phone1","phone2","phone3","timing",
                          "googleMapUrl","salonTourUrl","bookAppointmentUrl","isActive"];
-  const header = csvLineSplit(lines[0]).map(h => h.toLowerCase().replace(/\s/g, ""));
+  const header = allRows[0].map(h => h.toLowerCase().replace(/\s/g, ""));
   if (!header.includes("name") || !header.includes("city") || !header.includes("address1") || !header.includes("timing")) {
     return NextResponse.json(
       { error: "CSV must include columns: name, city, address1, timing." },
@@ -99,13 +110,13 @@ export async function POST(request) {
   }
 
   const idx = {};
-  EXPECTED_COLS.forEach(col => { idx[col] = header.indexOf(col); });
+  EXPECTED_COLS.forEach(col => { idx[col] = header.indexOf(col.toLowerCase()); });
 
   const parsed = [];
   const rowErrors = [];
 
-  for (let i = 0; i < dataLines.length; i++) {
-    const cols = csvLineSplit(dataLines[i]);
+  for (let i = 0; i < dataRows.length; i++) {
+    const cols = dataRows[i];
     const rowNum = i + 2; // 1-based + header
 
     const phone1 = idx.phone1 >= 0 ? (cols[idx.phone1] ?? "") : "";
@@ -140,7 +151,7 @@ export async function POST(request) {
 
   if (parsed.length === 0) {
     return NextResponse.json(
-      { inserted: 0, skipped: 0, errors: rowErrors },
+      { inserted: 0, updated: 0, errors: rowErrors },
       { status: 422 }
     );
   }
@@ -148,7 +159,7 @@ export async function POST(request) {
   try {
     await connectDB();
 
-    // Duplicate check: find existing salons matching any name+city pair in one query
+    // Split into new inserts vs updates for existing name+city matches
     const nameCityPairs = parsed.map(p => ({ name: { $regex: `^${p.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" }, city: { $regex: `^${p.city.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" } }));
     const existing = await Salon.find({ $or: nameCityPairs }).select("name city").lean();
 
@@ -157,37 +168,45 @@ export async function POST(request) {
     );
 
     const toInsert = [];
-    const skippedDupes = [];
+    const toUpdate = [];
 
     for (const p of parsed) {
       const key = `${p.name.toLowerCase()}|${p.city.toLowerCase()}`;
       if (existingSet.has(key)) {
-        skippedDupes.push(`"${p.name}" in ${p.city}`);
+        toUpdate.push(p);
       } else {
         toInsert.push({ salonId: generateSalonId(), ...p });
       }
     }
 
     let inserted = 0;
-    const insertErrors = [];
+    let updated  = 0;
+    const opErrors = [];
 
     if (toInsert.length > 0) {
       const result = await Salon.insertMany(toInsert, { ordered: false, rawResult: true });
       inserted = result.insertedCount ?? toInsert.length;
-
-      // Catch partial failures (duplicate salonId — extremely rare)
       if (result.mongoose?.validationErrors?.length) {
-        result.mongoose.validationErrors.forEach(e => insertErrors.push(e.message));
+        result.mongoose.validationErrors.forEach(e => opErrors.push(e.message));
       }
     }
 
+    if (toUpdate.length > 0) {
+      const ops = toUpdate.map(p => ({
+        updateOne: {
+          filter: {
+            name: { $regex: `^${p.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" },
+            city: { $regex: `^${p.city.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" },
+          },
+          update: { $set: p },
+        },
+      }));
+      const bulkResult = await Salon.bulkWrite(ops, { ordered: false });
+      updated = bulkResult.modifiedCount ?? 0;
+    }
+
     return NextResponse.json(
-      {
-        inserted,
-        skipped:    skippedDupes.length,
-        skippedList: skippedDupes,
-        errors:     [...rowErrors, ...insertErrors],
-      },
+      { inserted, updated, errors: [...rowErrors, ...opErrors] },
       { status: 200 }
     );
   } catch (err) {
@@ -195,7 +214,7 @@ export async function POST(request) {
     if (err.name === "MongoBulkWriteError") {
       const inserted = err.result?.insertedCount ?? 0;
       return NextResponse.json(
-        { inserted, skipped: 0, errors: [err.message] },
+        { inserted, updated: 0, errors: [err.message] },
         { status: 207 }
       );
     }
