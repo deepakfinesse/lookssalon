@@ -55,9 +55,10 @@ function SalonCard({ salon }) {
             <FaMapMarkerAlt className="text-lg" /> Google Map
           </a>
         ) : (
-          <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
-            <FaMapMarkerAlt className="text-lg" /> Google Map
-          </span>
+          <span> </span>
+          // <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
+          //   <FaMapMarkerAlt className="text-lg" /> Google Map
+          // </span>
         )}
 
         {salon.salonTourUrl ? (
@@ -70,9 +71,10 @@ function SalonCard({ salon }) {
             <FaImage className="text-lg" /> Salon Tour
           </a>
         ) : (
-          <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
-            <FaImage className="text-lg" /> Salon Tour
-          </span>
+          <span> </span>
+          // <span className="flex items-center gap-3 bg-black/30 text-white px-3 py-2 font-bold uppercase text-sm w-fit cursor-not-allowed">
+          //   <FaImage className="text-lg" /> Salon Tour
+          // </span>
         )}
 
         <a
