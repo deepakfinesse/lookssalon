@@ -301,7 +301,7 @@ export async function sendCustomerConfirmationEmail(appointment) {
                         color:${BODY_TXT};line-height:1.7">
                 ⏰&nbsp; Bookings operate between
                 <strong style="color:${GOLD}">10:00 a.m.</strong> and
-                <strong style="color:${GOLD}">6:00 p.m.</strong>
+                <strong style="color:${GOLD}">9:00 p.m.</strong>
               </p>
             </td>
           </tr>
