@@ -57,13 +57,13 @@ const Nav = ({ isActive, toggleMenu }) => {
       </div>
 
       {/* Menu - single column on mobile, two columns on md+ */}
-      <div className="flex-1 flex flex-col md:flex-row items-center md:items-start overflow-y-scroll pt-2 custom-scrollbar w-full">
+      <div className="flex-1 flex flex-col md:flex-row items-center md:items-start overflow-y-scroll pt-2 custom-scrollbar w-full max-w-screen-lg xl:max-w-screen-lg px-5">
         {[menuItems.slice(0, 6), menuItems.slice(6)].map((colItems, colIdx) => (
           <React.Fragment key={colIdx}>
             {colIdx === 1 && (
               <div className="hidden md:block self-stretch border-l-2 border-dotted border-primary/50" />
             )}
-            <ul className={`w-full md:w-1/2 flex flex-col items-center text-center ${colIdx === 0 ? "md:items-end md:text-right md:pr-10 lg:md:pr-16 md:pl-4" : "mt-4 md:mt-0 md:items-start md:text-left md:pl-10 lg:md:pl-16 md:pr-4"}`}>
+            <ul className={`w-full md:w-1/2 flex flex-col items-center text-center ${colIdx === 0 ? "md:items-start md:text-right md:pr-10 lg:md:pr-16 md:pl-4" : "md:items-start md:text-left md:pl-10 lg:md:pl-16 md:pr-4"}`}>
               {colItems.map((item, index) => (
                 <FadeUp key={item.label} delay={0.2 * (colIdx * 6 + index + 1)}>
                   <li>
@@ -81,7 +81,7 @@ const Nav = ({ isActive, toggleMenu }) => {
                             }
                           : toggleMenu
                       }
-                      className="text-3xl leading-[1.1] md:text-xl lg:text-4xl xl:text-4xl font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center md:justify-start uppercase gap-2"
+                      className="text-3xl leading-[1.1] md:text-xl lg:text-4xl xl:text-[32px] font-extrabold bg-gradient-to-b from-primary to-[#DFAB31] bg-[length:100%_220%] bg-bottom bg-clip-text text-transparent transition-all duration-500 hover:bg-top hover:scale-105 flex items-center justify-center md:justify-start uppercase gap-2"
                     >
                       {item.label}
 
