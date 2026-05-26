@@ -36,12 +36,14 @@ export default function HeroSliderClient({ slides }) {
               <Link href={slide.href || '/'} className="block w-full">
 
                 {/* Mobile — natural height, no cropping */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={mobileSrc}
                   alt={slide.mobileImage?.alt || alt}
+                  width={468}
+                  height={794}
+                  sizes="100vw"
                   className="block md:hidden w-full h-auto"
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  priority={index === 0}
                 />
 
                 {/* Desktop — fill inside fixed-height container */}

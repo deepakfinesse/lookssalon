@@ -1,3 +1,4 @@
+import { preload } from 'react-dom'
 import connectDB   from '@/lib/mongodb'
 import HeroBanner  from '@/models/HeroBanner'
 import HeroSliderClient from './HeroSliderClient'
@@ -17,5 +18,12 @@ export default async function HeroSlider() {
     // silently fall through to fallback
   }
 
-  return <HeroSliderClient slides={slides.length > 0 ? slides : FALLBACK_SLIDES} />
+  const resolvedSlides = slides.length > 0 ? slides : FALLBACK_SLIDES
+  const firstMobileSrc = resolvedSlides[0]?.mobileImage?.url || resolvedSlides[0]?.desktopImage?.url
+
+  if (firstMobileSrc) {
+    preload(firstMobileSrc, { as: 'image', media: '(max-width: 767px)', fetchPriority: 'high' })
+  }
+
+  return <HeroSliderClient slides={resolvedSlides} />
 }

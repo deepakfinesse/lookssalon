@@ -4,10 +4,11 @@ import Button from "../ui/Button";
 import FadeUp from "../animation/FadeUp";
 import { useEffect, useRef, useState } from "react";
 
+
 const cards = [
   {
     src: "/img/all/prepaid-blackn.webp",
-    alt: "Blue Prepaid Card",
+    alt: "Black Prepaid Card",
     final:   { rotate: "0deg", translateX: "50%", translateY: "-42%", zIndex: 1 },
     initial: { rotate: "0deg", translateX: "50%", translateY: "80%",  zIndex: 1 },
   },
@@ -48,9 +49,17 @@ const PrepaidCards = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[url('/img/home/prepaid-card-bg.webp')] bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="w-full overflow-hidden relative"
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <Image
+        src="/img/home/prepaid-card-bg.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        aria-hidden="true"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center min-h-[340px] md:min-h-[400px]">
 
           {/* ── Card fan ── */}
