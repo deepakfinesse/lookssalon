@@ -37,7 +37,7 @@ export async function GET(request) {
   if (search) {
     const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const rx = { $regex: escaped, $options: "i" };
-    query.$or = [{ city: rx }, { name: rx }, { pinCode: rx }];
+    query.$or = [{ city: rx }, { name: rx }, { pinCode: rx }, { address1: rx }, { address2: rx }, { address3: rx }];
   }
 
   try {

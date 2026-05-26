@@ -36,10 +36,10 @@ const page = () => {
             <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
               <div className="relative overflow-hidden">
                 <Image
-                  src="/img/all/prepaid-blue.webp"
+                  src="/img/all/prepaid-blackn.webp"
                   width={320}
                   height={200}
-                  alt="Looks Blue"
+                  alt="Looks Black"
                   className="transition-transform duration-500 group-hover:scale-95"
                 />
 
@@ -83,7 +83,7 @@ const page = () => {
             <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
               <div className="relative overflow-hidden">
                 <Image
-                  src="/img/all/prepaid-silver.webp"
+                  src="/img/all/prepaid-silvern.webp"
                   width={320}
                   height={200}
                   alt="Looks Silver"
@@ -122,7 +122,7 @@ const page = () => {
             <div className="flex flex-col items-center group transition-transform duration-300 hover:-translate-y-3">
               <div className="relative overflow-hidden">
                 <Image
-                  src="/img/all/prepaid-gold.webp"
+                  src="/img/all/prepaid-goldn.webp"
                   width={320}
                   height={200}
                   alt="Looks Gold"

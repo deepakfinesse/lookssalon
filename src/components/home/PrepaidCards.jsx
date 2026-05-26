@@ -6,19 +6,19 @@ import { useEffect, useRef, useState } from "react";
 
 const cards = [
   {
-    src: "/img/all/prepaid-blue.webp",
+    src: "/img/all/prepaid-blackn.webp",
     alt: "Blue Prepaid Card",
     final:   { rotate: "0deg", translateX: "50%", translateY: "-42%", zIndex: 1 },
     initial: { rotate: "0deg", translateX: "50%", translateY: "80%",  zIndex: 1 },
   },
   {
-    src: "/img/all/prepaid-silver.webp",
+    src: "/img/all/prepaid-silvern.webp",
     alt: "Silver Prepaid Card",
     final:   { rotate: "0deg", translateX: "24%", translateY: "-22%", zIndex: 2 },
     initial: { rotate: "0deg", translateX: "24%", translateY: "80%",  zIndex: 2 },
   },
   {
-    src: "/img/all/prepaid-gold.webp",
+    src: "/img/all/prepaid-goldn.webp",
     alt: "Gold Prepaid Card",
     final:   { rotate: "0deg", translateX: "0%", translateY: "0%", zIndex: 3 },
     initial: { rotate: "0deg", translateX: "0%", translateY: "80%", zIndex: 3 },

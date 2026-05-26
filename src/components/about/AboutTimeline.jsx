@@ -86,7 +86,7 @@ export default function AboutTimeline() {
                 key={index}
                 data-index={index}
                 ref={(el) => (refs.current[index] = el)}
-                className="flex items-center mb-14"
+                className="flex items-center mb-2 md:mb-14"
               >
                 {/* LEFT SLOT */}
                 <div className="w-[calc(50%-22px)] flex justify-end pr-7">

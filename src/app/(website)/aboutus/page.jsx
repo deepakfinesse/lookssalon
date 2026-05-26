@@ -167,7 +167,7 @@ const page = () => {
                     style={{ backgroundImage: "url('/img/about/open-soon-bg.png')" }} id="opening-soon">
                     <div className="max-w-7xl  mx-auto px-4 flex flex-col md:flex-row items-stretch">
                         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-                        <h2 className="text-2xl md:text-3xl xl:text-5xl text-primary font-bold uppercase mb-1 md:mb-6">
+                        <h2 className="text-2xl md:text-3xl xl:text-5xl text-primary font-bold uppercase pt-10 md:pt-0 mb-1 md:mb-6">
                           Opening soon
                         </h2>
                         <ul className='text-white text-lg space-y-2 mb-6 text-center'>

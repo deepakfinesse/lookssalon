@@ -128,9 +128,9 @@ const page = () => {
             </h2>
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { name: "LOOKS PRIVÉ", location: "VASANT VIHAR", img: "/img/all/prive/l1.webp",href:"/" },
-                { name: "LOOKS PRIVÉ", location: "MALCHA MARG", img: "/img/all/prive/l2.webp",href:"/" },
-                { name: "LOOKS PRIVÉ", location: "AEROCITY", img: "/img/all/prive/l3.webp",href:"/" },
+                { name: "LOOKS PRIVÉ", location: "VASANT VIHAR", img: "/img/all/prive/l1.webp",href:"https://maps.app.goo.gl/DeW8sViTcbFHJLWm9" },
+                { name: "LOOKS PRIVÉ", location: "MALCHA MARG", img: "/img/all/prive/l2.webp",href:"https://maps.app.goo.gl/bkvbvf6uZa1ncDmh8" },
+                { name: "LOOKS PRIVÉ", location: "AEROCITY", img: "/img/all/prive/l3.webp",href:"https://maps.app.goo.gl/KfKnkKdytiKjNhwh9" },
               ].map((salon) => (
                 <div key={salon.location} className="flex flex-col items-center gap-0">
                   <div className="relative w-52 h-80 rounded-full overflow-hidden">
@@ -141,7 +141,7 @@ const page = () => {
                   <FadeUp delay={0.3}>
               {/* Buttons */}
               <div className="flex items-center gap-5 mt-2 md:mt-4">
-                <Button href={salon.href} label="Explore salon" variant="dark" />
+                <Button href={salon.href} label="Explore salon" target="_blank" variant="dark" />
               </div>
             </FadeUp>
                 </div>
