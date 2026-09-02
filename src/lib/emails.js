@@ -10,7 +10,7 @@ function getResend() {
 }
 
 // ── Brand tokens ───────────────────────────────────────────────────────────────
-const GOLD     = "#DEAB30";
+const GOLD     = "#A9254B";
 const BLACK    = "#000000";
 const WHITE    = "#ffffff";
 const PAGE_BG  = "#f4f4f4";   // outer wrapper — light grey

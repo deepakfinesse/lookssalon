@@ -107,7 +107,7 @@ export default function ThankYouPage({ searchParams }) {
 
         {/* ── CTAs ── */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="/" label="Back to Home" variant="primary" />
+          <Button href="/" label="Back to Home" variant="dark" />
           {/* <Link
             href="/salon-book-appointment"
             className="inline-block px-10 py-3.5 bg-transparent

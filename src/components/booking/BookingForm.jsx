@@ -49,7 +49,7 @@ const sel   = (hasError, border) =>
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function BookingForm({ inputBorder = "border-[#A9A9A9]", defaultCity = "", defaultSalon = "" }) {
+export default function BookingForm({ inputBorder = "border-[#A9A9A9]", defaultCity = "", defaultSalon = "", defaultName = "", defaultContact = "" }) {
   const router = useRouter();
   const [serverError,   setServerError]   = useState("");
   const [cities,        setCities]        = useState([]);
@@ -74,8 +74,8 @@ export default function BookingForm({ inputBorder = "border-[#A9A9A9]", defaultC
     mode:           "onChange",
     reValidateMode: "onChange",
     defaultValues: {
-      name:            "",
-      contact:         "",
+      name:            defaultName,
+      contact:         defaultContact,
       email:           "",
       gender:          "",
       city:            "",

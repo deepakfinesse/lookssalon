@@ -13,12 +13,12 @@ function SubHeading({ children }) {
 }
 
 function Para({ children }) {
-  return <p className="text-md text-grey leading-relaxed">{children}</p>;
+  return <p className="text-md text-black leading-relaxed">{children}</p>;
 }
 
 function Bullet({ children }) {
   return (
-    <li className="flex gap-3 items-start text-md text-grey">
+    <li className="flex gap-3 items-start text-md text-black">
       <span className="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-primary" />
       <span>{children}</span>
     </li>
@@ -28,10 +28,10 @@ function Bullet({ children }) {
 function NumberedItem({ number, title, children }) {
   return (
     <li className="flex gap-4 items-start">
-      <span className="shrink-0 w-7 h-7 rounded-full bg-black text-primary font-semibold text-sm flex items-center justify-center mt-0.5">
+      <span className="shrink-0 w-7 h-7 rounded-full bg-white border-1 border-black text-primary font-semibold text-sm flex items-center justify-center mt-0.5">
         {number}
       </span>
-      <p className="text-md text-grey">
+      <p className="text-md text-black">
         <span className="font-medium text-black">{title}: </span>
         {children}
       </p>
@@ -43,7 +43,7 @@ function CookieCard({ title, type, children }) {
   return (
     <div className="bg-white border border-primary/30 rounded-lg p-5">
       <p className="text-xs uppercase  text-primary font-medium mb-3">{title}</p>
-      <div className="space-y-1 text-md text-grey">
+      <div className="space-y-1 text-md text-black">
         <p><span className="font-medium text-black">Type:</span> {type}</p>
         <p><span className="font-medium text-black">Administered by:</span> Us</p>
         <p><span className="font-medium text-black">Purpose:</span> {children}</p>
@@ -55,7 +55,7 @@ function CookieCard({ title, type, children }) {
 const page = () => {
   return (
     <>
-      <header className="bg-white text-grey pt-12 px-6 text-center">
+      <header className="bg-white text-black pt-12 px-6 text-center">
        
         <h1 className="text-4xl md:text-6xl font-bold leading-tight">Privacy Policy</h1>
         {/* <p className="text-primary mt-4 text-md font-light tracking-wide">

@@ -7,13 +7,14 @@ import { FaXTwitter } from "react-icons/fa6";
 import { getInstagramPosts } from "@/lib/getInstagramPosts";
 import Instagram from "./Instagram";
 import FadeUp from "../animation/FadeUp";
+import BookAppointmentFooter from "./BookAppointmentFooter";
 
 const posts = await getInstagramPosts();
 
 const Footer = () => {
   return (
     <>
-      
+      <BookAppointmentFooter/>
       
       {/* Footer */}
       <section className="py-16 md:py-20">

@@ -10,13 +10,13 @@ function SectionHeading({ children }) {
 }
 
 function Para({ children }) {
-  return <p className="text-md text-grey leading-relaxed">{children}</p>;
+  return <p className="text-md text-black leading-relaxed">{children}</p>;
 }
 
 const page = () => {
   return (
     <>
-      <header className="bg-white text-grey pt-12 px-6 text-center">
+      <header className="bg-white text-black pt-12 px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight">Disclaimer</h1>
       </header>
 

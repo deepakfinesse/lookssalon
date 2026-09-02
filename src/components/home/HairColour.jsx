@@ -15,7 +15,7 @@ const HairColour = () => {
           {/* Image (no animation for performance) */}
           <div className="order-2 md:order-1 md:col-span-6">
             <Image
-              src="/img/home/hair-colour.gif"
+              src="/img/home/hair-colour-new.gif"
               alt="Hair Colour"
               width={700}
               height={500}

@@ -3,8 +3,10 @@ import PartnerBrands from '@/components/layout/PartnerBrands'
 
 export default async function page({ searchParams }) {
   const params = await searchParams;
-  const defaultCity  = params?.city  ?? "";
-  const defaultSalon = params?.salon ?? "";
+  const defaultCity    = params?.city    ?? "";
+  const defaultSalon   = params?.salon   ?? "";
+  const defaultName    = params?.name    ?? "";
+  const defaultContact = params?.contact ?? "";
 
   return (
     <>
@@ -44,7 +46,12 @@ export default async function page({ searchParams }) {
           </div>
         </div>
         <div className="max-w-3xl mx-auto px-4 pb-12 lg:pb-12">
-          <BookingForm defaultCity={defaultCity} defaultSalon={defaultSalon} />
+          <BookingForm
+            defaultCity={defaultCity}
+            defaultSalon={defaultSalon}
+            defaultName={defaultName}
+            defaultContact={defaultContact}
+          />
           <div className="text-center">
             <p className="text-white text-base tracking-[3px] uppercase mb-2">OR</p>
             <p className="text-white text-lg tracking-wide">
