@@ -61,7 +61,7 @@ const page = () => {
             </div>
           
         </section>
-        <BookAppointment/>
+        {/* <BookAppointment/> */}
           <PartnerBrands/>
     </>
   )

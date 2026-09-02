@@ -64,7 +64,7 @@ const Footer = () => {
                     href={item.link}
                     target="_blank"
                     aria-label={item.name}
-                    className="w-[35px] h-[35px] bg-white text-black rounded-full flex items-center justify-center text-base transition duration-300 hover:bg-black hover:text-white"
+                    className="w-[35px] h-[35px] bg-white text-primary rounded-full flex items-center justify-center text-base transition duration-300 hover:bg-white hover:text-black"
                   >
                     {item.icon}
                   </Link>
@@ -164,7 +164,7 @@ const Footer = () => {
                   { label: "Male", href: "/gents-salon-services", target: "_self" },
                   { label: "Female", href: "/ladies-salon-services", target: "_self" },
                   { label: "Bridal", href: "/", target: "_self" },
-                  { label: "Loyalty Card", href: "/prepaid-cards", target: "_self" },
+                  { label: "Loyalty Card", href: "/loyalty-card", target: "_self" },
                 ].map((item, i) => (
                   <li key={i}>
                     <Link

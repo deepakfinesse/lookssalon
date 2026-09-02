@@ -13,77 +13,41 @@ const salonImages = [
 
 const OurSalons = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(null);
-  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (animating) return;
-
-      setAnimating(true);
-      setCurrentIndex((prev) => {
-        setPrevIndex(prev);
-        return (prev + 1) % salonImages.length;
-      });
-
-      setTimeout(() => {
-        setPrevIndex(null);
-        setAnimating(false);
-      }, 600);
-    }, 3000);
+      setCurrentIndex((prev) => (prev + 1) % salonImages.length);
+    }, 2000);
 
     return () => clearInterval(interval);
-  }, [animating]);
+  }, []);
 
   return (
     <section className="py-10 md:py-4">
-      <style>{`
-        @keyframes slideInFromRight {
-          from { transform: translateX(100%); opacity: 0; }
-          to   { transform: translateX(0);    opacity: 1; }
-        }
-        @keyframes slideOutToLeft {
-          from { transform: translateX(0);     opacity: 1; }
-          to   { transform: translateX(-100%); opacity: 0; }
-        }
-        .slide-in  { animation: slideInFromRight 0.6s ease-in-out forwards; }
-        .slide-out { animation: slideOutToLeft  0.6s ease-in-out forwards; }
-      `}</style>
-
       <div className="max-w-4xl xl:max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0">
 
-          {/* Image Carousel — fixed-height container, no layout shift */}
+          {/* Image Carousel — single fixed container, image crossfades in place */}
           <div className="lg:pr-20">
             {/*
               - aspect-[3/4] locks the height to the image ratio
-              - overflow-hidden clips the sliding images
-              - both images are absolute-filled inside, so height never collapses
+              - one container; every slide is absolute-filled and stacked
+              - only the active slide fades to opacity-100, the rest stay at 0
             */}
             <div className="relative w-full aspect-[3/4] overflow-hidden md:-mt-13  xl:-mt-24">
-              {/* Outgoing image */}
-              {prevIndex !== null && (
+              {salonImages.map((image, index) => (
                 <Image
-                  key={`prev-${prevIndex}`}
-                  src={salonImages[prevIndex].src}
-                  alt={salonImages[prevIndex].alt}
+                  key={image.src + index}
+                  src={image.src}
+                  alt={image.alt}
                   fill
+                  priority={index === 0}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover slide-out"
-                  style={{ zIndex: 1 }}
+                  className={`object-cover transition-opacity duration-700 ease-in-out ${
+                    index === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
                 />
-              )}
-
-              {/* Incoming image */}
-              <Image
-                key={`curr-${currentIndex}`}
-                src={salonImages[currentIndex].src}
-                alt={salonImages[currentIndex].alt}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover slide-in"
-                style={{ zIndex: 2 }}
-              />
+              ))}
             </div>
           </div>
 

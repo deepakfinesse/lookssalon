@@ -7,12 +7,12 @@ import Button from "@/components/ui/Button";
 // ── Shared field styling ─────────────────────────────────────────────────────
 const TEXT_FIELD =
   "bg-transparent border-b-2 border-white text-white placeholder:text-white " +
-  "outline-none px-1 pb-1 text-lg md:text-2xl font-medium normal-case " +
+  "outline-none px-1 pb-1 text-lg md:text-2xl font-normal normal-case " +
   "transition-colors duration-200 focus:border-primary";
 
 const SELECT_FIELD =
   "bg-transparent border-2 border-white text-white cursor-pointer " +
-  "outline-none px-3 py-1.5 text-lg md:text-2xl font-medium normal-case appearance-none " +
+  "outline-none px-3 py-1 text-lg md:text-2xl font-normal normal-case appearance-none " +
   "transition-colors duration-200 focus:border-primary " +
   "[&>option]:bg-white [&>option]:text-black";
 
@@ -115,7 +115,7 @@ export default function QuickBookingForm() {
         <div className="flex flex-col w-full md:w-auto md:basis-full md:justify-center md:flex-row">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <span className="whitespace-nowrap">I live in</span>
-            <div className="relative w-full sm:w-56">
+            <div className="relative w-full sm:w-38">
               <select
                 value={values.city}
                 onChange={setField("city")}

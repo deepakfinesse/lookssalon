@@ -136,13 +136,13 @@ const page = () => {
             </div>
         </section>
         {/* Our Vision */}
-        <section className='bg-primary'>
+        <section className='relative w-full'>
             <div className="mx-auto ">
               <div className='grid grid-cols-1 md:grid-cols-2 align-middle'>
-                <div className='h-full flex flex-col items-left text-left' style={{ background: 'linear-gradient(90deg, #868686 9.28%, #1E1E1E 100%)' }}>
-                  
+                <div className='h-full flex flex-col items-left text-left' >
+                  <Image src="/img/about/our-vision.webp" alt="Our Vision" width={720} height={526} className="w-full" />
                 </div>
-                <div className='h-full flex flex-col items-left text-left bg-black px-4 py-12 md:py-12 lg:py-20 lg:px-[20%]'>
+                <div className='h-full flex flex-col items-left text-left bg-black px-4 md:px-20  lg:px-30 justify-center py-6  md:py-12'>
                   <FadeUp delay={0.1}>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-white font-bold uppercase mb-4 text-left">
                         Our vision

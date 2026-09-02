@@ -18,7 +18,7 @@ const Nav = ({ isActive, toggleMenu }) => {
       subItems: [
         { href: "/ladies-salon-services", label: "Ladies", target: "_self" },
         { href: "/gents-salon-services", label: "Gents", target: "_self" },
-        { href: "/", label: "Bridal", target: "_self" },
+        // { href: "/", label: "Bridal", target: "_self" },
         { href: "/prepaid-cards", label: "Prepaid Cards", target: "_self" },
       ],
     },

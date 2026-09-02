@@ -1,6 +1,7 @@
 
 import React from 'react'
 import FadeUp from '@/components/animation/FadeUp';
+import PartnerBrands from '@/components/layout/PartnerBrands';
 
 const benefits = [
   { title: 'Up to 20%', desc: 'Savings on services', accent: true },
@@ -20,7 +21,7 @@ const page = () => {
   return (
     <>
         {/* lyl card & Benefits */}
-        <section className='relative bg-primary w-full bg-cover bg-center' style={{ backgroundImage: "url('/img/loyalty/loyalty-card-bg.webp')" }} >
+        <section className='relative w-full bg-cover bg-center' style={{ backgroundImage: "url('/img/loyalty/loyalty-card-bg.webp')" }} >
             <div className="mx-auto max-w-7xl px-4">
               <div className='grid grid-cols-1 md:grid-cols-[4fr_6fr] items-center'>
                 
@@ -143,6 +144,7 @@ const page = () => {
             </div>
             </div>
         </section>
+        <PartnerBrands/>
     </>
   )
 }

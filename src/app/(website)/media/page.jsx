@@ -1,5 +1,6 @@
 import React from "react";
 import MediaGallery from "@/components/media/MediaGallery";
+import PartnerBrands from '@/components/layout/PartnerBrands';
 
 export const metadata = {
   title: "Media Gallery | Looks Salon",
@@ -7,7 +8,12 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <MediaGallery />;
+  return (
+  <> 
+  <MediaGallery />;
+  <PartnerBrands/>
+  </>
+  )
 };
 
 export default Page;
