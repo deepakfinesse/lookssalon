@@ -274,7 +274,7 @@ export default async function BlogPostPage({ params }) {
         )}
       </article>
 
-      <BookAppointment />
+      {/* <BookAppointment /> */}
       <PartnerBrands />
     </>
   );

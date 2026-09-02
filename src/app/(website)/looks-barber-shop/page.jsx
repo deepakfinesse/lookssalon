@@ -12,21 +12,25 @@ const page = () => {
             className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/barber/hero-bg.webp')" }}
           >
-            <div className="grid grid-cols-1  md:grid-cols-2 items-end">
-              <div className="px-8 md:px-12 lg:px-20 py-10 md:py-16 flex flex-col items-left text-left self-center">
-                <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={250} height={120} className="pb-15" />
-                <h1 className="text-2xl sm:text-2xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
-                    THE <br/>
-                  
-                  <sapn className="text-5xl sm:text-5xl md:text-6xl xl:text-8xl text-white font-bold uppercase">Grooming <br/> <span className="text-primary">Standard</span> </sapn></h1>
-                  <span class="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
-                  <p className='text-lg lg:text-2xl text-white'>Precision cuts. Timeless style. Elevated experience. <br className='hidden md:block' />Setting the benchmark for men’s grooming.</p>
+            
+              <div className="max-w-7xl mx-auto px-4 flex flex-col items-left justify-center text-left gap-4">
+                <div className='grid grid-cols-12'>
+                  <div className='lg:col-span-4 py-20 flex flex-col items-left justify-center'>
+                    <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={250} height={120} className="pb-15" />
+                    <h1 className="text-2xl sm:text-2xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
+                        THE <br/>
+                      
+                      <sapn className="text-5xl sm:text-5xl md:text-6xl xl:text-[82px] text-white font-bold uppercase">Grooming <br/> <span className="text-primary">Standard</span> </sapn></h1>
+                      <span class="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
+                      <p className='text-lg lg:text-2xl text-white'>Precision cuts. Timeless style. Elevated experience. <br className='hidden md:block' />Setting the benchmark for men’s grooming.</p>
+                  </div>
+                  <div className="lg:col-span-8">
+                    <Image src="/img/all/barber/barber-hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom hidden md:block" />
+                    <Image src="/img/all/barber/hero-mobile.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom block md:hidden" />
+                  </div>
+                </div>
               </div>
-              <div className="flex items-end justify-end overflow-hidden">
-                <Image src="/img/all/barber/hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom hidden md:block" />
-                <Image src="/img/all/barber/hero-mobile.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom block md:hidden" />
-              </div>
-            </div>
+            
           </div>
 
           {/* Salons Section */}

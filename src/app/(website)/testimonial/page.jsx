@@ -116,7 +116,7 @@ const Testimonial = () => {
           </div>
         </div>
       </section>
-      <BookAppointment/>
+      {/* <BookAppointment/> */}
         <PartnerBrands/>
     </>
   )

@@ -233,9 +233,9 @@ export const SalonCreateSchema = z.object({
     .min(1, "Timing is required.")
     .max(100, "Timing must be 100 characters or less."),
 
-  googleMapUrl:       z.string().trim().max(500).optional().default(""),
-  salonTourUrl:       z.string().trim().max(500).optional().default(""),
-  bookAppointmentUrl: z.string().trim().max(500).optional().default(""),
+  googleMapUrl:       z.string().trim().max(2000, "Google Map URL is too long.").optional().default(""),
+  salonTourUrl:       z.string().trim().max(2000, "Salon tour URL is too long.").optional().default(""),
+  bookAppointmentUrl: z.string().trim().max(2000, "Book appointment URL is too long.").optional().default(""),
   isActive:           z.boolean().optional().default(true),
 });
 

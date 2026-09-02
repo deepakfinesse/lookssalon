@@ -360,7 +360,7 @@ pin code
         </div>
       </section>
 
-      <BookAppointment />
+      {/* <BookAppointment /> */}
       <PartnerBrands />
     </>
   );
