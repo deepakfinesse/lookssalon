@@ -15,7 +15,7 @@ const page = () => {
             <div className="max-w-7xl mx-auto px-4  relative">
                 <div className='grid grid-cols-12 items-center gap-8 lg:gap-6'>
                   <div className='col-span-12 lg:col-span-4 pt-12 lg:py-20 flex flex-col items-center text-center lg:items-start lg:text-left'>
-                    <Image src="/img/all/aesthetics/logo.svg" alt="Looks Aesthetics" className='pb-8 lg:pb-10' width={200} height={90} />
+                    <Image src="/img/all/aesthetics/logo.svg" alt="Looks Aesthetics" className='pb-8 lg:pb-10' width={150} height={80} />
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-3xl xl:text-4xl text-white font-semibold uppercase">
                       The Future of <br className='hidden sm:block' />
                       <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-8xl text-white font-bold uppercase">Beauty</span>
@@ -28,19 +28,27 @@ const page = () => {
                   </div>
                 </div>
                 <Image
-              src="/img/all/aesthetics/aesthetics.svg"
+              src="/img/all/aesthetics/aesthetics1.webp"
               alt="Aesthetics"
               width={1440}
               height={106}
               priority
               className="pointer-events-none absolute bottom-0 left-0 z-10 hidden w-full select-none md:block"
             />
+            <Image
+              src="/img/all/aesthetics/aesthetics2.webp"
+              alt="Aesthetics"
+              width={1440}
+              height={106}
+              priority
+              className="pointer-events-none absolute bottom-0 left-0 z-10 hidden w-full select-none md:block"
+            /> 
             </div>
 
           </div>
 
           {/* black 2 */}
-          <div className="w-full bg-cover bg-center"
+          {/* <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
             <div className="max-w-7xl mx-auto  flex flex-col md:flex-row items-stretch">
               <div className="w-full md:w-1/2 relative mb-4 md:mb-0 flex flex-col justify-end">
@@ -54,6 +62,31 @@ const page = () => {
                             </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center">
                 <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-semibold uppercase ">
+                  ADVANCED PROTOCOLS, PERSONALIZED FOR YOU
+                </h2>
+                <span class="block w-30 h-0.5 bg-primary mt-2 mb-3"></span>
+                <p className="text-black text-md lg:text-lg leading-relaxed">
+                  Our budding venture is staffed by the industry’s most elite therapists, trained in the latest aesthetic breakthroughs. From regenerative therapies to non-invasive contouring, every treatment is a bespoke journey.
+                </p>
+              </div>
+            </div>
+          </div> */}
+
+          {/* black 2 */}
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
+            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
+                              <Image
+                                src="/img/all/aesthetics/aesthetics-s2.webp"
+                                alt="ADVANCED PROTOCOLS, PERSONALIZED FOR YOU"
+                                width={545}
+                                height={384}
+                                className=""
+                              />
+                            </div>
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-semibold uppercase">
                   ADVANCED PROTOCOLS, PERSONALIZED FOR YOU
                 </h2>
                 <span class="block w-30 h-0.5 bg-primary mt-2 mb-3"></span>
