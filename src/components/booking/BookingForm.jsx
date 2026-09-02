@@ -34,7 +34,7 @@ function parseHour24(timeStr) {
 // ── Shared class strings ──────────────────────────────────────────────────────
 
 const BASE_INPUT =
-  "w-full py-1 px-0 bg-transparent border-0 border-b font-medium " +
+  "w-full py-3 px-4 bg-[#16161680] border-1 font-medium " +
   "text-white text-md tracking-wide " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
   "placeholder:text-white ";
@@ -49,7 +49,7 @@ const sel   = (hasError, border) =>
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function BookingForm({ inputBorder = "border-[var(--primary)]", defaultCity = "", defaultSalon = "" }) {
+export default function BookingForm({ inputBorder = "border-[#A9A9A9]", defaultCity = "", defaultSalon = "" }) {
   const router = useRouter();
   const [serverError,   setServerError]   = useState("");
   const [cities,        setCities]        = useState([]);
@@ -354,7 +354,7 @@ export default function BookingForm({ inputBorder = "border-[var(--primary)]", d
           <Button
             type="submit"
             label={isSubmitting ? "Booking…" : "Book Now"}
-            variant="primary"
+            variant="dark"
             disabled={isSubmitting}
           />
         </div>

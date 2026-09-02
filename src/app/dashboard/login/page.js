@@ -7,7 +7,7 @@ import Image                     from "next/image";
 import Button                    from "@/components/ui/Button";
 
 const INPUT_CLS =
-  "w-full py-1 px-0 bg-transparent border-0 border-b border-[var(--primary)] " +
+  "w-full py-1 px-0 bg-transparent border-0 border-b border-white" +
   "text-white text-base tracking-wide " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
   "focus:border-white placeholder-transparent";

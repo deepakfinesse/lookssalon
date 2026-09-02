@@ -43,7 +43,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
       {/* ── Header ── */}
       <FadeUp delay={0.1}>
         <div className="flex  items-center justify-between mb-8">
-          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl pr-2 md:pr-0 text-grey font-bold uppercase">
+          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl pr-2 md:pr-0 text-black font-bold uppercase">
             Blog
           </h1>
           <div className="flex items-center gap-3 md:gap-10">
@@ -51,10 +51,10 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
             <div className="relative">
               <button
                 onClick={() => { setSortOpen(o => !o); setCategoryOpen(false); }}
-                className="text-sm lg:text-md xl:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm lg:text-md xl:text-lg font-bold border-2 border-black font-primary text-black uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 Sort By
-                {sortOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}
+                {sortOpen ? <FaAngleUp className="w-5 h-5 text-black" /> : <FaAngleDown className="w-5 h-5 text-black" />}
               </button>
               {sortOpen && (
                 <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 shadow-lg z-50 min-w-[160px]">
@@ -75,10 +75,10 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
             <div className="relative">
               <button
                 onClick={() => { setCategoryOpen(o => !o); setSortOpen(false); }}
-                className="text-sm lg:text-md xl:text-lg font-bold border border-primary font-primary text-grey uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
+                className="text-sm lg:text-md xl:text-lg font-bold border-2 border-black font-primary text-black uppercase px-3 md:px-5.5 py-1 flex items-center gap-1 hover:border-primary hover:text-primary transition-colors"
               >
                 {categoryLabel}
-                {categoryOpen ? <FaAngleUp className="w-5 h-5 text-grey" /> : <FaAngleDown className="w-5 h-5 text-grey" />}
+                {categoryOpen ? <FaAngleUp className="w-5 h-5 text-black" /> : <FaAngleDown className="w-5 h-5 text-black" />}
               </button>
               {categoryOpen && (
                 <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 shadow-lg z-50 min-w-[180px]">
@@ -114,12 +114,12 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
           {featuredPost && (
             <FadeUp delay={0.2}>
               <article className="mb-67 md:mb-46 group">
-                <div className="relative w-full overflow-hidden">
+                <div className="relative w-full overflow-hidden rounded-xl">
                   {featuredPost.featuredImage?.url ? (
                     <img
                       src={featuredPost.featuredImage.url}
                       alt={featuredPost.featuredImage.alt || featuredPost.title}
-                      className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full aspect-[16/7] bg-gray-100" />
@@ -129,7 +129,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
                 <div className="pt-3 relative max-w-5xl mx-auto">
                   <div className="absolute md:-top-20 left-0 p-0 md:p-4 w-full bg-white">
                     {featuredPost.categories?.[0] && (
-                      <span className="border-1 border-primary text-grey text-sm md:text-lg uppercase font-bold px-5.5 py-0.5 mb-2 inline-block">
+                      <span className="border border-grey text-grey text-sm md:text-md font-bold uppercase px-4 py-0.5 mb-2 inline-block">
                         {featuredPost.categories[0].name}
                       </span>
                     )}
@@ -150,7 +150,7 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
 
           {/* ── 2×2 Grid ── */}
           {gridPosts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-18 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-8">
               {gridPosts.map((post, i) => (
                 <FadeUp key={post._id} delay={0.1 * (i + 1)}>
                   <GridCard post={post} />
@@ -194,12 +194,12 @@ export default function BlogSection({ posts = [], categories = [], currentPage =
 function GridCard({ post }) {
   return (
     <article className="relative flex flex-col group">
-      <div className="w-full mb-2 overflow-hidden">
+      <div className="w-full mb-2 overflow-hidden rounded-xl">
         {post.featuredImage?.url ? (
           <img
             src={post.featuredImage.url}
             alt={post.featuredImage.alt || post.title}
-            className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="w-full aspect-4/3 bg-gray-100" />
@@ -207,12 +207,12 @@ function GridCard({ post }) {
       </div>
 
       {post.categories?.[0] && (
-        <span className="inline-block w-fit border border-primary text-grey text-sm md:text-lg font-bold uppercase px-5.5 py-1 mb-2">
+        <span className="inline-block w-fit border border-grey text-grey text-sm md:text-md font-bold uppercase px-4 py-0.5 mb-2">
           {post.categories[0].name}
         </span>
       )}
 
-      <h2 className="text-2xl md:text-3xl xl:text-3xl text-black group-hover:text-primary font-medium mb-1 transition-colors duration-300">
+      <h2 className="text-2xl md:text-2xl xl:text-2xl text-black group-hover:text-primary font-medium mb-1 transition-colors duration-300">
         {post.title}
       </h2>
 

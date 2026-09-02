@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }) {
         {related.length > 0 && (
           <section className="bg-gray-50 py-12">
             <div className="max-w-6xl mx-auto px-4 sm:px-8">
-              <h2 className="text-3xl font-bold text-grey uppercase mb-4">Related Posts</h2>
+              <h2 className="text-3xl font-bold text-black uppercase mb-4">Related Posts</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {related.map(p => (
                   <Link key={p._id} href={`/blog/${p.slug}`} className="group block bg-white border border-gray-100 hover:shadow-md transition-shadow overflow-hidden">
@@ -257,7 +257,7 @@ export default async function BlogPostPage({ params }) {
                     </div>
                     <div className="p-4">
                       {p.categories?.[0] && (
-                        <span className="border border-primary text-grey text-sm font-bold uppercase px-5.5 py-0.5 mb-2 inline-block">
+                        <span className="border border-grey text-grey text-sm font-bold uppercase px-4.5 py-0.5 mb-2 inline-block">
                           {p.categories[0].name}
                         </span>
                       )}

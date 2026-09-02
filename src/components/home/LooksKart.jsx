@@ -39,7 +39,7 @@ export default async function LooksKart() {
                 href="https://lookskart.com/"
                 label="SHOP NOW"
                 target="_blank"
-                variant="dark"
+                variant="primary"
               />
             </div>
           </FadeUp>

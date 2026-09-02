@@ -67,11 +67,12 @@ export default function HeroSliderClient({ slides }) {
       <style jsx global>{`
         .swiper-pagination { bottom: 30px; }
         .swiper-pagination-bullet {
-          background: white; width: 10px; height: 10px;
+          background: transparent; width: 10px; height: 10px;
           opacity: 1; transition: all 0.5s ease;
+          border: 2px solid var(--primary); 
         }
         .swiper-pagination-bullet-active {
-          background: #DEAB30; width: 40px; border-radius: 6px;
+          background: var(--primary); width: 40px; border-radius: 6px;
         }
       `}</style>
     </section>

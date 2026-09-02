@@ -32,14 +32,14 @@ const BridalService = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#adb5bd] bg-cover bg-center bg-no-repeat"
+      className="w-full  bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/img/home/look-beautiful-bg.webp')" }}
     >
       <div className="max-w-7xl mx-auto pt-10 md:pt-0 px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-0 md:gap-10">
           <div className="hidden md:block md:col-span-1"></div>
 
           {/* Content */}
-          <div className="md:col-span-3 flex flex-col items-center justify-center text-center">
+          <div className="md:col-span-4 flex flex-col items-center justify-center text-center">
             <FadeUp delay={0.1}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black">
                 Look <br /> Beautiful
@@ -57,19 +57,21 @@ const BridalService = () => {
                 <Button
                   href="/ladies-salon-services"
                   label="Bridal services"
-                  variant="dark"
+                  variant="primary"
                 />
               </div>
             </FadeUp>
           </div>
 
+          <div className="hidden md:block md:col-span-2"></div>
+
           {/* Image with scroll-triggered desaturation */}
-          <div className="md:col-span-8">
+          <div className="md:col-span-5 flex justify-center md:justify-end pt-10 md:pt-0">
             <Image
               src="/img/home/bridal-service.webp"
               alt="Look Beautiful"
-              width={700}
-              height={500}
+              width={500}
+              height={300}
               className="hidden md:block w-full h-auto object-contain transition-[filter] duration-500 ease-out"
               style={{
                 filter: `saturate(${saturation}%)`,

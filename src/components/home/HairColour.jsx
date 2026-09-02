@@ -5,8 +5,12 @@ import { motion } from "framer-motion";
 
 const HairColour = () => {
   return (
-    <section className="w-full bg-gradient-to-r from-[#EBF0F6] to-[#C4CAD6] pt-0 md:pt-4">
-      <div className="max-w-6xl mx-auto px-4 pt-8 md:py-0">
+    <section
+      className="relative w-full bg-gradient-to-r from-[#EBF0F6] to-[#C4CAD6] bg-cover bg-center bg-no-repeat pt-0 md:pt-4"
+      style={{ backgroundImage: "url('/img/home/daring-blod-bg.webp')" }}
+    >
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-8 md:py-0">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-0">
           {/* Image (no animation for performance) */}
           <div className="order-2 md:order-1 md:col-span-6">
@@ -21,14 +25,14 @@ const HairColour = () => {
 
           {/* Content */}
           <motion.div
-            className="order-1 md:order-2 md:col-span-5 flex flex-col items-center justify-center text-center pt-3 md:pt-0 pb-0 md:pb-0"
+            className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center text-center pt-3 md:pt-0 pb-0 md:pb-0"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -38,7 +42,7 @@ const HairColour = () => {
             </motion.h2>
 
             <motion.p
-              className="mt-3 md:mt-3 text-base sm:text-xl md:text-2xl font-medium uppercase text-black"
+              className="mt-3 md:mt-3 text-base sm:text-xl md:text-2xl font-medium uppercase text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

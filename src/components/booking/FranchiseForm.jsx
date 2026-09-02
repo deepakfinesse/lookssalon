@@ -11,10 +11,10 @@ import { FranchiseInquirySchema } from "@/lib/schemas";
 // ── Shared class strings (identical to BookingForm) ───────────────────────────
 
 const BASE_INPUT =
-  "w-full py-1 px-0 bg-transparent border-0 border-b font-medium " +
+  "w-full py-3 px-4 bg-[#16161680] border-1 font-medium " +
   "text-white text-md tracking-wide " +
   "outline-none appearance-none transition-[border-color] duration-200 " +
-  "placeholder:text-white placeholder:uppercase";
+  "placeholder:text-white ";
 
 const INPUT_ERR_CLS = BASE_INPUT + " border-red-400 focus:border-red-300";
 
@@ -23,7 +23,7 @@ const inp   = (hasError, border) => hasError ? INPUT_ERR_CLS : mkCls(border);
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function FranchiseForm({ inputBorder = "border-[var(--primary)]" }) {
+export default function FranchiseForm({ inputBorder = "border-[#A9A9A9]" }) {
   const router = useRouter();
   const [serverError, setServerError] = useState("");
 
@@ -167,7 +167,7 @@ export default function FranchiseForm({ inputBorder = "border-[var(--primary)]" 
           <Button
             type="submit"
             label={isSubmitting ? "Sending…" : "Send Query"}
-            variant="primary"
+            variant="dark"
             disabled={isSubmitting}
           />
         </div>

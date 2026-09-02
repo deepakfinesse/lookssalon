@@ -10,7 +10,7 @@ export default function Instagram({ posts = [] }) {
   return (
     <div className="instagram-wrapper">
       {posts.length === 0 ? (
-        // <p></p>
+        
         <p>No posts found or there was an error fetching them.</p>
       ) : (
         <div className="instagram-grid">
@@ -55,7 +55,7 @@ export default function Instagram({ posts = [] }) {
 
         .instagram-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 10px;
         }
 

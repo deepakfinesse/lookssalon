@@ -10,19 +10,38 @@ export default async function page({ searchParams }) {
     <>
       <div className="w-full bg-cover bg-center" style={{ backgroundImage: "url('/img/all/book-appointement.webp')" }}>
        <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white font-bold uppercase mb-4">
-            Book An Appointment Online!
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white font-bold uppercase mb-8">
+            Book An Appointment
           </h1>
-          <p className="text-md lg:text-2xl text-white pb-2">
-                Our online bookings service operates between{" "}
-                <strong className="text-primary font-semibold">10:00a.m.</strong>{" "}
-                and{" "}
-                <strong className="text-[var(--primary)] font-semibold">9:00p.m.</strong>
-          </p>
-          <p className="text-md lg:text-lg text-white">
-                Your data is safe with us! We will only use your details to process your salon
-                booking, and won&apos;t <br className='hidden md:block' /> share them with third parties.
-          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            <div className="flex min-h-75 w-52 flex-col items-center justify-center border-1 border-white rounded-full bg-black px-8 text-center">
+              <h3 className="text-lg font-bold uppercase text-white">Our Timing</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/90">
+                Bookings service operates between{" "}
+                <strong className="font-bold text-primary">10:00 am</strong> and{" "}
+                <strong className="font-bold text-primary">06:00 pm</strong>
+              </p>
+            </div>
+
+            <div className="flex min-h-75 w-52 flex-col items-center justify-center border-1 border-white rounded-full bg-black px-8 text-center">
+              <h3 className="text-lg font-bold uppercase leading-tight text-white">
+                250 Plus Salons
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/90">
+                Premium presence across india and kaula lumpur.
+              </p>
+            </div>
+
+            <div className="flex min-h-75 w-52 flex-col items-center justify-center border-1 border-white rounded-full bg-black px-8 text-center">
+              <h3 className="text-lg font-bold uppercase leading-tight text-white">
+                Expert Stylist
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/90">
+                Crafted by trained beauty professionals.
+              </p>
+            </div>
+          </div>
         </div>
         <div className="max-w-3xl mx-auto px-4 pb-12 lg:pb-12">
           <BookingForm defaultCity={defaultCity} defaultSalon={defaultSalon} />

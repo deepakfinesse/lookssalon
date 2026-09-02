@@ -12,84 +12,69 @@ const page = () => {
             className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/aesthetics/hero-bg.webp')" }}
           >
-            <div className="max-w-5xl mx-auto min-h-[calc(100vh-90px)] px-4 py-12 flex flex-col items-center justify-center text-center gap-4">
-                
-              
-                <Image src="/img/all/aesthetics/logo.svg" alt="Looks Prive" className='text-center' width={180} height={90} />
-                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase leading-normal">
-                  The Future of Beauty
-                </h1>
-                <p className='text-md lg:text-lg text-white'>A New Dimension of Care. Building on years of excellence and the trusted legacy of Looks Salon, we are proud to unveil Looks Aesthetics—our dedicated venture into the world of advanced clinical beauty. This is where the artistry of the salon meets the precision of the laboratory.</p>
-              
-            </div>
-          </div>
-          
-        {/* white 1 */}
-          <div className="w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/all/aesthetics/s1-bg.webp')" }}>
-            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
-                <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase mb-1 md:mb-6">
-                  WHERE LUXURY MEETS MEDICAL PRECISION
-                </h2>
-                <p className="text-black text-md lg:text-lg leading-relaxed">
-                  Designed specifically for those who seek transformative, science-backed results. By integrating state-of-the-art technology with medical-grade protocols, we bridge the gap between traditional facials and clinical procedures, all within the signature high-end environment you’ve come to expect from the Looks brand.
-                </p>
-              </div>
-              <div className="order-0 md:order-1 w-full md:w-1/2 relative mb-4 md:mb-0">
-                              <Image
-                                src="/img/all/aesthetics/s1.webp"
-                                alt="Couture Hair & Makeup"
-                                width={404}
-                                height={300}
-                                className="ml-auto"
-                              />
-                            </div>
-              
+            <div className="max-w-7xl mx-auto px-4 flex flex-col items-left justify-center text-left gap-4">
+                <div className='grid grid-cols-12'>
+                <div className='lg:col-span-4 py-20 flex flex-col items-left justify-center'> 
+                  <Image src="/img/all/aesthetics/logo.svg" alt="Looks Prive" className='text-center pb-15' width={200} height={90} />
+                  <h1 className="text-2xl sm:text-2xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
+                    The Future of <br/>
+                  
+                  <sapn className="text-5xl sm:text-5xl md:text-7xl xl:text-9xl text-white font-bold uppercase">Beauty </sapn></h1>
+                  <span class="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
+                  <p className='text-lg lg:text-2xl text-white'>Advanced aesthetics, <br className='hidden md:block' />elevated by the legacy of Looks Salon.</p>
+                </div>
+                <div className='lg:col-span-8'>
+                    <Image src="/img/all/aesthetics/aesthetics-hero.webp" alt="Looks Prive" className='text-center' width={926} height={800} />
+                </div>
+                </div>
             </div>
           </div>
 
           {/* black 2 */}
           <div className="w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/all/aesthetics/s2-bg.webp')" }}>
+            style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
             <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
               <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
                               <Image
-                                src="/img/all/aesthetics/s2.webp"
+                                src="/img/all/aesthetics/aesthetics-s2.webp"
                                 alt="Couture Hair & Makeup"
-                                width={404}
-                                height={300}
+                                width={464}
+                                height={455}
                                 className=""
                               />
                             </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-primary font-bold uppercase mb-1 md:mb-6">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-semibold uppercase ">
                   ADVANCED PROTOCOLS, PERSONALIZED FOR YOU
                 </h2>
-                <p className="text-white text-md lg:text-lg leading-relaxed">
+                <span class="block w-30 h-0.5 bg-primary mt-2 mb-3"></span>
+                <p className="text-black text-md lg:text-lg leading-relaxed">
                   Our budding venture is staffed by the industry’s most elite therapists, trained in the latest aesthetic breakthroughs. From regenerative therapies to non-invasive contouring, every treatment is a bespoke journey.
                 </p>
               </div>
             </div>
           </div>
-        {/* white 2 */}
+                
+          
+        {/* white 1 */}
           <div className="w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/all/aesthetics/s3-bg.webp')" }}>
+            style={{ backgroundImage: "url('/img/all/prive/s1-bg.webp')" }}>
             <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
                 <div className="order-1 md:order-0 w-full md:w-1/2 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-bold uppercase mb-1 md:mb-6">
-                  THE NEXT CHAPTER OF THE LOOKS LEGACY
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-white font-semibold uppercase">
+                  WHERE LUXURY MEETS MEDICAL PRECISION
                 </h2>
-                <p className="text-black text-md lg:text-lg leading-relaxed">
-                  Looks Aesthetics isn’t just an expansion; it’s an evolution. We are bringing the same passion, international expertise, and commitment to quality that defined our first four years into a new era of aesthetic excellence.
+                <span class="block w-30 h-0.5 bg-primary mt-2 mb-3"></span>
+                <p className="text-white text-md lg:text-lg leading-relaxed">
+                  Designed specifically for those who seek transformative, science-backed results. By integrating state-of-the-art technology with medical-grade protocols, we bridge the gap between traditional facials and clinical procedures, all within the signature high-end environment you’ve come to expect from the Looks brand.
                 </p>
               </div>
               <div className="order-0 md:order-1 w-full md:w-1/2 relative mb-4 md:mb-0">
                               <Image
-                                src="/img/all/aesthetics/s3.webp"
+                                src="/img/all/aesthetics/aesthetics-s1.webp"
                                 alt="Couture Hair & Makeup"
-                                width={404}
-                                height={300}
+                                width={464}
+                                height={432}
                                 className="ml-auto"
                               />
                             </div>
@@ -98,10 +83,39 @@ const page = () => {
           </div>
 
 
+          {/* black 2 */}
+          <div className="w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
+            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
+                              <Image
+                                src="/img/all/aesthetics/aesthetics-s3.webp"
+                                alt="Couture Hair & Makeup"
+                                width={545}
+                                height={384}
+                                className=""
+                              />
+                            </div>
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl xl:text-4xl text-black font-semibold uppercase">
+                  THE NEXT CHAPTER OF THE LOOKS LEGACY
+                </h2>
+                <span class="block w-30 h-0.5 bg-primary mt-2 mb-3"></span>
+                <p className="text-black text-md lg:text-lg leading-relaxed">
+                  Looks Aesthetics isn’t just an expansion; it’s an evolution. We are bringing the same passion, international expertise, and commitment to quality that defined our first four years into a new era of aesthetic excellence.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          
+        
+
+
 
          
 
-          <BookAppointment/>
+          {/* <BookAppointment/> */}
           <PartnerBrands/>
     </>
   )

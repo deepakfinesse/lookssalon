@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 import ContactForm from '@/components/booking/ContactForm'
+import PartnerBrands from "@/components/layout/PartnerBrands"
 
 const page = () => {
   return (
@@ -68,14 +69,18 @@ const page = () => {
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className='grid grid-cols-12 gap-5 md:gap-10 items-start'>
             <div className='col-span-12 md:col-span-4'>
-              <h2 className="text-3xl md:text-4xl text-grey font-bold uppercase mb-2 md:mb-6">
-                get in touch
+              <h2 className="text-xl md:text-1xl text-primary font-bold uppercase mb-1 md:mb-1">
+               Get in touch
               </h2>
+              <h2 className="text-3xl md:text-5xl text-black font-bold uppercase ">
+                we would love to hear from you
+              </h2>
+              <span class="block w-18 h-0.5 bg-primary mt-4 mb-4"></span>
               <p className="text-black text-lg mb-4 md:mb-8">
                 Fill out the form and our team will get back <br className='hidden md:block' /> to you as soon as possible.
               </p>
             </div>
-            <div className='col-span-12 md:col-span-7'>
+            <div className='col-span-12 md:col-span-7 border-l border-gray-200 pl-0 md:pl-15'>
               <ContactForm />
             </div>
           </div>
@@ -92,6 +97,8 @@ const page = () => {
         referrerPolicy="no-referrer-when-downgrade"
         title="LOOKS Salon, Karol Bagh"
       />
+
+      <PartnerBrands/>
     </>
   )
 }

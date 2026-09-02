@@ -7,22 +7,22 @@ import { useEffect, useRef, useState } from "react";
 
 const cards = [
   {
-    src: "/img/all/prepaid-blackn.webp",
-    alt: "Black Prepaid Card",
-    final:   { rotate: "0deg", translateX: "50%", translateY: "-42%", zIndex: 1 },
-    initial: { rotate: "0deg", translateX: "50%", translateY: "80%",  zIndex: 1 },
-  },
-  {
     src: "/img/all/prepaid-silvern.webp",
     alt: "Silver Prepaid Card",
-    final:   { rotate: "0deg", translateX: "24%", translateY: "-22%", zIndex: 2 },
-    initial: { rotate: "0deg", translateX: "24%", translateY: "80%",  zIndex: 2 },
+    final:   { rotate: "0deg", translateX: "87%", translateY: "-25%", zIndex: 1 },
+    initial: { rotate: "0deg", translateX: "87%", translateY: "80%",  zIndex: 1 },
   },
   {
     src: "/img/all/prepaid-goldn.webp",
     alt: "Gold Prepaid Card",
-    final:   { rotate: "0deg", translateX: "0%", translateY: "0%", zIndex: 3 },
-    initial: { rotate: "0deg", translateX: "0%", translateY: "80%", zIndex: 3 },
+    final:   { rotate: "0deg", translateX: "41%", translateY: "-6%", zIndex: 2 },
+    initial: { rotate: "0deg", translateX: "41%", translateY: "80%",  zIndex: 2 },
+  },
+  {
+    src: "/img/all/prepaid-blackn.webp",
+    alt: "Black Prepaid Card",
+    final:   { rotate: "0deg", translateX: "-5%", translateY: "15%", zIndex: 3 },
+    initial: { rotate: "0deg", translateX: "-5%", translateY: "80%", zIndex: 3 },
   },
 ];
 
@@ -52,7 +52,7 @@ const PrepaidCards = () => {
       className="w-full overflow-hidden relative"
     >
       <Image
-        src="/img/home/prepaid-card-bg.webp"
+        src="/img/home/prepaid-bg.webp"
         alt=""
         fill
         sizes="100vw"
@@ -60,10 +60,10 @@ const PrepaidCards = () => {
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center min-h-[340px] md:min-h-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-[7fr_3fr] items-center min-h-[340px] md:min-h-[400px]">
 
           {/* ── Card fan ── */}
-          <div className="order-2 md:order-1 relative flex items-end justify-start h-full py-0 md:py-1 pl-4 md:pl-10">
+          <div className="order-2 md:order-1 relative flex items-end justify-start h-full py-0 md:py-1 pl-1 md:pl-0">
             {/*
               Gold card is the size anchor.
               We give it a fixed width; silver & blue overflow via absolute positioning.
@@ -108,7 +108,7 @@ const PrepaidCards = () => {
           </div>
 
           {/* ── Content ── */}
-          <div className="order-1 md:order-2 flex flex-col items-center md:items-center justify-center text-center pt-10 md:pt-0 py-0 md:py-14">
+          <div className="order-1 md:order-2 flex flex-col items-center md:items-right justify-right text-center pt-10 md:pt-0 py-0 md:py-1">
             <FadeUp delay={0.1}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black leading-tight">
                 Pay Less <br /> Get More
@@ -124,7 +124,7 @@ const PrepaidCards = () => {
                 <Button
                   href="/prepaid-cards"
                   label="Buy your prepaid cards"
-                  variant="dark"
+                  variant="primary"
                 />
               </div>
             </FadeUp>

@@ -14,11 +14,11 @@ const Button = ({
 }) => {
 
   const baseClass =
-    'relative inline-block px-4 md:px-5 py-1.5 font-bold uppercase text-sm lg:text-md xl:text-lg overflow-hidden group transition-all duration-300 cursor-pointer'
+    'relative inline-block px-4 md:px-5 py-1.5 font-bold uppercase text-sm lg:text-md xl:text-lg overflow-hidden group transition-all duration-300 cursor-pointer hover:border-primary'
 
   const variants = {
-    primary: 'border-2 border-black bg-primary text-black',
-    dark: 'border-2 border-primary bg-black text-white',
+    primary: 'border-2 border-black bg-transparent text-black',
+    dark: 'border-2 border-white bg-transparent text-white',
   }
 
   const inner = (
@@ -33,10 +33,7 @@ const Button = ({
       </span>
       <span
         aria-hidden="true"
-        className={`
-          absolute inset-0 w-0 transition-all duration-500
-          ${variant === 'primary' ? 'bg-black group-hover:w-full' : 'bg-primary group-hover:w-full'}
-        `}
+        className="absolute inset-0 w-0 bg-primary transition-all duration-500 group-hover:w-full"
       />
     </>
   )

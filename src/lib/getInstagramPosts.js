@@ -20,7 +20,7 @@ console.log("Instagram API response:", igBusinessId);
       return [];
     }
 
-    return (data.data || []).slice(0, 9);
+    return (data.data || []).slice(0, 8);
   } catch (err) {
     console.error("Fetch error:", err);
     return [];

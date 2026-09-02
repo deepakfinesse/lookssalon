@@ -4,7 +4,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #DEAB30;
+  --primary: #A9254B;
   --black: #000000;
   --white: #ffffff;
   --grey: #585858;
@@ -46,18 +46,18 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #DFAB31, #b8860b);
+  background: linear-gradient(to bottom, var(--primary), var(--primary));
   border-radius: 20px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #DFAB31;
+  background: var(--primary);
 }
 
 /* Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #DFAB31 rgba(255, 255, 255, 0.08);
+  scrollbar-color: var(--primary) rgba(255, 255, 255, 0.08);
 }
 
 /* ── Blog post body content ─────────────────────────────────────────────────── */

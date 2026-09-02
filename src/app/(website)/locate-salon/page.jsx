@@ -17,31 +17,38 @@ function SalonCard({ salon }) {
     <div className="flex flex-col gap-4">
       <h3 className="text-2xl font-bold text-black">{salon.name}</h3>
 
-      <div className="text-black text-base leading-relaxed">
-        {(salon.address1 || salon.address) && <span className="block">{salon.address1 || salon.address}</span>}
-        {salon.address2 && <span className="block">{salon.address2}</span>}
-        {salon.address3 && <span className="block">{salon.address3}</span>}
-        {salon.pinCode  && <span className="block font-semibold">Pin: {salon.pinCode}</span>}
+      <div className="flex flex-col items-left gap-1">
+        <div className="bg-white flex items-center justify-left shrink-0">
+          <FaMapMarkerAlt className="text-black pr-1 text-xl" /> <span className="font-semibold text-2xl">Address</span>
+        </div>
+        <div className="text-black text-base font-medium leading-relaxed">
+          {(salon.address1 || salon.address) && <span className="block">{salon.address1 || salon.address}</span>}
+          {salon.address2 && <span className="block">{salon.address2}</span>}
+          {salon.address3 && <span className="block">{salon.address3}</span>}
+          {salon.pinCode  && <span className="block font-semibold">Pin: {salon.pinCode}</span>}
+        </div>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
-          <FaPhone className="text-white text-sm" />
+      <div className="flex flex-col items-left gap-1">
+        <div className="bg-white flex items-center justify-left shrink-0">
+          <FaPhone className="text-black pr-1 text-xl" /> <span className="font-semibold text-2xl">Phone</span>
         </div>
-        <div className="flex flex-col md:flex-col  text-black font-medium gap-1">
+        <div className="flex flex-col md:flex-row  text-black font-medium gap-1">
           {salon.phones.map((p, i) => (
             <a key={i} href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-primary transition-colors">
-              {p}
+              {p} /
             </a>
           ))}
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
-          <FaClock className="text-white text-sm" />
+      <div className="flex flex-col items-left gap-1">
+        <div className="bg-white flex items-center justify-left shrink-0">
+          <FaClock className="text-black pr-1 text-xl"/> <span className="font-semibold text-2xl">Timings</span>
         </div>
+        <div>
         <span className="text-black font-medium">{salon.timing}</span>
+        </div>
       </div>
 
       <div className="flex flex-col md:flex-row gap-2 mt-1">
@@ -50,7 +57,7 @@ function SalonCard({ salon }) {
             href={salon.googleMapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-black text-white px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+            className="flex items-center gap-2 bg-white text-black px-3 py-2 border-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
           >
             <FaMapMarkerAlt className="text-lg" /> Google Map
           </a>
@@ -66,7 +73,7 @@ function SalonCard({ salon }) {
             href={salon.salonTourUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-black text-white px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+            className="flex items-center gap-3 bg-white text-black px-3 py-2 border-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
           >
             <FaImage className="text-lg" /> Salon Tour
           </a>
@@ -79,7 +86,7 @@ function SalonCard({ salon }) {
 
         <a
           href={bookUrl}
-          className="flex items-center justify-center border-2 border-primary text-primary px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-black transition-colors duration-200"
+          className="flex items-center justify-center border-2 border-black text-black px-3 py-2 font-bold uppercase text-sm w-fit hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
         >
           Book Appointment
         </a>
@@ -94,7 +101,7 @@ function CityGroup({ city, salons }) {
   return (
     <div className="mb-14">
       <h2 className="text-4xl md:text-5xl font-bold text-black mb-3">{city}</h2>
-      <div className="h-1 bg-primary mb-4 w-full" />
+      <div className="h-1 bg-black mb-4 w-full" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {salons.map((salon, idx) => (
@@ -189,12 +196,86 @@ export default function LocateSalonPage() {
   return (
     <>
       {/* ── Hero Section ──────────────────────────────────────────────────── */}
-      <section className="w-full bg-[url('/img/all/salon-locator-bg.webp')] bg-cover bg-center bg-no-repeat">
+      <section
+        className="w-full bg-cover bg-center bg-no-repeat"
+        style={{
+          background:
+            "radial-gradient(46.39% 79.21% at 72.5% 55.57%, #A9254B 0%, #1B0311 100%)",
+        }}
+      >
         <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-10">
+          <div className="grid grid-cols-1 isolate relative md:grid-cols-12 items-center gap-10 md:py-0">
+           
+           
 
-            {/* Image */}
-            <div className="md:col-span-6 flex justify-end pt-4">
+            {/* Content + Search */}
+            <div className="md:col-span-6 relative z-10 flex flex-col items-left justify-left text-left pb-12">
+               {/* Decorative border — rounded frame; sits behind everything, right side runs off behind the model image */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-[-4.5rem] right-[-45%] z-1 hidden rounded-[44px] border-2 border-white shadow-[0_0_30px_rgba(255,255,255,0.12)] md:block"
+              />
+              <FadeUp delay={0.2}>
+                <p className="mt-8 text-lg sm:text-xl font-medium uppercase text-primary mb-0">
+                  locate salon near you
+                </p>
+              </FadeUp>
+              <FadeUp delay={0.1}>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold uppercase text-white leading-tight mb-4">
+                  Search by city,
+locality, or
+pin code
+                </h2>
+              </FadeUp>
+              
+
+              {/* Search Form */}
+              <FadeUp delay={0.3}>
+                <div className="flex flex-col gap-3 w-full max-w-md">
+                  {/* Text search */}
+                  <form onSubmit={handleSubmit} className="flex">
+                    <input
+                      type="text"
+                      value={search}
+                      onChange={e => setSearch(e.target.value)}
+                      placeholder="Enter City / Location…"
+                      className="flex-1 min-w-0 px-4 py-3 border-1 border-r-0 border-white/60 bg-black text-white text-sm font-semibold outline-none placeholder:text-white placeholder:uppercase"
+                    />
+                    <button
+                      type="submit"
+                      aria-label="Search"
+                      className="px-5 bg-primary border-1 border-white/60 flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity shrink-0"
+                    >
+                      <FaSearch className="text-white text-base" />
+                    </button>
+                  </form>
+
+                  {/* City dropdown */}
+                  <select
+                    value={cityFilter}
+                    onChange={onCityChange}
+                    className="w-full px-4 py-3 border-1 border-primary border-white/60 bg-black text-white text-sm font-semibold uppercase outline-none cursor-pointer appearance-none scheme-dark [&>option]:bg-black [&>option]:text-white"
+                  >
+                    <option value="">— Browse All Cities —</option>
+                    {cities.map(c => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+
+                  {hasFilter && (
+                    <button
+                      onClick={clearFilters}
+                      className="text-xs font-bold uppercase text-white hover:text-primary transition-colors underline underline-offset-2 self-center"
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              </FadeUp>
+            </div>
+
+             {/* Image */}
+            <div className="md:col-span-6 relative z-20 flex justify-end pt-4">
               <Image
                 src="/img/all/salon-locator-hero.webp"
                 alt="Salon Locator"
@@ -211,64 +292,6 @@ export default function LocateSalonPage() {
                 className="block md:hidden w-full h-auto object-contain"
                 priority
               />
-            </div>
-
-            {/* Content + Search */}
-            <div className="md:col-span-6 flex flex-col items-center justify-center text-center pb-6">
-              <FadeUp delay={0.1}>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase text-black leading-tight mb-4">
-                  locate salon near you
-                </h2>
-              </FadeUp>
-              <FadeUp delay={0.2}>
-                <p className="mt-3 text-lg sm:text-xl font-medium uppercase text-black mb-6">
-                  Select from our chain of 220+ stores across pan India
-                </p>
-              </FadeUp>
-
-              {/* Search Form */}
-              <FadeUp delay={0.3}>
-                <div className="flex flex-col gap-3 w-full max-w-md">
-                  {/* Text search */}
-                  <form onSubmit={handleSubmit} className="flex">
-                    <input
-                      type="text"
-                      value={search}
-                      onChange={e => setSearch(e.target.value)}
-                      placeholder="Enter City / Location…"
-                      className="flex-1 min-w-0 px-4 py-3 border-2 border-r-0 border-primary bg-black text-white text-sm font-semibold outline-none placeholder:text-white/60 placeholder:uppercase"
-                    />
-                    <button
-                      type="submit"
-                      aria-label="Search"
-                      className="px-5 bg-primary border-2 border-primary flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity shrink-0"
-                    >
-                      <FaSearch className="text-black text-base" />
-                    </button>
-                  </form>
-
-                  {/* City dropdown */}
-                  <select
-                    value={cityFilter}
-                    onChange={onCityChange}
-                    className="w-full px-4 py-3 border-2 border-primary border-black bg-black text-white text-sm font-semibold uppercase outline-none cursor-pointer appearance-none scheme-dark [&>option]:bg-black [&>option]:text-white"
-                  >
-                    <option value="">— Browse All Cities —</option>
-                    {cities.map(c => (
-                      <option key={c} value={c}>{c}</option>
-                    ))}
-                  </select>
-
-                  {hasFilter && (
-                    <button
-                      onClick={clearFilters}
-                      className="text-xs font-bold uppercase text-black/60 hover:text-primary transition-colors underline underline-offset-2 self-center"
-                    >
-                      Clear filters
-                    </button>
-                  )}
-                </div>
-              </FadeUp>
             </div>
 
           </div>

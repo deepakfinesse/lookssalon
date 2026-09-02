@@ -132,7 +132,7 @@ export default function ContactForm() {
       <div className="mb-7">
         <textarea
           id="cf-query"
-          placeholder="Query"
+          placeholder="Write you query"
           rows={5}
           maxLength={2000}
           className={inp(!!errors.query) + " resize-none leading-relaxed"}
@@ -153,7 +153,7 @@ export default function ContactForm() {
         <Button
           type="submit"
           label={isSubmitting ? "Sending…" : "Send Message"}
-          variant="dark"
+          variant="primary"
           disabled={isSubmitting}
         />
       </div>

@@ -1,5 +1,5 @@
 import AboutTimeline from '@/components/about/AboutTimeline'
-import HeroVideoDialog from '@/components/about/HeroVideoDialog'
+import StoryVideoHero from '@/components/about/StoryVideoHero'
 import Counter from '@/components/home/Counter'
 import React from 'react'
 import Image from "next/image";
@@ -97,42 +97,34 @@ const achievements = [
 const page = () => {
   return (
     <>
-        <section>
-            <div className="max-w-4xl mx-auto px-4 py-12 md:py-12 lg:py-12  text-center">
-              <FadeUp delay={0.1}>
-                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-grey font-bold uppercase mb-4">
-                    The journey
-                </h1>
-                </FadeUp>
-                <FadeUp delay={0.2}>
-                  <p className='text-md lg:text-lg text-black text-left md:text-center'>LOOKS Salon - One of the most powerful brands in hair, beauty & makeup in India <br className='hidden lg:md:block'/> From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.</p>
-                </FadeUp>
-            </div>
-            <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 pb-0 md:pb-4  lg:pb-4  text-center">
-               
-              <FadeUp delay={0.3}>
-                {/* Hero Video Dialog */}
-                <HeroVideoDialog
-                youtubeId="NccYpBobQZ0?si=rdrs5mLcL8nNcGsv"       
-                thumbnailSrc="/img/about/video-thumbnail.webp"   
-                thumbnailAlt="Product walkthrough video"
-                />
-                </FadeUp>
-            </div>
-        </section>
+        <StoryVideoHero
+          youtubeId="NccYpBobQZ0"
+          poster="/img/about/video-thumbnail.webp"
+          posterAlt="Looks Salon interior"
+          title="Our Story"
+        >
+          LOOKS Salon - One of the most powerful brands in hair, beauty &amp; makeup in India
+          <br className="hidden md:block" />
+          From a small 3 chair 300 Sq. Ft. barber shop to now 250 salons across India employing over 8000 creative minds.
+        </StoryVideoHero>
         
         {/* Counter */}
         <section>
             <div className="max-w-5xl mx-auto px-4 py-12 md:py-12 lg:py-12 items-center  text-center">
-                <div className='grid grid-cols-1 md:grid-cols-2 align-middle gap-10'>
-                    <div className='h-full flex items-center text-left'>
+                <div className='grid grid-cols-1 md:grid-cols-1 align-middle gap-10'>
+                    <div className='h-full flex flex-col items-left text-left'>
                       <FadeUp delay={0.1}>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-black font-bold uppercase mb-4">
+                            Our Journey
+                        </h2>
+                      </FadeUp>
+                      <FadeUp delay={0.2}>
                         <p  className='text-md lg:text-lg text-black'>With continuous evolution over the years in new techniques and styles keeping itself updated with the national and international market, Looks has emerged as one of the trendiest salons over 36 years. Its prime vision is “Utmost Luxury at Affordable Prices” which comes packed with customer satisfaction beyond expectations.</p>
                       </FadeUp>
                     </div>
                 <div>
                     <Counter
-                    gridCols="grid-cols-3  md:grid-cols-1"
+                    gridCols="grid-cols-3  md:grid-cols-3"
                     stats={[
                         { value: 250, label: "Salons Pan India" },
                         { value: 37, label: "Years" },
@@ -145,17 +137,24 @@ const page = () => {
         </section>
         {/* Our Vision */}
         <section className='bg-primary'>
-            <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
-              <FadeUp delay={0.1}>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-black font-bold uppercase mb-4 text-center">
-                    Our vision
-                </h2>
-              </FadeUp>
-              <FadeUp delay={0.2}>
-                <p className='text-md lg:text-lg text-black'>To be a leading customer centric salon chain, warmly welcoming all customers for an experience which takes them on a high in terms of quality hair, beauty & skin services in a</p>
-                <h3 className="text-2xl md:text-3xl xl:text-3xl text-black font-medium py-4">Hygenic, Relaxed & Compressed</h3>
-                <p className='text-md lg:text-lg text-black'>environment to make their day fabulous. After claiming to be India’s most loved salon chain; Looks is now looking to spread its wings internationally. With our first opening in Kualumpur, Malaysia we are testing waters to take a full flight.</p>
-              </FadeUp>
+            <div className="mx-auto ">
+              <div className='grid grid-cols-1 md:grid-cols-2 align-middle'>
+                <div className='h-full flex flex-col items-left text-left' style={{ background: 'linear-gradient(90deg, #868686 9.28%, #1E1E1E 100%)' }}>
+                  
+                </div>
+                <div className='h-full flex flex-col items-left text-left bg-black px-4 py-12 md:py-12 lg:py-20 lg:px-[20%]'>
+                  <FadeUp delay={0.1}>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-white font-bold uppercase mb-4 text-left">
+                        Our vision
+                    </h2>
+                  </FadeUp>
+                  <FadeUp delay={0.2}>
+                    <p className='text-md lg:text-lg text-white'>To be a leading customer centric salon chain, warmly welcoming all customers for an experience which takes them on a high in terms of quality hair, beauty & skin services in a</p>
+                    <h3 className="text-2xl md:text-3xl xl:text-3xl text-primary font-medium py-4">Hygenic, Relaxed & Compressed</h3>
+                    <p className='text-md lg:text-lg text-white'>environment to make their day fabulous. After claiming to be India’s most loved salon chain; Looks is now looking to spread its wings internationally. With our first opening in Kualumpur, Malaysia we are testing waters to take a full flight.</p>
+                  </FadeUp>
+                </div>
+              </div>
             </div>
         </section>
 
@@ -167,7 +166,7 @@ const page = () => {
                     style={{ backgroundImage: "url('/img/about/open-soon-bg.png')" }} id="opening-soon">
                     <div className="max-w-7xl  mx-auto px-4 flex flex-col md:flex-row items-stretch">
                         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-                        <h2 className="text-2xl md:text-3xl xl:text-5xl text-primary font-bold uppercase pt-10 md:pt-0 mb-1 md:mb-6">
+                        <h2 className="text-2xl md:text-3xl xl:text-5xl text-white font-bold uppercase pt-10 md:pt-0 mb-1 md:mb-6">
                           Opening soon
                         </h2>
                         <ul className='text-white text-lg space-y-2 mb-6 text-center'>
@@ -196,12 +195,12 @@ const page = () => {
         <section className='bg-black'>
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-12 lg:py-12">
                 <FadeUp delay={0.1}>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary font-bold uppercase mb-0 md:mb-2 lg:mb-4 text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-white font-bold uppercase mb-0 md:mb-2 lg:mb-4 text-center">
                     Our Proud Moments
                 </h2>
                 </FadeUp>
                 <div className='relative bg-black overflow-hidden pt-4 md:pt-0 py-0 md:py-10'>
-                  <div className="absolute left-0 right-0 hidden md:block"  style={{ top: "42%", height: 1.5, background: "#b8860b", zIndex: 0 }}/>
+                  <div className="absolute left-0 right-0 hidden md:block"  style={{ top: "42%", height: 1.5, background:` var(--primary)`, zIndex: 0 }}/>
                   <FadeUp delay={0.2}>
                   <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
@@ -209,8 +208,8 @@ const page = () => {
                       <div className="w-full md:flex-1 md:min-w-0 mt-0 md:mt-6 lg:mt-20">
                         {/* Year label sits ON the gold line */}
                         <p
-                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6"
-                          style={{ color: "#DFAB31" }}
+                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6 text-white"
+                         
                         >
                           2014-15
                         </p>
@@ -264,8 +263,8 @@ const page = () => {
                       {/* ── RIGHT PANEL ── */}
                       <div className="w-full md:flex-1 md:min-w-0 text-left md:text-right mt-0 md:mt-6 lg:mt-20">
                         <p
-                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6 text-left md:text-right"
-                          style={{ color: "#DFAB31" }}
+                          className="text-2xl md:text-3xl font-semibold mb-3 md:mb-6 text-white text-left md:text-right"
+                          
                         >
                           2016-17
                         </p>
@@ -323,7 +322,7 @@ function AwardItem({ category, result }) {
   return (
     <div>
       <p className="text-white text-md font-normal leading-tight">{category}</p>
-      <p className="text-md font-normal mt-0.5" style={{ color: "#DFAB31" }}>
+      <p className="text-primary text-md font-normal mt-0.5">
         {result}
       </p>
     </div>
@@ -338,7 +337,7 @@ function AchievementCard({ item }) {
       <div
         className="rounded-full p-[3px] mb-2 md:mb-5 shrink-0 w-40 h-40 md:w-55 md:h-55"
         style={{
-          background: "linear-gradient(145deg, #e8c96a, #a07820, #e8c96a, #7a5c10)",
+          background: "linear-gradient(145deg, #a9254b, #a9254b, #a9254b, #a9254b)",
         }}
       >
         <div className="w-full h-full rounded-full overflow-hidden relative bg-zinc-900">

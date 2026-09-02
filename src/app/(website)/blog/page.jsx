@@ -103,7 +103,7 @@ export default async function BlogPage({ searchParams }) {
           currentSort={sort}
         />
       </Suspense>
-      <BookAppointment />
+      {/* <BookAppointment /> */}
       <PartnerBrands />
     </>
   );
