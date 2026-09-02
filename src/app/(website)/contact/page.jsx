@@ -80,7 +80,7 @@ const page = () => {
                 Fill out the form and our team will get back <br className='hidden md:block' /> to you as soon as possible.
               </p>
             </div>
-            <div className='col-span-12 md:col-span-7 border-l border-gray-200 pl-0 md:pl-15'>
+            <div className='col-span-12 md:col-span-7 md:border-l md:border-gray-200 pl-0 md:pl-15'>
               <ContactForm />
             </div>
           </div>

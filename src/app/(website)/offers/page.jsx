@@ -12,7 +12,7 @@ const page = () => {
                 <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-6xl text-primary font-bold uppercase leading-normal">
                   <span className="text-black">offers at</span>  looks salon
                 </h1>
-                <div className='grid grid-cols-2 gap-12'>
+                <div className='grid grid-cols-2 gap-4 md:gap-12'>
                     <div className="relative group overflow-hidden cursor-pointer">
                         <Image src="/img/all/offer-1.webp" alt="Offer 1" width={600} height={600} className="" />
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />

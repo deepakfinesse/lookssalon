@@ -68,7 +68,7 @@ export default function QuickBookingForm() {
       noValidate
       className="w-full max-w-5xl mx-auto px-4 text-white"
     >
-      <div className="flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center justify-center gap-x-3 gap-y-12 text-lg md:text-4xl font-semibold ">
+      <div className="flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center justify-center gap-x-3 gap-y-12 text-3xl md:text-4xl font-semibold ">
 
         {/* Name */}
         <div className="flex flex-col w-full md:w-auto">

@@ -53,7 +53,7 @@ export default function MediaGallery() {
             <button
               key={f.value}
               onClick={() => setActive(f.value)}
-              className={`text-sm lg:text-md font-bold font-primary uppercase tracking-wide border-2 px-5 md:px-7 py-2 transition-colors ${
+              className={`text-sm lg:text-md font-bold font-primary uppercase tracking-wide border-2 px-2 md:px-7 py-2 transition-colors ${
                 active === f.value
                   ? "bg-primary border-primary text-white"
                   : "border-gray text-grey hover:border-primary hover:text-primary"

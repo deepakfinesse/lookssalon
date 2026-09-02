@@ -13,20 +13,20 @@ const page = () => {
             style={{ backgroundImage: "url('/img/all/barber/hero-bg.webp')" }}
           >
             
-              <div className="max-w-7xl mx-auto px-4 flex flex-col items-left justify-center text-left gap-4">
-                <div className='grid grid-cols-12'>
-                  <div className='lg:col-span-4 py-20 flex flex-col items-left justify-center'>
-                    <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={250} height={120} className="pb-15" />
-                    <h1 className="text-2xl sm:text-2xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
+              <div className="max-w-7xl mx-auto px-4">
+                <div className='grid grid-cols-12 items-center gap-8 lg:gap-6'>
+                  <div className='col-span-12 lg:col-span-4 pt-12 lg:py-20 flex flex-col items-center text-center lg:items-start lg:text-left'>
+                    <Image src="/img/all/barber/logo.svg" alt="Looks Barber" width={250} height={120} className="pb-8 lg:pb-15" />
+                    <h1 className="text-2xl sm:text-3xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
                         THE <br/>
-                      
-                      <sapn className="text-5xl sm:text-5xl md:text-6xl xl:text-[82px] text-white font-bold uppercase">Grooming <br/> <span className="text-primary">Standard</span> </sapn></h1>
-                      <span class="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
-                      <p className='text-lg lg:text-2xl text-white'>Precision cuts. Timeless style. Elevated experience. <br className='hidden md:block' />Setting the benchmark for men’s grooming.</p>
+                      <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-[82px] text-white font-bold uppercase leading-tight">Grooming <br/> <span className="text-primary">Standard</span></span>
+                    </h1>
+                      <span className="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
+                      <p className='text-base sm:text-lg lg:text-2xl text-white'>Precision cuts. Timeless style. Elevated experience. <br className='hidden md:block' />Setting the benchmark for men’s grooming.</p>
                   </div>
-                  <div className="lg:col-span-8">
+                  <div className="col-span-12 lg:col-span-8">
                     <Image src="/img/all/barber/barber-hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom hidden md:block" />
-                    <Image src="/img/all/barber/hero-mobile.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom block md:hidden" />
+                    <Image src="/img/all/barber/barber-hero.webp" alt="Looks Barber" width={870} height={741} className="w-full h-auto object-bottom block md:hidden" />
                   </div>
                 </div>
               </div>

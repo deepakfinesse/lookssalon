@@ -60,7 +60,7 @@ const PrepaidCards = () => {
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-[7fr_3fr] items-center min-h-[340px] md:min-h-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-[7fr_3fr] items-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
 
           {/* ── Card fan ── */}
           <div className="order-2 md:order-1 relative flex items-end justify-start h-full py-0 md:py-1 pl-1 md:pl-0">
@@ -68,13 +68,15 @@ const PrepaidCards = () => {
               Gold card is the size anchor.
               We give it a fixed width; silver & blue overflow via absolute positioning.
               The section itself has overflow-hidden so nothing bleeds outside.
+              Width is kept small enough on phones that the fanned-out
+              silver card (translateX 87%) still fits without being clipped.
             */}
             <div
               className="relative"
               style={{
-                width: "clamp(260px, 38vw, 500px)",
+                width: "clamp(150px, 40vw, 500px)",
                 aspectRatio: "1.586",          // standard card ratio 85.6 × 54mm
-                marginTop: "clamp(160px, 8vw, 100px)", // pushes gold down so blue has room above
+                marginTop: "clamp(48px, 10vw, 150px)", // pushes gold down so silver has room above
               }}
             >
               {cards.map((card, i) => {
@@ -98,7 +100,7 @@ const PrepaidCards = () => {
                       src={card.src}
                       alt={card.alt}
                       fill
-                      sizes="(max-width: 768px) 70vw, 500px"
+                      sizes="(max-width: 768px) 45vw, 500px"
                       className="object-contain drop-shadow-2xl"
                     />
                   </div>

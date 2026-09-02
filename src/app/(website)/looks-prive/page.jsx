@@ -14,7 +14,7 @@ const page = () => {
           >
             <div className="max-w-8xl mx-auto min-h-[calc(100vh-90px)] px-4 py-12 flex flex-col items-center justify-center text-center">
            
-                <Image src="/img/all/prive/logo-black.svg" alt="Looks Prive" className='text-center' width={180} height={90} />
+                <Image src="/img/all/prive/logo-black.svg" alt="Looks Prive" className='text-center pb-8 md:pb-1' width={180} height={90} />
                 <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-5xl text-primary font-medium uppercase leading-normal">
                   The Pinnacle of Artistry
                 </h1>

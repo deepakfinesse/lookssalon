@@ -9,38 +9,47 @@ const page = () => {
     <>
     {/* Hero Section */}
           <div
-            className="w-full bg-cover bg-center"
+            className="relative w-full overflow-hidden bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/aesthetics/hero-bg.webp')" }}
           >
-            <div className="max-w-7xl mx-auto px-4 flex flex-col items-left justify-center text-left gap-4">
-                <div className='grid grid-cols-12'>
-                <div className='lg:col-span-4 py-20 flex flex-col items-left justify-center'> 
-                  <Image src="/img/all/aesthetics/logo.svg" alt="Looks Prive" className='text-center pb-15' width={200} height={90} />
-                  <h1 className="text-2xl sm:text-2xl md:text-3xl xl:text-3xl text-white font-semibold uppercase">
-                    The Future of <br/>
-                  
-                  <sapn className="text-5xl sm:text-5xl md:text-7xl xl:text-9xl text-white font-bold uppercase">Beauty </sapn></h1>
-                  <span class="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
-                  <p className='text-lg lg:text-2xl text-white'>Advanced aesthetics, <br className='hidden md:block' />elevated by the legacy of Looks Salon.</p>
+            <div className="max-w-7xl mx-auto px-4  relative">
+                <div className='grid grid-cols-12 items-center gap-8 lg:gap-6'>
+                  <div className='col-span-12 lg:col-span-4 pt-12 lg:py-20 flex flex-col items-center text-center lg:items-start lg:text-left'>
+                    <Image src="/img/all/aesthetics/logo.svg" alt="Looks Aesthetics" className='pb-8 lg:pb-10' width={200} height={90} />
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-3xl xl:text-4xl text-white font-semibold uppercase">
+                      The Future of <br className='hidden sm:block' />
+                      <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-8xl text-white font-bold uppercase">Beauty</span>
+                    </h1>
+                    <span className="block w-24 h-0.5 bg-primary mt-2 mb-4"></span>
+                    <p className='text-base sm:text-lg lg:text-2xl text-white'>Advanced aesthetics, <br className='hidden md:block' />elevated by the legacy of Looks Salon.</p>
+                  </div>
+                  <div className='col-span-12 lg:col-span-8'>
+                      <Image src="/img/all/aesthetics/aesthetics-hero.webp" alt="Looks Aesthetics" className='mx-auto w-full h-auto' width={926} height={800} />
+                  </div>
                 </div>
-                <div className='lg:col-span-8'>
-                    <Image src="/img/all/aesthetics/aesthetics-hero.webp" alt="Looks Prive" className='text-center' width={926} height={800} />
-                </div>
-                </div>
+                <Image
+              src="/img/all/aesthetics/aesthetics.svg"
+              alt="Aesthetics"
+              width={1440}
+              height={106}
+              priority
+              className="pointer-events-none absolute bottom-0 left-0 z-10 hidden w-full select-none md:block"
+            />
             </div>
+
           </div>
 
           {/* black 2 */}
           <div className="w-full bg-cover bg-center"
             style={{ backgroundImage: "url('/img/all/prive/s2-bg.webp')" }}>
-            <div className="max-w-7xl mx-auto p-10 flex flex-col md:flex-row items-stretch">
-              <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
+            <div className="max-w-7xl mx-auto  flex flex-col md:flex-row items-stretch">
+              <div className="w-full md:w-1/2 relative mb-4 md:mb-0 flex flex-col justify-end">
                               <Image
                                 src="/img/all/aesthetics/aesthetics-s2.webp"
                                 alt="Couture Hair & Makeup"
                                 width={464}
                                 height={455}
-                                className=""
+                                className="h-auto w-full md:w-auto"
                               />
                             </div>
               <div className="w-full md:w-1/2 flex flex-col justify-center">

@@ -85,7 +85,7 @@ const Header = () => {
 
       {/* Mobile fixed bottom buttons */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-40 flex p-2 gap-2 bg-grey">
-        <Button href="/locate-salon" label="locate a salon" className="flex-1 text-center justify-center" />
+        <Button href="/locate-salon" label="locate a salon" variant="dark" className="flex-1 text-center justify-center" />
         <Button href="/salon-book-appointment" label="Book Appointment" variant="dark" className="flex-1 text-center justify-center" />
       </div>
     </>
